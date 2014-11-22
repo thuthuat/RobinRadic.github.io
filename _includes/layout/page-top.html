@@ -1,0 +1,27 @@
+
+<div class="page-top">
+    {% if site.data.layout.header.search == true %}
+    {% include layouts/default/header.search.html %}
+    {% endif %}
+    <div class="top-menu">
+        <ul class="nav navbar-nav pull-right">
+            {% if site.data.layout.header.notifications == true %}
+            {% include layouts/default/header.notifications.html %}
+            {% endif %}
+
+            {% if site.data.layout.header.messages == true %}
+            {% include layouts/default/header.messages.html %}
+            {% endif %}
+
+            {% if site.data.layout.header.tasks == true %}
+            {% include layouts/default/header.tasks.html %}
+            {% endif %}
+
+            {% if site.data.layout.header.user == true %}
+            {% include layouts/default/header.user.html %}
+            {% endif %}
+
+        </ul>
+    </div>
+    <!-- END TOP NAVIGATION MENU -->
+</div>

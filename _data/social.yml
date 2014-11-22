@@ -1,0 +1,8 @@
+twitter:
+  enabled: false
+
+facebook:
+  enabled: false
+
+github:
+  enabled: true

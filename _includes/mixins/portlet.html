@@ -1,0 +1,17 @@
+<div class="portlet {%if include.style %}{{ include.style }}{% else %}light{% endif %} ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bar-chart font-green-sharp hide"></i>
+            <span class="caption-subject font-green-sharp bold uppercase">{{ include.title }}</span>
+            {% if include.subtitle %}<span class="caption-helper">{{ include.subtitle }}</span>{% endif %}
+        </div>
+        {% if include.actions %}
+        <div class="actions">
+            {{ include.actions }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="portlet-body">
+        {{ include.content }}
+    </div>
+</div>

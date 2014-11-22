@@ -1,0 +1,28 @@
+{% for item in site.data.navigation %}
+{% if item.children %}
+<li>
+    <a href="javascript:;">
+        <i class="{{ item.icon }}"></i>
+        <span class="title">{{ item.name }}</span>
+        <span class="arrow "></span>
+    </a>
+    <ul class="sub-menu">
+        {% for child in item.children %}
+        <li>
+            <a href="{{ BASEURL }}/{{ child.link }}">
+                <i class="{{ child.icon }}"></i>
+                {{ child.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</li>
+{% else %}
+<li class=" ">
+    <a href="{{ BASEURL }}/{{ item.link }}">
+        <i class="{{ item.icon }}"></i>
+        <span class="title">{{ item.name }}</span>
+    </a>
+</li>
+{% endif %}
+{% endfor %}

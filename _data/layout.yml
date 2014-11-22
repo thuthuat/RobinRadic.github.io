@@ -1,0 +1,6 @@
+header:
+  search: false
+  notifications: false
+  messages: false
+  tasks: false
+  user: false

@@ -1,0 +1,52 @@
+{% include layout/top.html %}
+<head>
+    {% include layout/head.html %}
+
+</head>
+<body class="page-boxed page-header-fixed page-container-bg-solid page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
+    <div class="page-header navbar navbar-fixed-top">
+        <div class="page-header-inner container">
+            {% include layout/logo.html %}
+            {% include layout/page-top.html %}
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="container">
+        <div class="page-container">
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul class="page-sidebar-menu page-sidebar-menu-compact " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        {% include layout/sidebar-navigation.html %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="page-content-wrapper">
+                <div class="page-content">
+
+                    {{ page.layout }}<br><br><br><br><br>
+                    {{ page.widgets }}<br><br><br><br>
+                    {{ content }}
+
+                </div>
+            </div>
+        </div>
+
+        {% include layout/footer.html %}
+    </div>
+
+    {% include layout/scripts.html %}
+    {% for widget in page.widgets %}
+
+        <script src="{{ ASSETDIR }}/radic/widgets/{{ widget.file }}/{{ widget.file }}.js"></script>
+        <script>$(function(){
+           $("{{ widget.selector }}").githubProfile({
+               username: 'RobinRadic',
+               templatePath: '{{ ASSETDIR }}/radic/widgets/github-profile/github-profile.tpl'
+           });
+        });</script>
+    {% endfor %}
+</body>
+
+{% include layout/bottom.html %}

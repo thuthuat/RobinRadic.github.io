@@ -1,0 +1,36 @@
+<!DOCTYPE html>{% include default %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="{{ ASSETDIR }}/global.css" rel="stylesheet">
+    <link href="{{ ASSETDIR }}/theme.css" rel="stylesheet">
+    <link href="{{ ASSETDIR }}/custom.css" rel="stylesheet">
+</head>
+
+
+<body class="page-boxed page-header-fixed page-container-bg-solid page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
+<div class="page-header navbar navbar-fixed-top">
+    <div class="page-header-inner container">
+
+        <div class="page-logo">
+            <a href="{{ site.baseurl }}">
+                <img src="{{ IMGDIR }}/logos/radicos-text.png" alt="logo" class="logo-default"/>
+            </a>
+            <div class="menu-toggler sidebar-toggler"></div>
+        </div>
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"></a>
+
+
+        <!-- END PAGE TOP -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<div class="clearfix"></div>
+<div class="container">
+    <div class="page-container">
+        <div class="page-sidebar-wrapper">
+            {% include layouts/default/sidebar.html %}</div>
+
+        <div class="page-content-wrapper">
+            <div class="page-content">
