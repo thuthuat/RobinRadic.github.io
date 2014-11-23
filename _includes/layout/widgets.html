@@ -1,15 +1,31 @@
 {% for widget in page.widgets %}
 
-    {% if site.data.widgets contains widget %}
+    {% if site.data.widgets contains widget.name %}
 
-        {% if site.data.widgets[widget] contains 'tpl' %}
-            {% capture tmp_path %}widgets/{{ site.data.widgets[widget].tpl }}{% endcapture %}
+    {% assign widget_data = site.data.widgets[widget.name] %}
+
+        {% if widget_data contains 'tpl' %}
+            {% capture tmp_path %}widgets/{{ site.data.widgets[widget.name].tpl }}{% endcapture %}
             {% include {{tmp_path}} %}
         {% endif %}
 
-        {% if site.data.widgets[widget] contains 'js' %}
-            <script src="{{ ASSETDIR}}/widgets/{{ site.data.widgets[widget].js }}">
+        {% if widget_data contains 'js' %}
+            <script src="{{ ASSETDIR}}/widgets/{{ widget_data.js }}"></script>
         {% endif %}
+
+
+        <script>
+            $(function(){
+                $('{{ widget.selector }}').{{ widget_data.func }}({
+                    {% if widget contains 'config' %}
+                        {% for config in widget.config %}
+                            "{{ config[0] }}": "{{ config[1] }}"
+                        {% endfor %}
+                    {% endif %}
+                });
+            });
+        </script>
+        <br>
 
 
     {% endif %}

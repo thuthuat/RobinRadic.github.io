@@ -4,3 +4,14 @@
 page-top-user:
   js: page-top-user.js
   tpl: page-top-user.html
+  func: pageTopUser
+
+github-profile:
+  js: github-profile.js
+  tpl: github-profile.html
+  func: githubProfile
+
+github-events:
+  js: github-events.js
+  tpl: github-events.html
+  func: githubEvents

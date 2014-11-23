@@ -43,66 +43,23 @@
             sortBy: 'stars', // possible: 'stars', 'updateTime'
             reposHeaderText: 'Most starred',
             maxRepos: 5,
-            templatePath: 'widgets/github-profile.tpl'
+            templateDataSelector: 'script[data-template-id="github-profile"]',
         },
 
         _create: function () {
             var self = this;
             self._getData(function (data) {
-                console.log(data);
+             //   console.log(data);
                 var templateHTML = $('script[data-template-id="github-profile"]').html();
                 var template = jQuery.template(templateHTML);
+             //   console.log('pre temp data', data);
                 var $widget = $(template(data));
-                self.element.append(template(data))
+                self.element.append(template(data));
+                Metronic.initAjax();
             });
         },
 
 // _getData, _getDataTopLanguages, _getDataTopRepos, _combineData
-
-        _fetchData: function (callback) {
-            var self = this;
-            var username = this.options.username;
-
-            $.async.waterfall([
-                function (done) {
-                    $.github.user(username, function (userData) {
-                        done(null, userData);
-                    });
-                },
-                function (userData, done) {
-                    $.github.users.repos(username, null, 1, 100, function (repoData) {
-                        done(null, {user: userData, repos: repoData});
-                    })
-                },
-                function (apiData, done) {
-                    apiData.languages = {};
-                    $.async.each(apiData.repos, function(repo, next){
-                        $.github.repos.languages(username, repo.name, function(langData){
-                            $.each(langData, function(i, lang){
-                                if(typeof apiData.languages[i] === 'undefined'){
-                                    apiData.languages[i] = lang;
-                                } else {
-                                    apiData.languages[i] += lang;
-                                }
-                            });
-                            next();
-                        });
-                    }, function(){
-                        done(null, apiData)
-                    })
-                },
-                function (apiData, done) {
-                    $.get(self.options.templatePath, function (templateData) {
-                        console.log('load template', templateData, apiData);
-                        apiData.tpl = templateData;
-                        done(null, apiData);
-
-                    })
-                }
-            ], function (err, result) {
-                if (typeof callback === 'function') callback(result);
-            });
-        },
 
         _sortLanguages: function (languages) {
             var topLangs = [];
@@ -133,13 +90,49 @@
 
         _getData: function (callback) {
             var self = this;
+            var username = this.options.username;
             var combined = {};
+          //  console.log('getdata', this.options.username);
             $.async.waterfall([
                 function (done) {
-                    self._fetchData(function(data){
-                        // data.user data.tpl data.repos
-                        done(null, data)
+                   // console.log('getdata 1');
+                    $.github.user(username, function (userData) {
+                       // console.log('fetched data ', userData);
+                        done(null, userData);
+
                     });
+                },
+                function (userData, done) {
+                    //console.log('getdata 2');
+                    $.github.users.repos(username, null, 1, 100, function (repoData) {
+                        done(null, {user: userData, repos: repoData});
+                    })
+                },
+                function (apiData, done) {
+                   // console.log('getdata 3');
+                    apiData.languages = {};
+                    $.async.each(apiData.repos, function(repo, next){
+                        $.github.repos.languages(username, repo.name, function(langData){
+                            $.each(langData, function(i, lang){
+                                if(typeof apiData.languages[i] === 'undefined'){
+                                    apiData.languages[i] = lang;
+                                } else {
+                                    apiData.languages[i] += lang;
+                                }
+                            });
+                            next();
+                        });
+                    }, function(){
+                        done(null, apiData)
+                    })
+                },
+                function (apiData, done) {
+                    $.get(self.options.templatePath, function (templateData) {
+                     //   console.log('load template', templateData, apiData);
+                        apiData.tpl = templateData;
+                        done(null, apiData);
+
+                    })
                 },
                 function (data, done) {
                     data.topRepos = self._sortRepositories(data.repos);
@@ -147,11 +140,12 @@
                 },
                 function (data, done) {
                     data.topLanguages = self._sortLanguages(data.languages);
-                    done(null, data)
+
+                    callback(data);
+                    done(null);
+
                 }
-            ], function (err, result) {
-                callback(result);
-            })
+            ])
         },
 
 

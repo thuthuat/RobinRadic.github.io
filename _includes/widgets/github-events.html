@@ -1,0 +1,44 @@
+<script type="text/x-handlebars-template" data-template-id="github-events">
+
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-share font-blue-steel hide"></i>
+                <span class="caption-subject font-blue-steel bold uppercase"><%= title %></span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="scroller" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                <ul class="feeds github-events-widget">
+                    <% $.each(events, function(i, event) { %>
+                    <li>
+
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">
+                                    <div class="label label-sm label-<%= event.iconColor %>">
+                                        <i class="<%= event.icon %>"></i>
+                                    </div>
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc">
+                                        <%= event.text %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="date">
+                                <%= event.timeAgo %>
+                            </div>
+                        </div>
+
+                    </li>
+                    <% }); %>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</script>

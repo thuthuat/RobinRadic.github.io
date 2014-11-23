@@ -1,0 +1,11 @@
+---
+layout: {{ layout }}
+title: {{ title }}
+date: {{ date }}
+widgets:
+    - name: page-top-user
+      selector: "#page-top-menu"
+      config:
+        username: RobinRadic
+---
+

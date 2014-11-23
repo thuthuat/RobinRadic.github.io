@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-11-22T23:09Z
+ * Date: 2014-11-23T02:02Z
  */
 
 (function( global, factory ) {
@@ -9123,133 +9123,6 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 });
 
 
-    jQuery.async = {};
-var only_once = function (fn) {
-        var called = false;
-        return function () {
-            if (called) throw new Error("Callback was already called.");
-            called = true;
-            fn.apply(window, arguments);
-        }
-    }
-
-var _each = function(arr, iterator) {
-        if (arr.forEach) {
-            return arr.forEach(iterator);
-        }
-        for (var i = 0; i < arr.length; i += 1) {
-            iterator(arr[i], i, arr);
-        }
-    }
-
-
-
-    var each = function (arr, iterator, callback) {
-        callback = callback || function () {
-        };
-
-        if (!arr.length) {
-            return callback();
-        }
-        var completed = 0;
-        _each(arr, function (x) {
-            iterator(x, only_once(done));
-        });
-        function done(err) {
-            if (err) {
-                callback(err);
-                callback = function () {
-                };
-            }
-            else {
-                completed += 1;
-                if (completed >= arr.length) {
-                    callback();
-                }
-            }
-        }
-    };
-
- //   jQuery.async = {};
-    jQuery.async.each = each;
-
-var iterator = function (tasks) {
-        var makeCallback = function (index) {
-            var fn = function () {
-                if (tasks.length) {
-                    tasks[index].apply(null, arguments);
-                }
-                return fn.next();
-            };
-            fn.next = function () {
-                return (index < tasks.length - 1) ? makeCallback(index + 1) : null;
-            };
-            return fn;
-        };
-        return makeCallback(0);
-    }
-
-var nextTick = function (fn) {
-        if (typeof setImmediate === 'function') {
-            setImmediate(fn);
-        } else if (typeof process !== 'undefined' && process.nextTick) {
-            process.nextTick(fn);
-        } else {
-            setTimeout(fn, 0);
-        }
-    }
-
-
-
-
-    var _isArray = Array.isArray || function (maybeArray) {
-            return Object.prototype.toString.call(maybeArray) === '[object Array]';
-        };
-
-    var waterfall = function (tasks, callback) {
-
-        callback = callback || function () { };
-
-        if (_isArray(tasks)) {
-            var err = new Error('First argument to waterfall must be an array of functions');
-            return callback(err);
-        }
-
-        if (!tasks.length) {
-            return callback();
-        }
-
-        var wrapIterator = function (iterator) {
-            return function (err) {
-                if (err) {
-                    callback.apply(null, arguments);
-                    callback = function () {
-                    };
-                } else {
-                    var args = Array.prototype.slice.call(arguments, 1);
-                    var next = iterator.next();
-                    if (next) {
-                        args.push(wrapIterator(next));
-                    } else {
-                        args.push(callback);
-                    }
-                    nextTick(function () {
-                        iterator.apply(null, args);
-                    });
-                }
-            };
-        };
-
-        wrapIterator(makeIterator(tasks))();
-    };
-
-    jQuery.async.waterfall = waterfall;
-
-
-
-
-
-
     var github = (function(GithubClient){
 
         return new GithubClient('06ec61fd2853f215bb01f7c5b2e0f56ff8537838'); //'e243a6a733de08c8dfd37e86abd7d2a3b82784de');
@@ -12576,6 +12449,129 @@ var nextTick = function (fn) {
             }
         }
     });
+
+
+    jQuery.async = {};
+var only_once = function (fn) {
+        var called = false;
+        return function () {
+            if (called) throw new Error("Callback was already called.");
+            called = true;
+            fn.apply(window, arguments);
+        }
+    }
+
+var _each = function(arr, iterator) {
+        if (arr.forEach) {
+            return arr.forEach(iterator);
+        }
+        for (var i = 0; i < arr.length; i += 1) {
+            iterator(arr[i], i, arr);
+        }
+    }
+
+
+
+    var each = function (arr, iterator, callback) {
+        callback = callback || function () {
+        };
+
+        if (!arr.length) {
+            return callback();
+        }
+        var completed = 0;
+        _each(arr, function (x) {
+            iterator(x, only_once(done));
+        });
+        function done(err) {
+            if (err) {
+                callback(err);
+                callback = function () {
+                };
+            }
+            else {
+                completed += 1;
+                if (completed >= arr.length) {
+                    callback();
+                }
+            }
+        }
+    };
+
+ //   jQuery.async = {};
+    jQuery.async.each = each;
+
+
+
+        var nextTick = function (fn) {
+            if (typeof setImmediate === 'function') {
+                setImmediate(fn);
+            } else if (typeof process !== 'undefined' && process.nextTick) {
+                process.nextTick(fn);
+            } else {
+                setTimeout(fn, 0);
+            }
+        };
+
+        var makeIterator = function (tasks) {
+            var makeCallback = function (index) {
+                var fn = function () {
+                    if (tasks.length) {
+                        tasks[index].apply(null, arguments);
+                    }
+                    return fn.next();
+                };
+                fn.next = function () {
+                    return (index < tasks.length - 1) ? makeCallback(index + 1): null;
+                };
+                return fn;
+            };
+            return makeCallback(0);
+        };
+
+        var _isArray = Array.isArray || function(maybeArray){
+                return Object.prototype.toString.call(maybeArray) === '[object Array]';
+            };
+
+        var waterfall = function (tasks, callback) {
+            callback = callback || function () {};
+            if (!_isArray(tasks)) {
+                var err = new Error('First argument to waterfall must be an array of functions');
+                return callback(err);
+            }
+            if (!tasks.length) {
+                return callback();
+            }
+            var wrapIterator = function (iterator) {
+                return function (err) {
+                    if (err) {
+                        callback.apply(null, arguments);
+                        callback = function () {};
+                    } else {
+                        var args = Array.prototype.slice.call(arguments, 1);
+                        var next = iterator.next();
+                        if (next) {
+                            args.push(wrapIterator(next));
+                        } else {
+                            args.push(callback);
+                        }
+                        nextTick(function () {
+                            iterator.apply(null, args);
+                        });
+                    }
+                };
+            };
+            wrapIterator(makeIterator(tasks))();
+        };
+
+            jQuery.async.waterfall = waterfall;
+
+
+
+
+
+
+
 
 
     /**

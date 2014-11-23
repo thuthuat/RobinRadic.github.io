@@ -1,5 +1,15 @@
 @import "variables";
+@import "mixins";
 @import "widgets/github-profile";
+@import "widgets/github-events";
+@import "custom/pygments";
+
+
+.blog-post-content {
+    img {
+        @include img-responsive();
+    }
+}
 
 .page-logo .logo-default {
     width: 100px;

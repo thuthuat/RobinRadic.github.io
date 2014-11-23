@@ -1,14 +1,14 @@
 <script type="text/template" data-template-id="page-top-user">
 <li class="dropdown dropdown-user">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-        <img alt="" class="img-circle" src="{{ site.avatar_url }}"/>
+        <img alt="" class="img-circle" src="<%= user.avatar_url %>"/>
 						<span class="username username-hide-on-mobile">
-						Robin Radic </span>
+						<%= user.name %> </span>
         <i class="fa fa-angle-down"></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-default">
         <li>
-            <a href="{{ site.github.html_url }}">
+            <a href="<%= user.html_url %">
                 <i class="fa fa-github"></i> My Github page </a>
         </li>
         <!--

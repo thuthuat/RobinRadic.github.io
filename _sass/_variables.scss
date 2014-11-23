@@ -1,2 +1,32 @@
 
+// Colors
+// --------------------------------------------------
+$base-color: #222;
+$body-color: #e8e8e8;
+$text-color: #222;
+$comp-color: complement($base-color);
+$border-color: lighten($base-color, 60);
+$white: #fff;
+$black: #000;
+$link-color: #222;
+
+$primary: $base-color;
+$success: #5cb85c;
+$warning: #dd8338;
+$danger: #C64537;
+$info: #308cbc;
+
+
+
+$font-size: 16;
+
+$base-font: 'Lato', Calibri, Arial, sans-serif;
+$heading-font: $base-font;
+$caption-font: $base-font;
+$code-font: monospace;
+$alt-font: serif;
+
+$doc-font-size: 16;
+$doc-line-height: 26;
+
 $layout-img-path: 'admin/layout2/img'

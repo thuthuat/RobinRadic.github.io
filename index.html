@@ -1,13 +1,30 @@
 ---
 layout: page
+title: Radic's git page
 widgets:
-    - page-top-user
+    - name: github-profile
+      selector: "#ghprofile"
+      config:
+        username: RobinRadic
+    - name: page-top-user
+      selector: "#page-top-menu"
+      config:
+        username: RobinRadic
+    - name: github-events
+      selector: "#gh-events"
+      config:
+        username: RobinRadic
+
 ---
-<div id="ghprofile"></div>
+<div class="row">
+    <div class="col-md-6">
+        <div id="gh-events"></div>
+    </div>
+    <div class="col-md-3">
 
+    </div>
+    <div class="col-md-3">
+        <div id="ghprofile"></div>
+    </div>
+</div>
 
-{% include layout/widgets.html %}
-
-
-{% include mixins/portlet.html title='First post' content='Hai' %}
-{{ site.github }}

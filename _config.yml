@@ -13,32 +13,12 @@ token: 06a97759a26ca852027849429f815f9dcf86595a
 layouts:     ./_layouts
 data_source: ./_data
 
-include:      [".htaccess"]
-exclude:      []
-keep_files:   [".git", ".svn"]
-encoding:     "utf-8"
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-textile_ext:  "textile"
-
-
 encoding: utf-8
 
 
 
 # Filtering Content
-show_drafts: null
 limit_posts: 0
-future:      true
-unpublished: false
-
-# Plugins
-whitelist: []
-
-# Conversion
-markdown:    kramdown
-highlighter: pygments
-lsi:         false
-excerpt_separator: "\n\n"
 
 # Serving
 detach:  false
@@ -50,43 +30,36 @@ baseurl: "/" # does not include hostname
 relative_permalinks: false
 
 # Outputting
-permalink:     date
 paginate_path: /page:num
 timezone:      Amsterdam/Europe
 
-quiet:    false
-defaults: []
+timezone:    Amsterdam/Netherlands
+future:      true
+highlighter: pygments
+markdown:    kramdown
+sass:
+  sass_dir: _sass
+  style: compressed
 
-# Markdown Processors
-maruku:
-  use_tex:    false
-  use_divs:   false
-  png_engine: blahtex
-  png_dir:    images
-  png_url:    /images
-  fenced_code_blocks: true
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title/
 
-rdiscount:
-  extensions: []
-
-redcarpet:
-  extensions: []
+# Amount of post to show on home page
+paginate: 5
 
 kramdown:
-  auto_ids:      true
-  footnote_nr:   1
+  auto_ids: true
+  footnote_nr: 1
   entity_output: as_char
-  toc_levels:    1..6
-  smart_quotes:  lsquo,rsquo,ldquo,rdquo
-  use_coderay:   false
+  toc_levels: 1..6
+  use_coderay: true
 
   coderay:
-    coderay_wrap:              div
-    coderay_line_numbers:      inline
-    coderay_line_number_start: 1
-    coderay_tab_width:         4
-    coderay_bold_every:        10
-    coderay_css:               style
+    coderay_line_numbers: nil
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
 
-redcloth:
-  hard_breaks: true
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "commit"]
