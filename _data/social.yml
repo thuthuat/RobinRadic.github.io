@@ -6,3 +6,7 @@ facebook:
 
 github:
   enabled: true
+
+disqus:
+  enabled: true
+  shortname: radicsgit

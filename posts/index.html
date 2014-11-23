@@ -3,6 +3,7 @@ layout: post-index
 title: Post overview
 subtitle: An overview of all my posts
 ---
+{% include default %}
 <!-- BEGIN PAGE CONTENT-->
 <div class="portlet light">
     <div class="portlet-body">
@@ -14,7 +15,7 @@ subtitle: An overview of all my posts
 
                         <div class="row">
                             <div class="col-md-4 blog-img blog-tag-data">
-                                <img src="{{ post.image }}" alt="" class="img-responsive">
+                                <img src="{{ IMGDIR }}/{{ post.image }}" alt="" class="img-responsive">
                                 <ul class="list-inline">
                                     <li>
                                         <i class="fa fa-calendar"></i>

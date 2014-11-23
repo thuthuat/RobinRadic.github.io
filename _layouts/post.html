@@ -1,4 +1,4 @@
-
+{% include default %}
 {% include layout/top.html %}
 <head>
     {% include layout/head.html %}
@@ -28,6 +28,12 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
 
+                    {% if page.title %}
+                    <h3 class="page-title">
+                        {{ page.title }} <small>{{ page.subtitle }}</small>
+                    </h3>
+                    {% endif %}
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="portlet light">
@@ -36,137 +42,60 @@
                                         <div class="col-md-12 blog-page">
                                             <div class="row">
                                                 <div class="col-md-12 article-block">
-                                                    <h3 style="margin-top:0;">{{ page.title }}</h3>
-                                                    <div class="blog-tag-data">
-                                                        <img src="../../assets/admin/pages/media/gallery/item_img.jpg" class="img-responsive" alt="">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <ul class="list-inline blog-tags">
-                                                                    <li>
-                                                                        <i class="fa fa-tags"></i>
-                                                                        {% for tag in page.tags %}<a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag">{{ tag }}</a>{% unless forloop.last %}{% endunless %}{% endfor %}
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-6 blog-tag-data-inner">
-                                                                <ul class="list-inline">
-                                                                    <li>
-                                                                        <i class="fa fa-calendar"></i>
-                                                                        <a href="#">
-                                                                            April 16, 2013 </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i class="fa fa-comments"></i>
-                                                                        <a href="#">
-                                                                            38 Comments </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+
+
+
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-4 blog-img blog-tag-data">
+                                                            <img src="{{ IMGDIR }}/{{ page.image }}" alt="" class="img-responsive">
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <i class="fa fa-calendar"></i>
+                                                                    <a href="#">
+                                                                        {{ page.date | date: "%a, %-d %B" }} </a>
+                                                                </li>
+                                                                <!----<li>
+                                                                    <i class="fa fa-comments"></i>
+                                                                    <a href="#">
+                                                                        38 Comments </a>
+                                                                </li>-->
+                                                            </ul>
+                                                            <ul class="list-inline blog-tags">
+                                                                <li>
+                                                                    <i class="fa fa-tags"></i>
+                                                                    {% for tag in page.tags %}<a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag">{{ tag }}</a>{% unless forloop.last %}{% endunless %}{% endfor %}
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-8 blog-article">
+                                                            <h3>
+                                                                <a href="{{ page.url }}"> {{ page.title }} </a>
+                                                            </h3>
+                                                            <p>
+                                                                {{ page.description }}
+                                                            </p>
+
                                                         </div>
                                                     </div>
+
+
+                        <hr>
+
+
+
+
+
+
                                                     <!--end news-tag-data-->
                                                     <div class="blog-post-content">
                                                         {{ content }}
                                                     </div>
 
-                                                    {% if page.comments != false %}<!--<section id="disqus_thread"></section> /#disqus_thread -->
                                                     {% if site.related_posts.size %}{% include read-more.html %}{% endif %}
-                                                    <hr>
-                                                    <div class="media">
-                                                        <h3>Comments</h3>
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="" src="../../assets/admin/pages/media/blog/9.jpg" class="media-object">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">Media heading <span>
-												5 hours ago / <a href="#">
-                                                                Reply </a>
-												</span>
-                                                            </h4>
-                                                            <p>
-                                                                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                            </p>
-                                                            <hr>
-                                                            <!-- Nested media object -->
-                                                            <div class="media">
-                                                                <a href="#" class="pull-left">
-                                                                    <img alt="" src="../../assets/admin/pages/media/blog/5.jpg" class="media-object">
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <h4 class="media-heading">Media heading <span>
-														17 hours ago / <a href="#">
-                                                                        Reply </a>
-														</span>
-                                                                    </h4>
-                                                                    <p>
-                                                                        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <!--end media-->
-                                                            <hr>
-                                                            <div class="media">
-                                                                <a href="#" class="pull-left">
-                                                                    <img alt="" src="../../assets/admin/pages/media/blog/7.jpg" class="media-object">
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <h4 class="media-heading">Media heading <span>
-														2 days ago / <a href="#">
-                                                                        Reply </a>
-														</span>
-                                                                    </h4>
-                                                                    <p>
-                                                                        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <!--end media-->
-                                                        </div>
-                                                    </div>
-                                                    <!--end media-->
-                                                    <div class="media">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="" src="../../assets/admin/pages/media/blog/6.jpg" class="media-object">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h4 class="media-heading">Media heading <span>
-												July 5,2013 / <a href="#">
-                                                                Reply </a>
-												</span>
-                                                            </h4>
-                                                            <p>
-                                                                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <!--end media-->
-                                                    <hr>
-                                                    <div class="post-comment">
-                                                        <h3>Leave a Comment</h3>
-                                                        <form role="form" action="#">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Name <span class="required">
-													* </span>
-                                                                </label>
-                                                                <input type="text" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">Email <span class="required">
-													* </span>
-                                                                </label>
-                                                                <input type="text" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label">Message <span class="required">
-													* </span>
-                                                                </label>
-                                                                <textarea class="col-md-10 form-control" rows="8"></textarea>
-                                                            </div>
-                                                            <button class="margin-top-20 btn blue" type="submit">Post a Comment</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                {% endif %}
+
+
 
                                             </div>
                                         </div>
@@ -175,6 +104,13 @@
                             </div>
 
                         </div>
+                            {% if page.comments == true %}
+                            <div class="portlet light bordered">
+                                <div class="portlet-body">
+                                    <section id="disqus_thread"></section>
+                                </div>
+                            </div>
+                            {% endif %}
                     </div>
                 </div>
             </div>
@@ -186,6 +122,7 @@
     {% include layout/scripts.html %}
 
     {% include layout/widgets.html %}
+        {% include disqus_comments.html %}
 </body>
 
 {% include layout/bottom.html %}
