@@ -25,6 +25,7 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
 
+
                     {{ page.layout }}<br><br><br><br><br>
                     {{ page.widgets }}<br><br><br><br>
                     {{ content }}
@@ -37,16 +38,7 @@
     </div>
 
     {% include layout/scripts.html %}
-    {% for widget in page.widgets %}
-
-        <script src="{{ ASSETDIR }}/radic/widgets/{{ widget.file }}/{{ widget.file }}.js"></script>
-        <script>$(function(){
-           $("{{ widget.selector }}").githubProfile({
-               username: 'RobinRadic',
-               templatePath: '{{ ASSETDIR }}/radic/widgets/github-profile/github-profile.tpl'
-           });
-        });</script>
-    {% endfor %}
+    {% include layout/widgets.html %}
 </body>
 
 {% include layout/bottom.html %}

@@ -9,7 +9,7 @@
     <ul class="sub-menu">
         {% for child in item.children %}
         <li>
-            <a href="{{ BASEURL }}/{{ child.link }}">
+            <a href="{{ BASEURL }}{{ child.link }}">
                 <i class="{{ child.icon }}"></i>
                 {{ child.name }}
             </a>
@@ -19,7 +19,7 @@
 </li>
 {% else %}
 <li class=" ">
-    <a href="{{ BASEURL }}/{{ item.link }}">
+    <a href="{{ BASEURL }}{{ item.link }}">
         <i class="{{ item.icon }}"></i>
         <span class="title">{{ item.name }}</span>
     </a>

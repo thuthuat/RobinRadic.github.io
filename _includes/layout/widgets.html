@@ -1,0 +1,17 @@
+{% for widget in page.widgets %}
+
+    {% if site.data.widgets contains widget %}
+
+        {% if site.data.widgets[widget] contains 'tpl' %}
+            {% capture tmp_path %}widgets/{{ site.data.widgets[widget].tpl }}{% endcapture %}
+            {% include {{tmp_path}} %}
+        {% endif %}
+
+        {% if site.data.widgets[widget] contains 'js' %}
+            <script src="{{ ASSETDIR}}/widgets/{{ site.data.widgets[widget].js }}">
+        {% endif %}
+
+
+    {% endif %}
+
+{% endfor %}

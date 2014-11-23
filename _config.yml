@@ -2,11 +2,13 @@
 name: Radic's Git
 description: Web Developer from Somewhere
 
-url: //robinradic.github.io/ghpages-radic-theme
+url: #//robinradic.github.io/ghpages-radic-theme
 
-
-
-
+# GITHUB METADATA
+#https://github.com/jekyll/github-metadata
+repository: RobinRadic/ghpages-radic-theme
+gems: ['jekyll-github-metadata']
+token: 06a97759a26ca852027849429f815f9dcf86595a
 
 layouts:     ./_layouts
 data_source: ./_data
@@ -21,11 +23,6 @@ textile_ext:  "textile"
 
 encoding: utf-8
 
-gems:
-- jekyll-mentions
-- jemoji
-- jekyll-redirect-from
-- jekyll-sitemap
 
 
 # Filtering Content
@@ -36,7 +33,6 @@ unpublished: false
 
 # Plugins
 whitelist: []
-gems:      []
 
 # Conversion
 markdown:    kramdown

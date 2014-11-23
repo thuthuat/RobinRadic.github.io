@@ -1,13 +1,13 @@
 ---
 layout: page
 widgets:
-    - file: github-profile
-      selector: "#ghprofile"
+    - page-top-user
 ---
 <div id="ghprofile"></div>
-{{ IMGDIR }}
 
-{{ BASEDIR }}
-{{ site.github }}
-{{ site.data.navigation }}
+
+{% include layout/widgets.html %}
+
+
 {% include mixins/portlet.html title='First post' content='Hai' %}
+{{ site.github }}
