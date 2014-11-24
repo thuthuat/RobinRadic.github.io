@@ -16,7 +16,6 @@ data_source: ./_data
 encoding: utf-8
 
 
-
 # Filtering Content
 limit_posts: 0
 

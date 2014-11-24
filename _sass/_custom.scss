@@ -1,9 +1,35 @@
 @import "variables";
 @import "mixins";
+@import "custom/positioning";
 @import "widgets/github-profile";
 @import "widgets/github-events";
+@import "widgets/posts-search";
 @import "custom/pygments";
 
+// Social Share
+// --------------------------------------------------
+.socialcount {
+    @include font-rem(16);
+    font-weight: 700;
+    li {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    p > a,
+    li > a {
+        border-bottom-width: 0;
+    }
+}
+
+.inline-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    li {
+        list-style-type: none;
+        display: inline;
+    }
+}
 
 .blog-post-content {
     img {
@@ -11,52 +37,66 @@
     }
 }
 
-.page-logo .logo-default {
-    width: 100px;
-}
 
-
-.repo-table {
-    font-size: 12px;
-
-    .repo-table-name {
-        font-size: 15px;
-
+.faq-widget {
+    .ver-inline-menu {
+        a, a:hover, a:active, a:focus {
+            font-size: 10px !important;
+        }
     }
-
-    .repo-table-desc {
-        font-size: 11px ;
-        text-align: left !important;
-    }
-
-    .repo-table-name,
-    .repo-table-desc {
-        padding-right: 30px;
-    }
-
-    thead tr th {
-        min-width: 20px;
-        font-weight: bold;
-        text-align: left;
-    }
-
-    tbody tr,
-    thead tr{
-        border-bottom: 1px solid #666;
-    }
-
-    tbody td {
-        padding-bottom: 10px;
-        padding-top: 10px;
-    }
-
-    .repo-table-lang {
-        padding: 0 10px;
-    }
-
-    .repo-table-border-right {
-        border-right: 1px solid rgba(119, 119, 119, 0.2);
-        text-align: center;
+    .tab-pane {
+        > h1, h2, h3, h4 {
+            margin-top: 0;
+        }
     }
 }
+    .page-logo .logo-default {
+        width: 100px;
+    }
+
+
+    .repo-table {
+        font-size: 12px;
+
+        .repo-table-name {
+            font-size: 15px;
+
+        }
+
+        .repo-table-desc {
+            font-size: 11px ;
+            text-align: left !important;
+        }
+
+        .repo-table-name,
+        .repo-table-desc {
+            padding-right: 30px;
+        }
+
+        thead tr th {
+            min-width: 20px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        tbody tr,
+        thead tr{
+            border-bottom: 1px solid #666;
+        }
+
+        tbody td {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .repo-table-lang {
+            padding: 0 10px;
+        }
+
+        .repo-table-border-right {
+            border-right: 1px solid rgba(119, 119, 119, 0.2);
+            text-align: center;
+        }
+    }
+
 

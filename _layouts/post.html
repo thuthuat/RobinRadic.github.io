@@ -6,6 +6,8 @@
     <link href="{{ ASSETDIR }}/admin/pages/css/blog.css" rel="stylesheet" type="text/css"/>
 
 </head>
+
+
 <body class="page-boxed page-header-fixed page-container-bg-solid page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
     <div class="page-header navbar navbar-fixed-top">
         <div class="page-header-inner container">
@@ -76,7 +78,7 @@
                                                             <p>
                                                                 {{ page.description }}
                                                             </p>
-
+                                                            {% include social-share.html %}
                                                         </div>
                                                     </div>
 
@@ -92,10 +94,10 @@
                                                     <div class="blog-post-content">
                                                         {{ content }}
                                                     </div>
-
-                                                    {% if site.related_posts.size %}{% include read-more.html %}{% endif %}
-
-
+                                                    <hr>
+                                                    <div>
+                                                        {% include social-share.html %}
+                                                    </div>
 
                                             </div>
                                         </div>

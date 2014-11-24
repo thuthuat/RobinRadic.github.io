@@ -1,3 +1,354 @@
+/**
+ * Copyright (c) 2011-2014 Felix Gnass
+ * Licensed under the MIT license
+ */
+(function(root, factory) {
+
+    /* CommonJS */
+    if (typeof exports == 'object')  module.exports = factory()
+
+    /* AMD module */
+    else if (typeof define == 'function' && define.amd) define(factory)
+
+    /* Browser global */
+    else root.Spinner = factory()
+}
+(this, function() {
+    
+
+    var prefixes = ['webkit', 'Moz', 'ms', 'O'] /* Vendor prefixes */
+        , animations = {} /* Animation rules keyed by their name */
+        , useCssAnimations /* Whether to use CSS animations or setTimeout */
+
+    /**
+     * Utility function to create elements. If no tag name is given,
+     * a DIV is created. Optionally properties can be passed.
+     */
+    function createEl(tag, prop) {
+        var el = document.createElement(tag || 'div')
+            , n
+
+        for(n in prop) el[n] = prop[n]
+        return el
+    }
+
+    /**
+     * Appends children and returns the parent.
+     */
+    function ins(parent /* child1, child2, ...*/) {
+        for (var i=1, n=arguments.length; i<n; i++)
+            parent.appendChild(arguments[i])
+
+        return parent
+    }
+
+    /**
+     * Insert a new stylesheet to hold the @keyframe or VML rules.
+     */
+    var sheet = (function() {
+        var el = createEl('style', {type : 'text/css'})
+        ins(document.getElementsByTagName('head')[0], el)
+        return el.sheet || el.styleSheet
+    }())
+
+    /**
+     * Creates an opacity keyframe animation rule and returns its name.
+     * Since most mobile Webkits have timing issues with animation-delay,
+     * we create separate rules for each line/segment.
+     */
+    function addAnimation(alpha, trail, i, lines) {
+        var name = ['opacity', trail, ~~(alpha*100), i, lines].join('-')
+            , start = 0.01 + i/lines * 100
+            , z = Math.max(1 - (1-alpha) / trail * (100-start), alpha)
+            , prefix = useCssAnimations.substring(0, useCssAnimations.indexOf('Animation')).toLowerCase()
+            , pre = prefix && '-' + prefix + '-' || ''
+
+        if (!animations[name]) {
+            sheet.insertRule(
+                '@' + pre + 'keyframes ' + name + '{' +
+                '0%{opacity:' + z + '}' +
+                start + '%{opacity:' + alpha + '}' +
+                (start+0.01) + '%{opacity:1}' +
+                (start+trail) % 100 + '%{opacity:' + alpha + '}' +
+                '100%{opacity:' + z + '}' +
+                '}', sheet.cssRules.length)
+
+            animations[name] = 1
+        }
+
+        return name
+    }
+
+    /**
+     * Tries various vendor prefixes and returns the first supported property.
+     */
+    function vendor(el, prop) {
+        var s = el.style
+            , pp
+            , i
+
+        prop = prop.charAt(0).toUpperCase() + prop.slice(1)
+        for(i=0; i<prefixes.length; i++) {
+            pp = prefixes[i]+prop
+            if(s[pp] !== undefined) return pp
+        }
+        if(s[prop] !== undefined) return prop
+    }
+
+    /**
+     * Sets multiple style properties at once.
+     */
+    function css(el, prop) {
+        for (var n in prop)
+            el.style[vendor(el, n)||n] = prop[n]
+
+        return el
+    }
+
+    /**
+     * Fills in default values.
+     */
+    function merge(obj) {
+        for (var i=1; i < arguments.length; i++) {
+            var def = arguments[i]
+            for (var n in def)
+                if (obj[n] === undefined) obj[n] = def[n]
+        }
+        return obj
+    }
+
+    /**
+     * Returns the absolute page-offset of the given element.
+     */
+    function pos(el) {
+        var o = { x:el.offsetLeft, y:el.offsetTop }
+        while((el = el.offsetParent))
+            o.x+=el.offsetLeft, o.y+=el.offsetTop
+
+        return o
+    }
+
+    /**
+     * Returns the line color from the given string or array.
+     */
+    function getColor(color, idx) {
+        return typeof color == 'string' ? color : color[idx % color.length]
+    }
+
+    // Built-in defaults
+
+    var defaults = {
+        lines: 12,            // The number of lines to draw
+        length: 7,            // The length of each line
+        width: 5,             // The line thickness
+        radius: 10,           // The radius of the inner circle
+        rotate: 0,            // Rotation offset
+        corners: 1,           // Roundness (0..1)
+        color: '#000',        // #rgb or #rrggbb
+        direction: 1,         // 1: clockwise, -1: counterclockwise
+        speed: 1,             // Rounds per second
+        trail: 100,           // Afterglow percentage
+        opacity: 1/4,         // Opacity of the lines
+        fps: 20,              // Frames per second when using setTimeout()
+        zIndex: 2e9,          // Use a high z-index by default
+        className: 'spinner', // CSS class to assign to the element
+        top: '50%',           // center vertically
+        left: '50%',          // center horizontally
+        position: 'absolute'  // element position
+    }
+
+    /** The constructor */
+    function Spinner(o) {
+        this.opts = merge(o || {}, Spinner.defaults, defaults)
+    }
+
+    // Global defaults that override the built-ins:
+    Spinner.defaults = {}
+
+    merge(Spinner.prototype, {
+
+        /**
+         * Adds the spinner to the given target element. If this instance is already
+         * spinning, it is automatically removed from its previous target b calling
+         * stop() internally.
+         */
+        spin: function(target) {
+            this.stop()
+
+            var self = this
+                , o = self.opts
+                , el = self.el = css(createEl(0, {className: o.className}), {position: o.position, width: 0, zIndex: o.zIndex})
+                , mid = o.radius+o.length+o.width
+
+            css(el, {
+                left: o.left,
+                top: o.top
+            })
+
+            if (target) {
+                target.insertBefore(el, target.firstChild||null)
+            }
+
+            el.setAttribute('role', 'progressbar')
+            self.lines(el, self.opts)
+
+            if (!useCssAnimations) {
+                // No CSS animation support, use setTimeout() instead
+                var i = 0
+                    , start = (o.lines - 1) * (1 - o.direction) / 2
+                    , alpha
+                    , fps = o.fps
+                    , f = fps/o.speed
+                    , ostep = (1-o.opacity) / (f*o.trail / 100)
+                    , astep = f/o.lines
+
+                    ;(function anim() {
+                    i++;
+                    for (var j = 0; j < o.lines; j++) {
+                        alpha = Math.max(1 - (i + (o.lines - j) * astep) % f * ostep, o.opacity)
+
+                        self.opacity(el, j * o.direction + start, alpha, o)
+                    }
+                    self.timeout = self.el && setTimeout(anim, ~~(1000/fps))
+                })()
+            }
+            return self
+        },
+
+        /**
+         * Stops and removes the Spinner.
+         */
+        stop: function() {
+            var el = this.el
+            if (el) {
+                clearTimeout(this.timeout)
+                if (el.parentNode) el.parentNode.removeChild(el)
+                this.el = undefined
+            }
+            return this
+        },
+
+        /**
+         * Internal method that draws the individual lines. Will be overwritten
+         * in VML fallback mode below.
+         */
+        lines: function(el, o) {
+            var i = 0
+                , start = (o.lines - 1) * (1 - o.direction) / 2
+                , seg
+
+            function fill(color, shadow) {
+                return css(createEl(), {
+                    position: 'absolute',
+                    width: (o.length+o.width) + 'px',
+                    height: o.width + 'px',
+                    background: color,
+                    boxShadow: shadow,
+                    transformOrigin: 'left',
+                    transform: 'rotate(' + ~~(360/o.lines*i+o.rotate) + 'deg) translate(' + o.radius+'px' +',0)',
+                    borderRadius: (o.corners * o.width>>1) + 'px'
+                })
+            }
+
+            for (; i < o.lines; i++) {
+                seg = css(createEl(), {
+                    position: 'absolute',
+                    top: 1+~(o.width/2) + 'px',
+                    transform: o.hwaccel ? 'translate3d(0,0,0)' : '',
+                    opacity: o.opacity,
+                    animation: useCssAnimations && addAnimation(o.opacity, o.trail, start + i * o.direction, o.lines) + ' ' + 1/o.speed + 's linear infinite'
+                })
+
+                if (o.shadow) ins(seg, css(fill('#000', '0 0 4px ' + '#000'), {top: 2+'px'}))
+                ins(el, ins(seg, fill(getColor(o.color, i), '0 0 1px rgba(0,0,0,.1)')))
+            }
+            return el
+        },
+
+        /**
+         * Internal method that adjusts the opacity of a single line.
+         * Will be overwritten in VML fallback mode below.
+         */
+        opacity: function(el, i, val) {
+            if (i < el.childNodes.length) el.childNodes[i].style.opacity = val
+        }
+
+    })
+
+
+    function initVML() {
+
+        /* Utility function to create a VML tag */
+        function vml(tag, attr) {
+            return createEl('<' + tag + ' xmlns="urn:schemas-microsoft.com:vml" class="spin-vml">', attr)
+        }
+
+        // No CSS transforms but VML support, add a CSS rule for VML elements:
+        sheet.addRule('.spin-vml', 'behavior:url(#default#VML)')
+
+        Spinner.prototype.lines = function(el, o) {
+            var r = o.length+o.width
+                , s = 2*r
+
+            function grp() {
+                return css(
+                    vml('group', {
+                        coordsize: s + ' ' + s,
+                        coordorigin: -r + ' ' + -r
+                    }),
+                    { width: s, height: s }
+                )
+            }
+
+            var margin = -(o.width+o.length)*2 + 'px'
+                , g = css(grp(), {position: 'absolute', top: margin, left: margin})
+                , i
+
+            function seg(i, dx, filter) {
+                ins(g,
+                    ins(css(grp(), {rotation: 360 / o.lines * i + 'deg', left: ~~dx}),
+                        ins(css(vml('roundrect', {arcsize: o.corners}), {
+                                width: r,
+                                height: o.width,
+                                left: o.radius,
+                                top: -o.width>>1,
+                                filter: filter
+                            }),
+                            vml('fill', {color: getColor(o.color, i), opacity: o.opacity}),
+                            vml('stroke', {opacity: 0}) // transparent stroke to fix color bleeding upon opacity change
+                        )
+                    )
+                )
+            }
+
+            if (o.shadow)
+                for (i = 1; i <= o.lines; i++)
+                    seg(i, -2, 'progid:DXImageTransform.Microsoft.Blur(pixelradius=2,makeshadow=1,shadowopacity=.3)')
+
+            for (i = 1; i <= o.lines; i++) seg(i)
+            return ins(el, g)
+        }
+
+        Spinner.prototype.opacity = function(el, i, val, o) {
+            var c = el.firstChild
+            o = o.shadow && o.lines || 0
+            if (c && i+o < c.childNodes.length) {
+                c = c.childNodes[i+o]; c = c && c.firstChild; c = c && c.firstChild
+                if (c) c.opacity = val
+            }
+        }
+    }
+
+    var probe = css(createEl('group'), {behavior: 'url(#default#VML)'})
+
+    if (!vendor(probe, 'transform') && probe.adj) initVML()
+    else useCssAnimations = vendor(probe, 'animation')
+
+    return Spinner
+
+}));
+
+
 /*!
  * jQuery JavaScript Library vundefined
  * http://jquery.com/
@@ -9,7 +360,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-11-23T02:02Z
+ * Date: 2014-11-24T21:31Z
  */
 
 (function( global, factory ) {
@@ -9123,6 +9474,16 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 });
 
 
+    function wordwrap(str, width, spaceReplacer) {
+        if (str.length>width) {
+                      str = str.substr(0, width) + spaceReplacer;
+        }
+        return str;
+    }
+
+    jQuery.extend({ wordwrap: wordwrap })
+
+
     var github = (function(GithubClient){
 
         return new GithubClient('06ec61fd2853f215bb01f7c5b2e0f56ff8537838'); //'e243a6a733de08c8dfd37e86abd7d2a3b82784de');
@@ -9572,210 +9933,6 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
     jQuery.github = github;
 
 
-
-    var re = {
-        not_string: /[^s]/,
-        number: /[dief]/,
-        text: /^[^\x25]+/,
-        modulo: /^\x25{2}/,
-        placeholder: /^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fiosuxX])/,
-        key: /^([a-z_][a-z_\d]*)/i,
-        key_access: /^\.([a-z_][a-z_\d]*)/i,
-        index_access: /^\[(\d+)\]/,
-        sign: /^[\+\-]/
-    }
-
-    function sprintf() {
-        var key = arguments[0], cache = sprintf.cache
-        if (!(cache[key] && cache.hasOwnProperty(key))) {
-            cache[key] = sprintf.parse(key)
-        }
-        return sprintf.format.call(null, cache[key], arguments)
-    }
-
-    sprintf.format = function (parse_tree, argv) {
-        var cursor = 1, tree_length = parse_tree.length, node_type = "", arg, output = [], i, k, match, pad, pad_character, pad_length, is_positive = true, sign = ""
-        for (i = 0; i < tree_length; i++) {
-            node_type = get_type(parse_tree[i])
-            if (node_type === "string") {
-                output[output.length] = parse_tree[i]
-            }
-            else if (node_type === "array") {
-                match = parse_tree[i] // convenience purposes only
-                if (match[2]) { // keyword argument
-                    arg = argv[cursor]
-                    for (k = 0; k < match[2].length; k++) {
-                        if (!arg.hasOwnProperty(match[2][k])) {
-                            throw new Error(sprintf("[sprintf] property '%s' does not exist", match[2][k]))
-                        }
-                        arg = arg[match[2][k]]
-                    }
-                }
-                else if (match[1]) { // positional argument (explicit)
-                    arg = argv[match[1]]
-                }
-                else { // positional argument (implicit)
-                    arg = argv[cursor++]
-                }
-
-                if (get_type(arg) == "function") {
-                    arg = arg()
-                }
-
-                if (re.not_string.test(match[8]) && (get_type(arg) != "number" && isNaN(arg))) {
-                    throw new TypeError(sprintf("[sprintf] expecting number but found %s", get_type(arg)))
-                }
-
-                if (re.number.test(match[8])) {
-                    is_positive = arg >= 0
-                }
-
-                switch (match[8]) {
-                    case "b":
-                        arg = arg.toString(2)
-                        break
-                    case "c":
-                        arg = String.fromCharCode(arg)
-                        break
-                    case "d":
-                    case "i":
-                        arg = parseInt(arg, 10)
-                        break
-                    case "e":
-                        arg = match[7] ? arg.toExponential(match[7]) : arg.toExponential()
-                        break
-                    case "f":
-                        arg = match[7] ? parseFloat(arg).toFixed(match[7]) : parseFloat(arg)
-                        break
-                    case "o":
-                        arg = arg.toString(8)
-                        break
-                    case "s":
-                        arg = ((arg = String(arg)) && match[7] ? arg.substring(0, match[7]) : arg)
-                        break
-                    case "u":
-                        arg = arg >>> 0
-                        break
-                    case "x":
-                        arg = arg.toString(16)
-                        break
-                    case "X":
-                        arg = arg.toString(16).toUpperCase()
-                        break
-                }
-                if (re.number.test(match[8]) && (!is_positive || match[3])) {
-                    sign = is_positive ? "+" : "-"
-                    arg = arg.toString().replace(re.sign, "")
-                }
-                else {
-                    sign = ""
-                }
-                pad_character = match[4] ? match[4] === "0" ? "0" : match[4].charAt(1) : " "
-                pad_length = match[6] - (sign + arg).length
-                pad = match[6] ? (pad_length > 0 ? str_repeat(pad_character, pad_length) : "") : ""
-                output[output.length] = match[5] ? sign + arg + pad : (pad_character === "0" ? sign + pad + arg : pad + sign + arg)
-            }
-        }
-        return output.join("")
-    }
-
-    sprintf.cache = {}
-
-    sprintf.parse = function (fmt) {
-        var _fmt = fmt, match = [], parse_tree = [], arg_names = 0
-        while (_fmt) {
-            if ((match = re.text.exec(_fmt)) !== null) {
-                parse_tree[parse_tree.length] = match[0]
-            }
-            else if ((match = re.modulo.exec(_fmt)) !== null) {
-                parse_tree[parse_tree.length] = "%"
-            }
-            else if ((match = re.placeholder.exec(_fmt)) !== null) {
-                if (match[2]) {
-                    arg_names |= 1
-                    var field_list = [], replacement_field = match[2], field_match = []
-                    if ((field_match = re.key.exec(replacement_field)) !== null) {
-                        field_list[field_list.length] = field_match[1]
-                        while ((replacement_field = replacement_field.substring(field_match[0].length)) !== "") {
-                            if ((field_match = re.key_access.exec(replacement_field)) !== null) {
-                                field_list[field_list.length] = field_match[1]
-                            }
-                            else if ((field_match = re.index_access.exec(replacement_field)) !== null) {
-                                field_list[field_list.length] = field_match[1]
-                            }
-                            else {
-                                throw new SyntaxError("[sprintf] failed to parse named argument key")
-                            }
-                        }
-                    }
-                    else {
-                        throw new SyntaxError("[sprintf] failed to parse named argument key")
-                    }
-                    match[2] = field_list
-                }
-                else {
-                    arg_names |= 2
-                }
-                if (arg_names === 3) {
-                    throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported")
-                }
-                parse_tree[parse_tree.length] = match
-            }
-            else {
-                throw new SyntaxError("[sprintf] unexpected placeholder")
-            }
-            _fmt = _fmt.substring(match[0].length)
-        }
-        return parse_tree
-    }
-
-    var vsprintf = function (fmt, argv, _argv) {
-        _argv = (argv || []).slice(0)
-        _argv.splice(0, 0, fmt)
-        return sprintf.apply(null, _argv)
-    }
-
-    /**
-     * helpers
-     */
-    function get_type(variable) {
-        return Object.prototype.toString.call(variable).slice(8, -1).toLowerCase()
-    }
-
-    function str_repeat(input, multiplier) {
-        return Array(multiplier + 1).join(input)
-    }
-
-    /**
-     * export to either browser or node.js
-
-    if (typeof exports !== "undefined") {
-        exports.sprintf = sprintf
-        exports.vsprintf = vsprintf
-    }
-    else {
-        window.sprintf = sprintf
-        window.vsprintf = vsprintf
-
-        if (typeof define === "function" && define.amd) {
-            define(function () {
-                return {
-                    sprintf: sprintf,
-                    vsprintf: vsprintf
-                }
-            })
-        }
-    }
-     */
-
-    jQuery.extend({
-        sprintf: sprintf,
-        vsprintf: vsprintf
-    });
-
-
-    var document = window.document;
-
     function getDomain() {
         var d = document.domain;
         if (d.substring(0, 4) == "www.") d = d.substring(4, d.length);
@@ -9818,7 +9975,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
                     try {
                         value = jQuery.parseJSON(value);
                     }
-                    catch(e){
+                    catch (e) {
                         value = jQuery.parseJSON('{ data: ' + value + ' }');
                     }
                 }
@@ -10284,6 +10441,43 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
                 }
             }
             return -1;
+        }
+
+        /**
+         * Used by `sortBy` to compare transformed `collection` elements, stable sorting
+         * them in ascending order.
+         *
+         * @private
+         * @param {Object} a The object to compare to `b`.
+         * @param {Object} b The object to compare to `a`.
+         * @returns {number} Returns the sort order indicator of `1` or `-1`.
+         */
+        function compareAscending(a, b) {
+            var ac = a.criteria,
+                bc = b.criteria,
+                index = -1,
+                length = ac.length;
+
+            while (++index < length) {
+                var value = ac[index],
+                    other = bc[index];
+
+                if (value !== other) {
+                    if (value > other || typeof value == 'undefined') {
+                        return 1;
+                    }
+                    if (value < other || typeof other == 'undefined') {
+                        return -1;
+                    }
+                }
+            }
+            // Fixes an `Array#sort` bug in the JS engine embedded in Adobe applications
+            // that causes it, under certain circumstances, to return the same value for
+            // `a` and `b`. See https://github.com/jashkenas/underscore/pull/1247
+            //
+            // This also ensures a stable sort in V8 and other engines.
+            // See http://code.google.com/p/v8/issues/detail?id=90
+            return a.index - b.index;
         }
 
         /**
@@ -11482,6 +11676,135 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
         }
 
         /**
+         * Creates an array of values by running each element in the collection
+         * through the callback. The callback is bound to `thisArg` and invoked with
+         * three arguments; (value, index|key, collection).
+         *
+         * If a property name is provided for `callback` the created "_.pluck" style
+         * callback will return the property value of the given element.
+         *
+         * If an object is provided for `callback` the created "_.where" style callback
+         * will return `true` for elements that have the properties of the given object,
+         * else `false`.
+         *
+         * @static
+         * @memberOf _
+         * @alias collect
+         * @category Collections
+         * @param {Array|Object|string} collection The collection to iterate over.
+         * @param {Function|Object|string} [callback=identity] The function called
+         *  per iteration. If a property name or object is provided it will be used
+         *  to create a "_.pluck" or "_.where" style callback, respectively.
+         * @param {*} [thisArg] The `this` binding of `callback`.
+         * @returns {Array} Returns a new array of the results of each `callback` execution.
+         * @example
+         *
+         * _.map([1, 2, 3], function(num) { return num * 3; });
+         * // => [3, 6, 9]
+         *
+         * _.map({ 'one': 1, 'two': 2, 'three': 3 }, function(num) { return num * 3; });
+         * // => [3, 6, 9] (property order is not guaranteed across environments)
+         *
+         * var characters = [
+         *   { 'name': 'barney', 'age': 36 },
+         *   { 'name': 'fred',   'age': 40 }
+         * ];
+         *
+         * // using "_.pluck" callback shorthand
+         * _.map(characters, 'name');
+         * // => ['barney', 'fred']
+         */
+        function map(collection, callback, thisArg) {
+            var index = -1,
+                length = collection ? collection.length : 0;
+
+            callback = createCallback(callback, thisArg, 3);
+            if (typeof length == 'number') {
+                var result = Array(length);
+                while (++index < length) {
+                    result[index] = callback(collection[index], index, collection);
+                }
+            } else {
+                result = [];
+                forOwn(collection, function(value, key, collection) {
+                    result[++index] = callback(value, key, collection);
+                });
+            }
+            return result;
+        }
+
+        /**
+         * Creates an array of elements, sorted in ascending order by the results of
+         * running each element in a collection through the callback. This method
+         * performs a stable sort, that is, it will preserve the original sort order
+         * of equal elements. The callback is bound to `thisArg` and invoked with
+         * three arguments; (value, index|key, collection).
+         *
+         * If a property name is provided for `callback` the created "_.pluck" style
+         * callback will return the property value of the given element.
+         *
+         * If an array of property names is provided for `callback` the collection
+         * will be sorted by each property value.
+         *
+         * If an object is provided for `callback` the created "_.where" style callback
+         * will return `true` for elements that have the properties of the given object,
+         * else `false`.
+         *
+         * @static
+         * @memberOf _
+         * @category Collections
+         * @param {Array|Object|string} collection The collection to iterate over.
+         * @param {Array|Function|Object|string} [callback=identity] The function called
+         *  per iteration. If a property name or object is provided it will be used
+         *  to create a "_.pluck" or "_.where" style callback, respectively.
+         * @param {*} [thisArg] The `this` binding of `callback`.
+         * @returns {Array} Returns a new array of sorted elements.
+         * @example
+         *
+         * _.sortBy([1, 2, 3], function(num) { return Math.sin(num); });
+         * // => [3, 1, 2]
+         *
+         * _.sortBy([1, 2, 3], function(num) { return this.sin(num); }, Math);
+         * // => [3, 1, 2]
+         *
+         * var characters = [
+         *   { 'name': 'barney',  'age': 36 },
+         *   { 'name': 'fred',    'age': 40 },
+         *   { 'name': 'barney',  'age': 26 },
+         *   { 'name': 'fred',    'age': 30 }
+         * ];
+         *
+         * // using "_.pluck" callback shorthand
+         * _.map(_.sortBy(characters, 'age'), _.values);
+         * // => [['barney', 26], ['fred', 30], ['barney', 36], ['fred', 40]]
+         *
+         * // sorting by multiple properties
+         * _.map(_.sortBy(characters, ['name', 'age']), _.values);
+         * // = > [['barney', 26], ['barney', 36], ['fred', 30], ['fred', 40]]
+         */
+        function sortBy(collection, callback, thisArg) {
+            var index = -1,
+                length = collection ? collection.length : 0,
+                result = Array(typeof length == 'number' ? length : 0);
+
+            callback = createCallback(callback, thisArg, 3);
+            forEach(collection, function(value, key, collection) {
+                result[++index] = {
+                    'criteria': [callback(value, key, collection)],
+                    'index': index,
+                    'value': value
+                };
+            });
+
+            length = result.length;
+            result.sort(compareAscending);
+            while (length--) {
+                result[length] = result[length].value;
+            }
+            return result;
+        }
+
+        /**
          * Performs a deep comparison of each element in a `collection` to the given
          * `properties` object, returning an array of all elements that have equivalent
          * property values.
@@ -11770,11 +12093,15 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
         lodash.filter = filter;
         lodash.forEach = forEach;
         lodash.keys = keys;
+        lodash.map = map;
         lodash.omit = omit;
         lodash.pick = pick;
+        lodash.sortBy = sortBy;
         lodash.values = values;
         lodash.where = where;
 
+        // add aliases
+        lodash.collect = map;
         lodash.each = forEach;
         lodash.extend = assign;
         lodash.select = filter;
@@ -11814,7 +12141,8 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
             omit: lodash.omit,
             pick: lodash.pick,
             values: lodash.values,
-            cloneDeep: lodash.cloneDeep
+            cloneDeep: lodash.cloneDeep,
+            sortBy: lodash.sortBy
         });
 
     }).call(this);
@@ -12574,6 +12902,208 @@ var _each = function(arr, iterator) {
 
 
 
+
+    var re = {
+        not_string: /[^s]/,
+        number: /[dief]/,
+        text: /^[^\x25]+/,
+        modulo: /^\x25{2}/,
+        placeholder: /^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fiosuxX])/,
+        key: /^([a-z_][a-z_\d]*)/i,
+        key_access: /^\.([a-z_][a-z_\d]*)/i,
+        index_access: /^\[(\d+)\]/,
+        sign: /^[\+\-]/
+    }
+
+    function sprintf() {
+        var key = arguments[0], cache = sprintf.cache
+        if (!(cache[key] && cache.hasOwnProperty(key))) {
+            cache[key] = sprintf.parse(key)
+        }
+        return sprintf.format.call(null, cache[key], arguments)
+    }
+
+    sprintf.format = function (parse_tree, argv) {
+        var cursor = 1, tree_length = parse_tree.length, node_type = "", arg, output = [], i, k, match, pad, pad_character, pad_length, is_positive = true, sign = ""
+        for (i = 0; i < tree_length; i++) {
+            node_type = get_type(parse_tree[i])
+            if (node_type === "string") {
+                output[output.length] = parse_tree[i]
+            }
+            else if (node_type === "array") {
+                match = parse_tree[i] // convenience purposes only
+                if (match[2]) { // keyword argument
+                    arg = argv[cursor]
+                    for (k = 0; k < match[2].length; k++) {
+                        if (!arg.hasOwnProperty(match[2][k])) {
+                            throw new Error(sprintf("[sprintf] property '%s' does not exist", match[2][k]))
+                        }
+                        arg = arg[match[2][k]]
+                    }
+                }
+                else if (match[1]) { // positional argument (explicit)
+                    arg = argv[match[1]]
+                }
+                else { // positional argument (implicit)
+                    arg = argv[cursor++]
+                }
+
+                if (get_type(arg) == "function") {
+                    arg = arg()
+                }
+
+                if (re.not_string.test(match[8]) && (get_type(arg) != "number" && isNaN(arg))) {
+                    throw new TypeError(sprintf("[sprintf] expecting number but found %s", get_type(arg)))
+                }
+
+                if (re.number.test(match[8])) {
+                    is_positive = arg >= 0
+                }
+
+                switch (match[8]) {
+                    case "b":
+                        arg = arg.toString(2)
+                        break
+                    case "c":
+                        arg = String.fromCharCode(arg)
+                        break
+                    case "d":
+                    case "i":
+                        arg = parseInt(arg, 10)
+                        break
+                    case "e":
+                        arg = match[7] ? arg.toExponential(match[7]) : arg.toExponential()
+                        break
+                    case "f":
+                        arg = match[7] ? parseFloat(arg).toFixed(match[7]) : parseFloat(arg)
+                        break
+                    case "o":
+                        arg = arg.toString(8)
+                        break
+                    case "s":
+                        arg = ((arg = String(arg)) && match[7] ? arg.substring(0, match[7]) : arg)
+                        break
+                    case "u":
+                        arg = arg >>> 0
+                        break
+                    case "x":
+                        arg = arg.toString(16)
+                        break
+                    case "X":
+                        arg = arg.toString(16).toUpperCase()
+                        break
+                }
+                if (re.number.test(match[8]) && (!is_positive || match[3])) {
+                    sign = is_positive ? "+" : "-"
+                    arg = arg.toString().replace(re.sign, "")
+                }
+                else {
+                    sign = ""
+                }
+                pad_character = match[4] ? match[4] === "0" ? "0" : match[4].charAt(1) : " "
+                pad_length = match[6] - (sign + arg).length
+                pad = match[6] ? (pad_length > 0 ? str_repeat(pad_character, pad_length) : "") : ""
+                output[output.length] = match[5] ? sign + arg + pad : (pad_character === "0" ? sign + pad + arg : pad + sign + arg)
+            }
+        }
+        return output.join("")
+    }
+
+    sprintf.cache = {}
+
+    sprintf.parse = function (fmt) {
+        var _fmt = fmt, match = [], parse_tree = [], arg_names = 0
+        while (_fmt) {
+            if ((match = re.text.exec(_fmt)) !== null) {
+                parse_tree[parse_tree.length] = match[0]
+            }
+            else if ((match = re.modulo.exec(_fmt)) !== null) {
+                parse_tree[parse_tree.length] = "%"
+            }
+            else if ((match = re.placeholder.exec(_fmt)) !== null) {
+                if (match[2]) {
+                    arg_names |= 1
+                    var field_list = [], replacement_field = match[2], field_match = []
+                    if ((field_match = re.key.exec(replacement_field)) !== null) {
+                        field_list[field_list.length] = field_match[1]
+                        while ((replacement_field = replacement_field.substring(field_match[0].length)) !== "") {
+                            if ((field_match = re.key_access.exec(replacement_field)) !== null) {
+                                field_list[field_list.length] = field_match[1]
+                            }
+                            else if ((field_match = re.index_access.exec(replacement_field)) !== null) {
+                                field_list[field_list.length] = field_match[1]
+                            }
+                            else {
+                                throw new SyntaxError("[sprintf] failed to parse named argument key")
+                            }
+                        }
+                    }
+                    else {
+                        throw new SyntaxError("[sprintf] failed to parse named argument key")
+                    }
+                    match[2] = field_list
+                }
+                else {
+                    arg_names |= 2
+                }
+                if (arg_names === 3) {
+                    throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported")
+                }
+                parse_tree[parse_tree.length] = match
+            }
+            else {
+                throw new SyntaxError("[sprintf] unexpected placeholder")
+            }
+            _fmt = _fmt.substring(match[0].length)
+        }
+        return parse_tree
+    }
+
+    var vsprintf = function (fmt, argv, _argv) {
+        _argv = (argv || []).slice(0)
+        _argv.splice(0, 0, fmt)
+        return sprintf.apply(null, _argv)
+    }
+
+    /**
+     * helpers
+     */
+    function get_type(variable) {
+        return Object.prototype.toString.call(variable).slice(8, -1).toLowerCase()
+    }
+
+    function str_repeat(input, multiplier) {
+        return Array(multiplier + 1).join(input)
+    }
+
+    /**
+     * export to either browser or node.js
+
+    if (typeof exports !== "undefined") {
+        exports.sprintf = sprintf
+        exports.vsprintf = vsprintf
+    }
+    else {
+        window.sprintf = sprintf
+        window.vsprintf = vsprintf
+
+        if (typeof define === "function" && define.amd) {
+            define(function () {
+                return {
+                    sprintf: sprintf,
+                    vsprintf: vsprintf
+                }
+            })
+        }
+    }
+     */
+
+    jQuery.extend({
+        sprintf: sprintf,
+        vsprintf: vsprintf
+    });
+
+
     /**
      * @license
      * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
@@ -12965,6 +13495,63 @@ var _each = function(arr, iterator) {
             template: lodash.template
         })
     }.call(this));
+
+
+    /*
+
+     Basic Usage:
+     ============
+
+     $('#el').spin(); // Creates a default Spinner using the text color of #el.
+     $('#el').spin({ ... }); // Creates a Spinner using the provided options.
+
+     $('#el').spin(false); // Stops and removes the spinner.
+
+     Using Presets:
+     ==============
+
+     $('#el').spin('small'); // Creates a 'small' Spinner using the text color of #el.
+     $('#el').spin('large', '#fff'); // Creates a 'large' white Spinner.
+
+     Adding a custom preset:
+     =======================
+
+     $.fn.spin.presets.flower = {
+     lines: 9
+     length: 10
+     width: 20
+     radius: 0
+     }
+
+     $('#el').spin('flower', 'red');
+
+     */
+
+    jQuery.fn.spin = function(opts, color) {
+
+        return this.each(function() {
+            var $this = $(this),
+                data = $this.data();
+
+            if (data.spinner) {
+                data.spinner.stop();
+                delete data.spinner;
+            }
+            if (opts !== false) {
+                opts = $.extend(
+                    { color: color || $this.css('color') },
+                    $.fn.spin.presets[opts] || opts
+                )
+                data.spinner = new Spinner(opts).spin(this)
+            }
+        })
+    };
+
+    jQuery.fn.spin.presets = {
+        tiny: { lines: 8, length: 2, width: 2, radius: 3 },
+        small: { lines: 8, length: 4, width: 3, radius: 5 },
+        large: { lines: 10, length: 8, width: 4, radius: 8 }
+    };
 
 
 // The number of elements contained in the matched element set

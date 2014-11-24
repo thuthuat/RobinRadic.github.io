@@ -25,3 +25,9 @@
 <link href="{{ ASSETDIR }}/global.css" rel="stylesheet">
 <link href="{{ ASSETDIR }}/theme.css" rel="stylesheet">
 <link href="{{ ASSETDIR }}/custom.css" rel="stylesheet">
+
+{% if page.page-css %}
+{% for name in page.page-css %}
+<link href="{{ ASSETDIR }}/admin/pages/css/{{ name }}.css" rel="stylesheet" type="text/css"/>
+{% endfor %}
+{% endif %}

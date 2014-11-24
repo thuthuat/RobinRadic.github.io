@@ -43,12 +43,16 @@
             sortBy: 'stars', // possible: 'stars', 'updateTime'
             reposHeaderText: 'Most starred',
             maxRepos: 5,
+            reposDateFormat: 'lll',
             templateDataSelector: 'script[data-template-id="github-profile"]',
         },
 
         _create: function () {
+
             var self = this;
+            this.element.spin();
             self._getData(function (data) {
+                self.element.spin(false);
              //   console.log(data);
                 var templateHTML = $('script[data-template-id="github-profile"]').html();
                 var template = jQuery.template(templateHTML);
@@ -85,6 +89,7 @@
             });
 
 
+
             return reposData.slice(0, self.options.maxRepos);
         },
 
@@ -105,14 +110,20 @@
                 function (userData, done) {
                     //console.log('getdata 2');
                     $.github.users.repos(username, null, 1, 100, function (repoData) {
+
                         done(null, {user: userData, repos: repoData});
                     })
                 },
                 function (apiData, done) {
                    // console.log('getdata 3');
                     apiData.languages = {};
+
+                    $.cookie.json = true;
+
                     $.async.each(apiData.repos, function(repo, next){
-                        $.github.repos.languages(username, repo.name, function(langData){
+
+                        repo.updated_at_formatted = moment(repo.updated_at).format(self.options.reposDateFormat);
+                        var doLang = function(langData){
                             $.each(langData, function(i, lang){
                                 if(typeof apiData.languages[i] === 'undefined'){
                                     apiData.languages[i] = lang;
@@ -120,9 +131,21 @@
                                     apiData.languages[i] += lang;
                                 }
                             });
+                        };
+
+                        var cached = $.cookie('github-profile-languages');
+                        if(cached) {
+                            apiData.languages = cached.languages;
                             next();
-                        });
+                        } else {
+                            $.github.repos.languages(username, repo.name, function (langData) {
+                                doLang(langData);
+                                $.cookie('github-profile-languages', {languages: apiData.languages}, {expires: 2});
+                                next();
+                            });
+                        }
                     }, function(){
+
                         done(null, apiData)
                     })
                 },
@@ -140,7 +163,7 @@
                 },
                 function (data, done) {
                     data.topLanguages = self._sortLanguages(data.languages);
-
+                    console.log('end data', data);
                     callback(data);
                     done(null);
 

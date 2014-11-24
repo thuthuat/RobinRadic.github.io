@@ -18,14 +18,18 @@
 
         _create: function () {
             var self = this;
+            this.$pBody = this.element.find('.portlet-body');
+            this.element.spin();
             self._getData(function (data) {
+                self.element.spin(false);
                 console.log(data);
                 var templateHTML = $('script[data-template-id="github-events"]').html();
                 var template = jQuery.template(templateHTML);
                 console.log('pre temp data', data);
                 $.extend(data, self.options.template);
                 var $widget = $(template(data));
-                self.element.append($widget)
+                self.element.append($widget);
+
             });
         },
 

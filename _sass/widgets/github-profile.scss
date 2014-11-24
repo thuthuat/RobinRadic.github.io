@@ -7,8 +7,22 @@
 
     table.languages-list {
         font-size: 12px;
-        margin: 0px auto;
-        width: 70%;
+        margin: 10px auto;
+        width: 90%;
+
+        tbody td:nth-child(1),
+        thead th:nth-child(1){
+            text-align: right;
+        }
+        thead th:nth-child(2){
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        tbody td {
+            text-align: left;
+            padding-left: 10px;
+        }
     }
 
     & {

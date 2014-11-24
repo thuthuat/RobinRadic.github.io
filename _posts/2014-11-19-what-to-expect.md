@@ -4,9 +4,10 @@ title: What to expect on my git
 description: "FIRST POST YEAH. Summing up some stuff you'll find here in the future. It's a long, boring story without any real purpose.
                 I will go over some of my basic web-developing blogging ideas aswell as creating some linux customised OS."
 modified: 2014-11-19
-tags: [fontpage]
+tags: [General, Custom Linux, Development]
 image: RadicOS131-1920x1200.jpg
 comments: true
+category: General
 ---
 
 

@@ -1,8 +1,9 @@
 
 <div class="page-top">
-    {% if site.data.layout.header.search == true %}
+    {% if page.search != false %}
     {% include layouts/default/header.search.html %}
     {% endif %}
+
     <div class="top-menu">
         <ul class="nav navbar-nav pull-right" id="page-top-menu">
             {% if site.data.layout.header.notifications == true %}

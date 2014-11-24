@@ -15,3 +15,13 @@ github-events:
   js: github-events.js
   tpl: github-events.html
   func: githubEvents
+
+
+faq:
+  js: faq.js
+  tpl: faq.html
+  func: faq
+
+posts-filter:
+  js: posts-filter.js
+  func: postsFilter

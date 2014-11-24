@@ -1,57 +1,56 @@
-{% include layouts/default/top.html %}
+{% include default %}
+{% include layout/top.html %}
+<head>
+    {% include layout/head.html %}
 
-asse: {{ ASSETDIR }}<br>
-img: {{ IMGDIR }}<br>
-baseurl: {{ BASEURL }}
+</head>
+<body class="page-boxed page-header-fixed page-container-bg-solid page-sidebar-closed-hide-logo page-sidebar-fixed page-sidebar-closed-hide-logo">
+    <div class="page-header navbar navbar-fixed-top">
+        <div class="page-header-inner container">
+            {% include layout/logo.html %}
+            {% include layout/page-top.html %}
+        </div>
+    </div>
 
-                <h3 class="page-title">
-                    {{ page.title }} <small>{{ page.subtitle }}</small>
-                </h3>
-                {% if page.breadcrumbs %}
-                <div class="page-bar">
-                    <ul class="page-breadcrumb">
-                        <li>
-                            <i class="fa fa-home"></i>
-                            <a href="index.html">Home</a>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
-                        <li>
-                            <a href="#">Page Layouts</a>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
-                        <li>
-                            <a href="#">Sidebar Fixed Page</a>
-                        </li>
+    <div class="clearfix"></div>
+    <div class="container">
+        <div class="page-container">
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul class="page-sidebar-menu page-sidebar-menu-compact " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        {% include layout/sidebar-navigation.html %}
                     </ul>
-                    <div class="page-toolbar">
-                        <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                                Actions <i class="fa fa-angle-down"></i>
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li>
-                                    <a href="#">Action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Something else here</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Separated link</a>
-                                </li>
-                            </ul>
+                </div>
+            </div>
+
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    {% if page.title %}
+                    <h3 class="page-title">
+                        {{ page.title }} <small>{{ page.subtitle }}</small>
+                    </h3>
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="portlet light">
+                                <div class="portlet-body">
+                                    {{ content }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-                <div class="row">
-                    <div class="col-md-12">
-                        {{ content }}
-                    </div>
-                </div>
+            </div>
+        </div>
 
-{% include layouts/default/bottom.html %}
+        {% include layout/footer.html %}
+    </div>
+
+    {% include layout/scripts.html %}
+    {% include layout/widgets.html %}
+    {% include disqus_comments.html %}
+
+</body>
+
+{% include layout/bottom.html %}

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Radic's git page
+page-css: [news,blog]
 widgets:
     - name: github-profile
       selector: "#ghprofile"
@@ -17,9 +18,22 @@ widgets:
 
 ---
 <div class="row">
-    <div class="col-md-9">
-        <div id="gh-events"></div>
+    <div class="col-md-12">
         {% include partials/recent-posts.html title='Recent posts' %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-share font-blue-steel hide"></i>
+                    <span class="caption-subject font-blue-steel bold uppercase">Recent events</span>
+                </div>
+            </div>
+            <div id="gh-events"></div>
+        </div>
     </div>
     <div class="col-md-3">
         <div id="ghprofile"></div>
