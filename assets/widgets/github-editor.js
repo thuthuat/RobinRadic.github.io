@@ -24,9 +24,7 @@
             this.type = this.element.data('github-editor');
 
 
-            if (this.type === 'redirect') {
-                this._bindRedirect();
-            } else if (this.type === 'edit') {
+            if (this.type === 'edit') {
                 this._initOAuth(function () {
                     self._createEditor();
                 });
@@ -38,17 +36,12 @@
             }
         },
 
-        _bindRedirect: function () {
-            var self = this;
-            self.element.on('click', function (e) {
-                e.preventDefault();
-                OAuth.redirect(self.options.provider, self.options.url);
-            });
-        },
 
         _initOAuth: function (callback) {
             var self = this;
-            var promise = OAuth.callback(self.options.provider);
+            var promise = OAuth.popup(self.options.provider, {
+                cache: true
+            });
             promise.done(function (result) {
                 self.api = result;
                 self.endpoints = {

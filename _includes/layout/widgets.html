@@ -36,9 +36,14 @@
 </script>
 
 
-<script src="{{ ASSETDIR }}/widgets/github-editor.js"></script>
+
+<script src="{{ ASSETDIR}}/widgets/page-top-user.js"></script>
+{% include widgets/page-top-user.html %}
 <script>
-    $(function() {
-        $('[data-github-editor]').githubEditor({});
+    $(function(){
+        $('#page-top-menu').pageTopUser({
+            username: '{{ site.username }}'
+        });
     });
 </script>
+

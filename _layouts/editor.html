@@ -200,6 +200,12 @@ Assuming you're now on 13.2. Type in the following commands to get started up.
 </script>
 {% include layout/widgets.html %}
 
+<script src="{{ ASSETDIR }}/widgets/github-editor.js"></script>
+<script>
+    $(function() {
+        $('[data-github-editor]').githubEditor({});
+    });
+</script>
 </body>
 
 {% include layout/bottom.html %}

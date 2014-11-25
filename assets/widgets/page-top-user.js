@@ -8,7 +8,7 @@
 
     $.widget('radic.pageTopUser', {
         version: '0.0.1',
-
+        $template: {},
         options: {
             username: '',
             templateDataSelector: 'script[data-template-id="page-top-user"]',
@@ -16,18 +16,27 @@
 
         _create: function () {
             var self = this;
+            this.refresh();
+        },
+
+        refresh: function(){
+            var self = this;
             self._getData(function (data) {
-              //  console.log(data);
-                var templateHTML = $(self.options.templateDataSelector).html();
-                var template = jQuery.template(templateHTML);
-              //  console.log('pre temp data', data);
-                var $widget = $(template(data));
-                self.element.append(template(data));
-                Metronic.initAjax();
+                self._createHTML(data);
             });
         },
 
-// _getData, _getDataTopLanguages, _getDataTopRepos, _combineData
+        _createHTML: function(data){
+            var self = this;
+            self.element.html('');
+            var templateHTML = $(self.options.templateDataSelector).html();
+            var template = jQuery.template(templateHTML);
+            self.$template = $(template(data));
+            self._bindEvents();
+            self.element.append(self.$template);
+            Metronic.initAjax();
+
+        },
 
         _getData: function (callback) {
             var self = this;
@@ -38,14 +47,34 @@
                     $.github.user(username, function (userData) {
                        // console.log('fetched data ', userData);
                         data.user = userData;
-                        callback(data);
-                        done(null);
-
+                        done(null, data);
                     });
+                },
+                function(data, done){
+                    data.loggedin = $.radic.loggedin;
+                    done(null, data);
                 }
-            ])
+            ], function(err, data){
+                callback(data);
+            })
         },
 
+
+        _bindEvents: function(){
+            var self = this;
+            this.$oauth = this.$template.find('.github-oauth');
+            this.$oauth.on('click', function(e){
+                e.preventDefault();
+                if($.radic.loggedin){
+                    $.radic.logout();
+                } else {
+                    $.radic.login(function(){
+                        self.refresh();
+                    });
+                }
+                self.refresh();
+            })
+        },
 
         /* The _init method is called after _create when the widget is first applied to its elements.
          The _init method is also called every time thereafter when the widget is invoked with no arguments or with options.
@@ -66,30 +95,6 @@
             this.element.html('');
         },
 
-
-        _setOptions: function (options) {
-            // Ensure "value" option is set after other values (like max)
-            var value = options.value;
-            delete options.value;
-
-            this._super(options);
-
-            this.options.value = this._constrainedValue(value);
-            this._refreshValue();
-        },
-
-        _setOption: function (key, value) {
-            if (key === "max") {
-                // Don't allow a max less than min
-                value = Math.max(this.min, value);
-            }
-            if (key === "disabled") {
-                this.element
-                    .toggleClass("ui-state-disabled", !!value)
-                    .attr("aria-disabled", value);
-            }
-            this._super(key, value);
-        },
 
 
     });

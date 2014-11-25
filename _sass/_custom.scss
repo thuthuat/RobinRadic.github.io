@@ -7,6 +7,11 @@
 @import "widgets/posts-search";
 @import "custom/pygments";
 
+@import "custom/admin";
+
+.gitauth {
+    display: none;
+}
 // Social Share
 // --------------------------------------------------
 .socialcount {

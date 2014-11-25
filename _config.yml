@@ -2,7 +2,7 @@
 name: Radic's Git
 description: Web Developer from Somewhere
 
-url: //robinradic.github.io/ghpages-radic-theme
+url: #//robinradic.github.io/ghpages-radic-theme
 
 # GITHUB METADATA
 #https://github.com/jekyll/github-metadata
@@ -10,6 +10,7 @@ repository: RobinRadic/ghpages-radic-theme
 gems: ['jekyll-github-metadata']
 token: 06a97759a26ca852027849429f815f9dcf86595a
 
+username: RobinRadic
 
 oauthio:
   enabled: true
