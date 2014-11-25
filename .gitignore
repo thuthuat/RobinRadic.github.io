@@ -9,3 +9,7 @@ Thumbs.db
 .rbenv-version
 .rvmrc
 serve
+
+/node_modules
+/.sass-cache
+/.idea
