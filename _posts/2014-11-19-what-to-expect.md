@@ -64,7 +64,7 @@ Il now get to the point im trying to make clear, as web-developer you simply req
 
 ![radic gitinit](https://raw.githubusercontent.com/RobinRadic/radic-cli/master/wizard2.jpeg). Pretty much all questions are already filled in properly by default. How much times haven't you done:
 
-{% highlight Bash  %}
+{% highlight bash  %}
 git init
 touch .gitignore
 echo -e "/node_modules \n /vendor \n /whatevaah" >> .gitignore

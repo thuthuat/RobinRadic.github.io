@@ -5,9 +5,41 @@
         &#tab-config{
             min-height: 600px;
         }
+        &#tab-posts{
+            min-height: 600px;
+            position: relative;
+
+            ul.editor-file-list {
+                li a {
+                    font-size: 10px;
+                }
+            }
+
+            .post-preview {
+                position: absolute;
+                /* top: 70px; */
+                background-color: white;
+                z-index: 1000;
+                right: -10px;
+                height: 100%;
+                width: 102%;
+
+                code {
+                    border: none;
+                }
+            }
+
+            .close-preview {
+                margin-left: 20px;
+            }
+            .preview-content {
+                margin-top: 10px;
+                padding: 10px 20px;
+            }
+        }
     }
 
-    #config-editor {
+    .admin-editor {
         margin: 0;
         position: absolute;
         top: 0;

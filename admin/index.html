@@ -5,10 +5,6 @@ title: Admin
 subtitle: Features to manage the website
 ---
 {% include vars %}
-yaml editor
-posts editor
-html editor
-
 <div class="tabbable-custom ">
     <ul class="nav nav-tabs ">
         <li class="active">
@@ -25,7 +21,6 @@ html editor
         <div class="tab-pane active" id="tab-config">
             <div class="row">
                 <div class="col-md-10 col-md-offset-2 no-padding-left">
-
                     <div class="btn-toolbar">
                         <div class="btn-group btn-group-sm btn-group-solid">
                             <button type="button" class="btn green editor-save"><i class="fa fa-save"></i> Save</button>
@@ -43,12 +38,41 @@ html editor
                     </ul>
                 </div>
                 <div class="col-md-10">
-                <pre id="config-editor"></pre>
-
+                    <pre id="config-editor" class="admin-editor"></pre>
                 </div>
             </div>
         </div>
         <div class="tab-pane" id="tab-posts">
+            <div class="post-preview">
+                <a class="btn btn-circle btn-icon-only btn-default close-preview" href="#">
+                    <i class="icon-close"></i>
+                </a>
+                <div class="preview-content scroller" style="height: inherit">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-3 no-padding-left">
+                    <div class="btn-toolbar">
+                        <div class="btn-group btn-group-sm btn-group-solid">
+                            <button type="button" class="btn blue-hoki editor-create"><i class="fa fa-plus"></i> New</button>
+                            <button type="button" class="btn green editor-save"><i class="fa fa-save"></i> Save</button>
+                            <button type="button" class="btn blue editor-reload"><i class="fa fa-refresh"></i> Reload</button>
+                            <button type="button" class="btn yellow-casablanca editor-preview"><i class="fa fa-search"></i> Preview</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills nav-stacked editor-file-list" style="max-width: 260px;">
+
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <pre id="posts-editor" class="admin-editor"></pre>
+                </div>
+            </div>
         </div>
         <div class="tab-pane" id="tab-pages">
         </div>
