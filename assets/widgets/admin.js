@@ -96,13 +96,15 @@
         },
 
         _saveConfigFile: function(message){
-            this.$configTab.spin();
+            var self = this;
+            self.$configTab.spin();
             var path = self.currentConfigFile.path;
-            this.api.put(this.endpoints.contents + path, {
+            $.github.put(this.endpoints.contents + path, {
                 data: JSON.stringify({
                     path: path,
                     message: message,
                     branch: self.options.branch,
+                    sha: self.currentConfigFile.sha,
                     content: btoa(self.ceditor.getValue())
                 })
             }).done(function(result){
