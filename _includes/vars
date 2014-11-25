@@ -1,5 +1,3 @@
-{% capture BASDF %}http://{{ site.host }}:{{ site.port }}{% endcapture %}
-{% capture BASEURL %}http://{{ site.host }}:{{ site.port }}{% endcapture %}
+{% capture BASEURL %}{{ site.url }}{% endcapture %}
 {% capture ASSETDIR %}{{ site.url }}/assets{% endcapture %}
 {% capture IMGDIR %}{{ site.url }}/images{% endcapture %}
-{% assign site.imgdir = IMGDIR %}
