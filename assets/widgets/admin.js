@@ -170,7 +170,7 @@
             });
 
             this.$postsFileCreate.on('click', function(e){
-
+                window.location.href = '/admin/editor'
             });
         },
 
@@ -238,21 +238,6 @@
             Prism.highlightAll();
         },
 
-
-
-        _markdownize: function (content) {
-
-            var html = content.split("\n").map($.trim).filter(function (line) {
-                return line != "";
-            }).join("\n");
-            return toMarkdown(html);
-        },
-
-
-        _updateHtml: function (content) {
-            var html = this.converter.makeHtml(content);
-            this.$preview.html(html);
-        },
 
 
 
