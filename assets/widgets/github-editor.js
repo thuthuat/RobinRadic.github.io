@@ -254,7 +254,7 @@
                     path: "_posts/" + filename,
                     message: 'Creating a new post',
                     branch: self.options.branch,
-                    content: self._base64_encode('sd')
+                    content: self._base64_encode(content)
                 })
             });
         },
