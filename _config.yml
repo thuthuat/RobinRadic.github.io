@@ -31,7 +31,7 @@ host:    0.0.0.0
 baseurl: "/" # does not include hostname
 
 # Backwards-compatibility
-relative_permalinks: true
+relative_permalinks: false
 
 # Outputting
 paginate_path: /page:num
