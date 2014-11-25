@@ -17,6 +17,12 @@
 
 
 <script src="{{ ASSETDIR }}/global/plugins/moment.min.js" type="text/javascript"></script>
+<script src="http://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
+
+{% if site.oauthio.enabled == true %}
+<script src="{{ ASSETDIR }}/oauth.min.js" type="text/javascript"></script>
+<script>OAuth.initialize('{{ site.oauthio.public_key }}');</script>
+{% endif %}
 
 <!-- END CORE PLUGINS -->
 <script src="{{ ASSETDIR }}/global/scripts/metronic.js" type="text/javascript"></script>
@@ -29,3 +35,5 @@
         //  Demo.init(); // init demo features
     });
 </script>
+
+<script src="{{ ASSETDIR }}/radic.js" type="text/javascript"></script>

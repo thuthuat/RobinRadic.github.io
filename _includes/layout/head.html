@@ -23,6 +23,13 @@
 
 
 <link href="{{ ASSETDIR }}/global.css" rel="stylesheet">
+
+{% if page.plugin-css %}
+{% for name in page.plugin-css %}
+<link href="{{ ASSETDIR }}/global/plugins/{{ name }}.css" rel="stylesheet" type="text/css"/>
+{% endfor %}
+{% endif %}
+
 <link href="{{ ASSETDIR }}/theme.css" rel="stylesheet">
 <link href="{{ ASSETDIR }}/custom.css" rel="stylesheet">
 
