@@ -31,7 +31,9 @@
 {% include widgets/posts-search.html %}
 <script>
     $(function(){
-        $('#posts-search-form').postSearch();
+        $('#posts-search-form').postSearch({
+            baseurl: '{{ site.url }}'
+        });
     });
 </script>
 

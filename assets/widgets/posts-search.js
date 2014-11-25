@@ -10,6 +10,7 @@
 
         options: {
             initialSearchString: false,
+            baseurl: '/',
             resultTableSelector: '#posts-search-result',
             templateDataSelector: 'script[data-template-id="posts-search"]',
         },
@@ -64,7 +65,7 @@
         _getData: function(done){
             var self = this;
             var search = this.options.search;
-            $.get('/search.json', function(data){
+            $.get(this.options.baseurl + '/search.json', function(data){
                 self.posts = data;
                 console.log(data);
                 done();
