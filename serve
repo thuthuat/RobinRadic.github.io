@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export JEKYLL_GITHUB_TOKEN="06a97759a26ca852027849429f815f9dcf86595a"
-bundle exec jekyll serve
