@@ -1,0 +1,59 @@
+name: Radic's Gits
+description: Web Developer from Somewhere
+keywords: [radic,webdesign,programming,designing]
+
+url: #//robinradic.github.io
+encoding: utf-8
+timezone: Amsterdam/Europe
+
+# GITHUB METADATA
+#https://github.com/jekyll/github-metadata
+repository: RobinRadic/RobinRadic.github.io
+
+gems:
+  - jekyll-github-metadata
+  - jemoji
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+layouts:     ./_includes/_layouts
+data_source: ./_includes/_data
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      image: "/images/abstract-1.jpg"
+      comments: true
+      share: true
+      page-css: [blog,news]
+  -
+    scope:
+      path: ""
+      type: "portfolio"
+    values:
+      hide-title: true
+      share: true
+      page-css: [blog,news]
+
+
+collections:
+  portfolio:
+    output: true;
+    permalink: /portfolio/:title/
+
+
+
+
+permalink:   /:categories/:title/
+paginate: 5
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "src", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "commit", "serve", "update-ghpages", ".bowerrc", "bower.json"]

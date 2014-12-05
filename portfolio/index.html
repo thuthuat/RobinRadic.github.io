@@ -1,0 +1,66 @@
+---
+layout: page
+title: Portfolio
+plugin-css: [fancybox/source/jquery.fancybox]
+page-css: [portfolio]
+plugin-js: [jquery-mixitup/jquery.mixitup.min, fancybox/source/jquery.fancybox.pack]
+comments: false
+---
+<div class="row">
+    <div class="col-md-12">
+        {% capture portfolio_categories %}{% for item in site.portfolio %}{% for cat in item.categories %}{{ cat }}|{% endfor %}{% endfor %}{% endcapture %}
+
+        {% assign array = portfolio_categories  | split: '|' %}
+        {% assign categories = array[1] %}
+
+        {% for item in array %}
+        {% unless categories contains item %}
+        {% capture categories %}{{ categories }}|{{ item }}{% endcapture %}
+        {% endunless %}
+        {% endfor %}
+        {% assign categories = categories | split: '|' %}
+
+        <!-- BEGIN FILTER -->
+        <div class="margin-top-10">
+            <ul class="mix-filter">
+                <li class="filter" data-filter="all">
+                    All
+                </li>
+                {% for category in categories %}
+                <li class="filter" data-filter="{{ category | slugify }}">
+                    {{ category }}
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="row mix-grid">
+
+                {% for item in site.portfolio %}
+
+                <div class="col-md-3 col-sm-4 mix {% for category in item.categories %}{{ category | slugify }} {% endfor %}">
+                    <div class="mix-inner">
+                        <img class="img-responsive" src="/images/portfolio/{{ item.image }}" alt="">
+
+                        <div class="mix-details">
+                            <h4>{{ item.title }}</h4>
+                            <a class="mix-link" href="{{ item.url }}">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <a class="mix-preview fancybox-button" href="/images/portfolio/{{ item.image }}" title="{{ item.title }}" data-rel="fancybox-button">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- END FILTER -->
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.mix-grid').mixitup();
+    })
+</script>

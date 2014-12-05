@@ -1,0 +1,48 @@
+---
+layout: page
+title: Repositories
+category: General
+permalink: repositories/
+---
+<table class="repo-table table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Repository</th>
+            <th class="repo-table-border-right">Description</th>
+            <th class="repo-table-border-right"><i class="fa fa-code"></i></th>
+            <th class="repo-table-border-right"><i class="fa fa-star"></i></th>
+            <th class="repo-table-border-right"><i class="fa fa-code-fork"></i></th>
+            <th class="repo-table-border-right"><i class="fa fa-eye"></i></th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for repo in site.github.public_repositories %}
+    {% if repo.fork == false %}
+    <tr>
+        <td class="repo-table-name"><a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a></td>
+        <td class="repo-table-desc repo-table-border-right">{{ repo.description }}</td>
+        <td class="repo-table-lang repo-table-border-right">{{ repo.language }}</td>
+        <td class="repo-table-border-right">{% if repo.stargazers_count > 0 %}{{ repo.stargazers_count }}{% endif %}</td>
+        <td class="repo-table-border-right">{% if repo.forks > 0 %}{{ repo.forks }}{% endif %}</td>
+        <td class="repo-table-border-right">{% if repo.watchers > 0 %}{{ repo.watchers }}{% endif %}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    <tr>
+        <th colspan="6">Forked</th>
+    </tr>
+    {% for repo in site.github.public_repositories %}
+    {% if repo.fork == true %}
+    <tr>
+        <td class="repo-table-name"><a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a></td>
+        <td class="repo-table-desc repo-table-border-right">{{ repo.description }}</td>
+        <td class="repo-table-lang repo-table-border-right">{{ repo.language }}</td>
+        <td class="repo-table-border-right">{% if repo.stargazers_count > 0 %}{{ repo.stargazers_count }}{% endif %}</td>
+        <td class="repo-table-border-right">{% if repo.forks > 0 %}{{ repo.forks }}{% endif %}</td>
+        <td class="repo-table-border-right">{% if repo.watchers > 0 %}{{ repo.watchers }}{% endif %}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
