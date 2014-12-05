@@ -3,7 +3,7 @@
   
   
   <url>
-    <loc>/github-pages-search/</loc>
+    <loc>http://robinradic.github.io/github-pages-search/</loc>
     
     <lastmod>2014-12-03T00:00:00+00:00</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>/customizing-linux-part-1/</loc>
+    <loc>http://robinradic.github.io/customizing-linux-part-1/</loc>
     
     <lastmod>2014-11-23T00:00:00+00:00</lastmod>
     
@@ -20,94 +20,71 @@
   
   
   <url>
-    <loc>/about/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/about/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/git/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/git/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/projects/grunt-image-base64-sass/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/projects/grunt-image-base64-sass/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>/portfolio/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/portfolio/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/projects/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/projects/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/posts/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/posts/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/posts2/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/posts2/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/repositories/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/repositories/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>/projects/wow-raid-icons/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/portfolio/brandweer-oostwijk/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>/portfolio/timmerman-linkerhand/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>/portfolio/tsr-natuursteen/</loc>
-    <lastmod>2014-12-05T06:19:47+00:00</lastmod>
+    <loc>http://robinradic.github.io/projects/wow-raid-icons/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -115,1843 +92,1866 @@
   
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/changelog.html</loc>
+    <loc>http://robinradic.github.io/portfolio/brandweer-oostwijk/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>http://robinradic.github.io/portfolio/timmerman-linkerhand/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>http://robinradic.github.io/portfolio/tsr-natuursteen/</loc>
+    <lastmod>2014-12-05T06:35:30+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/changelog.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/custom.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/custom.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/navOnTop.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/navOnTop.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/lazyLoad.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/lazyLoad.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/json.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/json.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/scaleup.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/scaleup.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/click.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/click.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/full.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/full.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/navOnTop2.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/navOnTop2.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/customJson.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/customJson.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/manipulations.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/manipulations.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/randomOrder.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/randomOrder.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/one.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/one.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/owlStatus.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/owlStatus.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/transitions.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/transitions.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/itemsCustom.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/itemsCustom.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/sync.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/sync.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/images.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/images.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/progressBar.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/progressBar.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/demos/autoHeight.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/demos/autoHeight.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/carousel-owl-carousel/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/carousel-owl-carousel/index.html</loc>
     <lastmod>2014-05-10T00:24:18Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/tutorial4.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/tutorial4.html</loc>
     <lastmod>2013-02-03T04:39:54Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/tutorial5.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/tutorial5.html</loc>
     <lastmod>2013-02-03T04:39:54Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/non-image.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/non-image.html</loc>
     <lastmod>2013-06-27T08:12:34Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/styling.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/styling.html</loc>
     <lastmod>2013-02-03T04:39:54Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/tutorial2.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/tutorial2.html</loc>
     <lastmod>2013-02-03T04:39:54Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/tutorial3.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/tutorial3.html</loc>
     <lastmod>2013-02-03T04:39:54Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/demos/tutorial1.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/demos/tutorial1.html</loc>
     <lastmod>2013-06-26T18:28:58Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jcrop/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jcrop/index.html</loc>
     <lastmod>2013-02-03T04:39:54Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/icheck/demo/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/icheck/demo/index.html</loc>
     <lastmod>2014-10-11T13:24:46Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/donut-formatter.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/donut-formatter.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/dst.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/dst.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/days.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/days.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/decimal-custom-hover.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/decimal-custom-hover.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/months-no-smooth.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/months-no-smooth.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/non-continuous.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/non-continuous.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/stacked_bars.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/stacked_bars.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/donut-colors.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/donut-colors.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/timestamps.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/timestamps.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/updating.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/updating.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/area-as-line.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/area-as-line.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/donut.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/donut.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/bar.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/bar.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/diagonal-xlabels-bar.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/diagonal-xlabels-bar.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/goals.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/goals.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/non-date.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/non-date.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/years.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/years.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/no-grid.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/no-grid.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/events.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/events.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/bar-no-axes.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/bar-no-axes.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/resize.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/resize.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/quarters.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/quarters.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/diagonal-xlabels.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/diagonal-xlabels.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/weeks.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/weeks.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/bar-colors.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/bar-colors.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/negative.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/negative.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/examples/area.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/examples/area.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/spec/viz/test.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/spec/viz/test.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/morris/spec/specs.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/morris/spec/specs.html</loc>
     <lastmod>2014-06-15T23:14:08Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jquery-file-upload/cors/result.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jquery-file-upload/cors/result.html</loc>
     <lastmod>2014-09-18T13:41:04Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jquery-file-upload/cors/postmessage.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jquery-file-upload/cors/postmessage.html</loc>
     <lastmod>2014-09-18T13:41:04Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/gritter/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/gritter/index.html</loc>
     <lastmod>2013-02-26T02:12:30Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/plugins/preview/preview.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/plugins/preview/preview.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/plugins/wsc/dialogs/ciframe.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/plugins/wsc/dialogs/ciframe.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/plugins/wsc/dialogs/tmpFrameset.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/plugins/wsc/dialogs/tmpFrameset.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/replacebyclass.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/replacebyclass.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/inlinetextarea.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/inlinetextarea.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/xhtmlstyle.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/xhtmlstyle.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/jquery.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/jquery.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/toolbar/toolbar.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/toolbar/toolbar.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/dialog/dialog.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/dialog/dialog.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/htmlwriter/outputhtml.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/htmlwriter/outputhtml.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/htmlwriter/outputforflash.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/htmlwriter/outputforflash.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/magicline/magicline.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/magicline/magicline.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/wysiwygarea/fullpage.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/wysiwygarea/fullpage.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/plugins/enterkey/enterkey.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/plugins/enterkey/enterkey.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/inlinebycode.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/inlinebycode.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/ajax.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/ajax.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/replacebycode.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/replacebycode.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/tabindex.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/tabindex.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/divreplace.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/divreplace.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/api.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/api.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/appendto.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/appendto.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/inlineall.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/inlineall.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/datafiltering.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/datafiltering.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/index.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/uicolor.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/uicolor.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/uilanguages.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/uilanguages.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/ckeditor/samples/readonly.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/ckeditor/samples/readonly.html</loc>
     <lastmod>2014-09-25T14:55:10Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/countdown/plugin/countdownBasic.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/countdown/plugin/countdownBasic.html</loc>
     <lastmod>2013-04-27T06:33:42Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/default.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/default.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/timezones.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/timezones.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/json.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/json.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/external-dragging.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/external-dragging.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/agenda-views.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/agenda-views.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/basic-views.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/basic-views.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/selectable.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/selectable.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/theme.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/theme.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/gcal.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/gcal.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fullcalendar/demos/languages.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fullcalendar/demos/languages.html</loc>
     <lastmod>2014-08-29T15:21:36Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jqvmap/samples/germany.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jqvmap/samples/germany.html</loc>
     <lastmod>2013-02-26T02:13:02Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jqvmap/samples/europe.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jqvmap/samples/europe.html</loc>
     <lastmod>2013-02-26T02:13:00Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jqvmap/samples/world.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jqvmap/samples/world.html</loc>
     <lastmod>2013-02-26T02:13:00Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jqvmap/samples/multi.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jqvmap/samples/multi.html</loc>
     <lastmod>2013-02-26T02:13:02Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jqvmap/samples/russia.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jqvmap/samples/russia.html</loc>
     <lastmod>2013-02-26T02:12:56Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/jqvmap/samples/usa.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/jqvmap/samples/usa.html</loc>
     <lastmod>2013-02-26T02:12:58Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fancybox/demo/iframe.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fancybox/demo/iframe.html</loc>
     <lastmod>2013-02-26T01:58:34Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/fancybox/demo/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/fancybox/demo/index.html</loc>
     <lastmod>2013-02-26T01:58:32Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/events_live.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/events_live.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/row_grouping.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/row_grouping.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/complex_header.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/complex_header.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/footer_callback.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/footer_callback.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/sort_direction_control.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/sort_direction_control.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/dom_multiple_elements.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/dom_multiple_elements.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/row_callback.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/row_callback.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/dt_events.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/dt_events.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/defaults.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/defaults.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/length_menu.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/length_menu.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/html5-data-attributes.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/html5-data-attributes.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/dom_toolbar.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/dom_toolbar.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/language_file.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/language_file.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/column_render.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/column_render.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/advanced_init/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/advanced_init/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/defer_loading.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/defer_loading.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/object_data.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/object_data.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/row_details.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/row_details.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/pipeline.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/pipeline.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/jsonp.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/jsonp.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/ids.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/ids.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/post.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/post.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/select_rows.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/select_rows.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/custom_vars.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/custom_vars.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/server_side/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/server_side/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/data_sources/ajax.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/data_sources/ajax.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/data_sources/server_side.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/data_sources/server_side.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/data_sources/js_array.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/data_sources/js_array.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/data_sources/dom.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/data_sources/dom.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/data_sources/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/data_sources/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/table_sorting.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/table_sorting.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/complex_header.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/complex_header.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/alt_pagination.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/alt_pagination.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/state_save.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/state_save.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/scroll_x.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/scroll_x.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/scroll_xy.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/scroll_xy.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/hidden_columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/hidden_columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/language.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/language.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/scroll_y_theme.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/scroll_y_theme.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/multi_col_sort.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/multi_col_sort.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/zero_configuration.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/zero_configuration.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/flexible_width.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/flexible_width.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/dom.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/dom.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/scroll_y.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/scroll_y.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/multiple_tables.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/multiple_tables.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/comma-decimal.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/comma-decimal.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/basic_init/filter_only.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/basic_init/filter_only.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/plug-ins/range_filtering.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/plug-ins/range_filtering.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/plug-ins/sorting_manual.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/plug-ins/sorting_manual.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/plug-ins/sorting_auto.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/plug-ins/sorting_auto.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/plug-ins/api.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/plug-ins/api.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/plug-ins/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/plug-ins/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/plug-ins/dom_sort.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/plug-ins/dom_sort.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/defer_render.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/defer_render.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/objects_subarrays.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/objects_subarrays.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/null_data_source.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/null_data_source.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/custom_data_flat.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/custom_data_flat.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/orthogonal-data.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/orthogonal-data.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/deep.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/deep.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/objects.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/objects.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/custom_data_property.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/custom_data_property.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/ajax/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/ajax/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/compact.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/compact.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/stripe.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/stripe.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/cell-border.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/cell-border.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/display.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/display.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/jqueryUI.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/jqueryUI.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/no-classes.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/no-classes.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/order-column.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/order-column.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/row-border.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/row-border.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/foundation.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/foundation.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/hover.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/hover.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/styling/bootstrap.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/styling/bootstrap.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/multi_filter.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/multi_filter.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/tabs_and_scrolling.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/tabs_and_scrolling.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/row_details.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/row_details.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/select_single_row.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/select_single_row.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/counter_columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/counter_columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/show_hide.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/show_hide.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/multi_filter_select.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/multi_filter_select.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/form.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/form.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/add_row.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/add_row.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/select_row.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/select_row.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/regex.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/regex.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/highlight.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/highlight.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/api_in_init.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/api_in_init.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/api/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/api/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/resources/jqueryui/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/resources/jqueryui/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/examples/resources/bootstrap/3/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/examples/resources/bootstrap/3/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/server-side-processing.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/server-side-processing.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/size_fluid.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/size_fluid.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/two_columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/two_columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/col_filter.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/col_filter.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/css_size.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/css_size.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/size_fixed.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/size_fixed.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/index_column.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/index_column.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/rowspan.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/rowspan.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/left_right_columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/left_right_columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/bootstrap.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/bootstrap.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/colvis.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/colvis.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedColumns/examples/right_column.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedColumns/examples/right_column.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/jqueryui.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/jqueryui.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/realtime.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/realtime.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/state_save.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/state_save.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/alt_insert.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/alt_insert.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/scrolling.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/scrolling.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/fixedheader.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/fixedheader.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/server_side.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/server_side.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/col_filter.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/col_filter.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/fixedcolumns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/fixedcolumns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/reset.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/reset.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/predefined.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/predefined.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/new_init.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/new_init.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/colvis.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/colvis.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColReorder/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColReorder/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedHeader/examples/two_tables.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedHeader/examples/two_tables.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedHeader/examples/zIndexes.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedHeader/examples/zIndexes.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedHeader/examples/top_left_right.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedHeader/examples/top_left_right.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedHeader/examples/header_footer.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedHeader/examples/header_footer.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedHeader/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedHeader/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/FixedHeader/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/FixedHeader/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/auto.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/auto.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/classes.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/classes.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/init-classes.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/init-classes.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/display-control/index.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/column-control.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/column-control.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/whole-row-control.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/whole-row-control.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/right-column.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/right-column.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/disable-child-rows.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/disable-child-rows.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/custom-renderer.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/custom-renderer.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/child-rows/index.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/option.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/option.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/ajax.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/ajax.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/className.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/className.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/new.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/new.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/initialisation/index.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/styling/foundation.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/styling/foundation.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/styling/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/styling/index.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/styling/bootstrap.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/styling/bootstrap.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Responsive/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Responsive/examples/index.html</loc>
     <lastmod>2014-07-31T15:29:48Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/two_tables.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/two_tables.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/jqueryui.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/jqueryui.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/restore.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/restore.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/title_callback.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/title_callback.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/group_columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/group_columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/mouseover.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/mouseover.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/exclude_columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/exclude_columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/text.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/text.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/button_order.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/button_order.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/new_init.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/new_init.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/ColVis/examples/two_tables_identical.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/ColVis/examples/two_tables_identical.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/jqueryui.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/jqueryui.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/alter_buttons.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/alter_buttons.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/select_os.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/select_os.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/swf_path.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/swf_path.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/ajax.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/ajax.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/select_column.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/select_column.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/button_text.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/button_text.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/select_single.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/select_single.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/multi_instance.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/multi_instance.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/collection.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/collection.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/select_multi.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/select_multi.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/pdf_message.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/pdf_message.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/defaults.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/defaults.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/plug-in.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/plug-in.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/multiple_tables.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/multiple_tables.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/new_init.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/new_init.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/bootstrap.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/bootstrap.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/TableTools/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/TableTools/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Scroller/examples/server-side_processing.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Scroller/examples/server-side_processing.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Scroller/examples/large_js_source.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Scroller/examples/large_js_source.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Scroller/examples/api_scrolling.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Scroller/examples/api_scrolling.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Scroller/examples/state_saving.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Scroller/examples/state_saving.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Scroller/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Scroller/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/Scroller/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/Scroller/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/KeyTable/examples/html.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/KeyTable/examples/html.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/KeyTable/examples/scrolling.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/KeyTable/examples/scrolling.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/KeyTable/examples/events.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/KeyTable/examples/events.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/KeyTable/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/KeyTable/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/KeyTable/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/KeyTable/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/fill-both.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/fill-both.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/complete-callback.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/complete-callback.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/fill-horizontal.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/fill-horizontal.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/scrolling.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/scrolling.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/step-callback.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/step-callback.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/columns.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/columns.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/index.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/index.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>/assets/global/plugins/datatables/extensions/AutoFill/examples/simple.html</loc>
+    <loc>http://robinradic.github.io/assets/global/plugins/datatables/extensions/AutoFill/examples/simple.html</loc>
     <lastmod>2014-07-31T13:07:06Z</lastmod>
     <priority>0.6</priority>
   </url>
