@@ -1,4 +1,4 @@
 [submodule "_includes"]
 	path = _includes
-	url = https://github.com/RobinRadic/ghpages-theme-includes.git
+	url = https://github.com/robinradic/ghpages-theme-includes
 	branch = master
