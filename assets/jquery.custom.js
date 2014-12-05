@@ -360,7 +360,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-11-24T21:31Z
+ * Date: 2014-12-05T16:32Z
  */
 
 (function( global, factory ) {
@@ -393,6 +393,7 @@
 // you try to trace through "use strict" call chains. (#13335)
 // Support: Firefox 18+
 //
+
 var arr = [];
 
 var slice = arr.slice;
@@ -9474,463 +9475,188 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 });
 
 
-    function wordwrap(str, width, spaceReplacer) {
-        if (str.length>width) {
-                      str = str.substr(0, width) + spaceReplacer;
+// The number of elements contained in the matched element set
+jQuery.fn.size = function() {
+	return this.length;
+};
+
+jQuery.fn.andSelf = jQuery.fn.addBack;
+
+
+
+
+// Register as a named AMD module, since jQuery can be concatenated with other
+// files that may use define, but not via a proper concatenation script that
+// understands anonymous AMD modules. A named AMD is safest and most robust
+// way to register. Lowercase jquery is used because AMD module names are
+// derived from file names, and jQuery is normally delivered in a lowercase
+// file name. Do this after creating the global so that if an AMD module wants
+// to call noConflict to hide this version of jQuery, it will work.
+
+// Note that for maximum portability, libraries that are not jQuery should
+// declare themselves as anonymous modules, and avoid setting a global if an
+// AMD loader is present. jQuery is a special case. For more information, see
+// https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
+
+if ( typeof define === "function" && define.amd ) {
+	define( "jquery", [], function() {
+		return jQuery;
+	});
+}
+
+
+
+
+var
+	// Map over jQuery in case of overwrite
+	_jQuery = window.jQuery,
+
+	// Map over the $ in case of overwrite
+	_$ = window.$;
+
+jQuery.noConflict = function( deep ) {
+	if ( window.$ === jQuery ) {
+		window.$ = _$;
+	}
+
+	if ( deep && window.jQuery === jQuery ) {
+		window.jQuery = _jQuery;
+	}
+
+	return jQuery;
+};
+
+// Expose jQuery and $ identifiers, even in
+// AMD (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
+// and CommonJS for browser emulators (#13566)
+if ( typeof noGlobal === strundefined ) {
+	window.jQuery = window.$ = jQuery;
+}
+
+
+
+
+    jQuery.async = {};
+var only_once = function (fn) {
+        var called = false;
+        return function () {
+            if (called) throw new Error("Callback was already called.");
+            called = true;
+            fn.apply(window, arguments);
         }
-        return str;
     }
 
-    jQuery.extend({ wordwrap: wordwrap })
-
-
-    var github = (function(GithubClient){
-
-        return new GithubClient('06ec61fd2853f215bb01f7c5b2e0f56ff8537838'); //'e243a6a733de08c8dfd37e86abd7d2a3b82784de');
-
-    })(function(global, githubRoutes){
-        
-
-        // ###########################
-        // ### Helpers and globals ###
-        // ###########################
-
-        var FP = Function.prototype,
-            AP = Array.prototype,
-            OP = Object.prototype;
-
-        var bindbind   = FP.bind.bind(FP.bind),
-            callbind   = bindbind(FP.bind),
-            applybind  = bindbind(FP.apply);
-
-        var has        = callbind(OP.hasOwnProperty),
-            slice      = callbind(AP.slice),
-            flatten    = applybind(AP.concat, []);
-
-        var filter_    = AP.filter,
-            map_       = AP.map,
-            push_      = AP.push,
-            slice_     = AP.slice;
-
-
-        function decorate(o){
-            var b, c, d;
-            for (var i=1; b = arguments[i]; i++) {
-                for (c in b) {
-                    if (d = Object.getOwnPropertyDescriptor(b, c)) {
-                        if (d.get || d.set) {
-                            Object.defineProperty(o, c, d);
-                        } else {
-                            o[c] = d.value;
-                        }
-                    }
-                }
-            }
-            return o;
+var _each = function(arr, iterator) {
+        if (arr.forEach) {
+            return arr.forEach(iterator);
         }
-
-        function isObject(o){
-            return o != null && typeof o === 'object' || typeof o === 'function';
+        for (var i = 0; i < arr.length; i += 1) {
+            iterator(arr[i], i, arr);
         }
-
-        function isIndexed(o){
-            return Array.isArray(o) || isObject(o) && has(o, 'length') && has(o, o.length - 1);
-        }
-
-        // ############
-        // ### Path ###
-        // ############
-
-        function Path(a){
-            if (isIndexed(a)) {
-                push_.apply(this, a);
-            }
-        }
-
-        Path.prototype.length = 0;
-
-        decorate(Path.prototype, {
-            join: Array.prototype.join,
-            map: Array.prototype.map,
-            concat: function concat(){
-                var out = new Path(this);
-                push_.apply(out, arguments);
-                return out;
-            },
-            args: function args(){
-                return filter_.call(this, function(s){
-                    return s[0] === 'Δ';
-                }).map(function(s){
-                    return s.replace(/Δ/g, '');
-                });
-            },
-            toName: function toName(slice, last){
-                var array = map_.call(this, function(s){
-                    return s.replace(/Δ/g, '');
-                });
-
-                if (last) {
-                    array.push(last);
-                }
-
-                var out = array.slice(slice || 1).map(function(s){
-                    return s[0].toUpperCase() + s.slice(1).toLowerCase();
-                });
-
-                if (!out[0]) {
-                    return '';
-                } else {
-                    out[0] = out[0].toLowerCase();
-                    return out.join('').replace(/_(.)/g, function(s){
-                        return s[1].toUpperCase();
-                    });
-                }
-            },
-            slice: function slice(){
-                return new Path(slice_.apply(this, arguments));
-            }
-        });
+    }
 
 
-        // #################
-        // ### Transport ###
-        // #################
 
-        // superclass for XHR and JSONP
-
-        function Transport(options, callback){
-            options = options || {};
-            if (typeof options === 'string') {
-                options = { url: options };
-            }
-            if (typeof callback === 'function') {
-                options.callback = callback;
-            }
-            this.data = options.data || {};
-            this.path = options.path || [];
-            this.base = options.url;
-            this.callback = options.callback || function(){};
-            this.state = 'idle';
-        }
-
-        Transport.transports = {};
-
-        decorate(Transport, {
-            register: function register(ctor){
-                Transport.transports[ctor.name.toLowerCase()] = ctor;
-            },
-            lookup: function lookup(name){
-                name = name.toLowerCase();
-                return name in Transport.transports ? Transport.transports[name] : null;
-            },
-            create: function create(type, base, dispatcher){
-                var T = Transport.lookup(type);
-                return new T(base, dispatcher);
-            }
-        });
-
-
-        decorate(Transport.prototype, {
-            params: function params(){
-                var data = Object.keys(this.data).map(function(name){ return [name, this.data[name]] }, this);
-                data.push([this.callbackParam, this.callbackName]);
-                return data.map(function(item){
-                    return encodeURIComponent(item[0]) + '=' + encodeURIComponent(item[1]);
-                }).join('&');
-            }
-        });
-
-        // #######################
-        // ### JSONP Transport ###
-        // #######################
-
-        function JSONP(options, callback){
-            Transport.call(this, options = options || {}, callback);
-            this.callbackParam = options.callbackParam || 'callback';
-            this.callbackName = options.callbackName || '_'+Math.random().toString(36).slice(2);
-        }
-
-        Transport.register(JSONP);
-
-        JSONP.prototype = Object.create(Transport.prototype);
-        decorate(JSONP.prototype, {
-            constructor: JSONP,
-            url: function url(){
-                return [this.base].concat(this.path).join('/') + '?' + this.params();
-            },
-            send: function send(callback){
-                var script = document.createElement('script'),
-                    completed
-
-                callback = callback || this.callback;
-
-                function complete(state, result){
-                    if (!completed) {
-                        completed = true;
-                        delete window[this.callbackName];
-                        document.body.removeChild(script);
-                        this.state = state;
-                        callback.call(this, result);
-                    }
-                }
-
-                script.src = this.url();
-                script.async = script.defer = true;
-                script.onerror = complete.bind(this, 'error');
-                window[this.callbackName] = complete.bind(this, 'success');
-
-                document.body.appendChild(script);
-                this.state = 'loading';
-                return this;
-            }
-        });
-
-        // ################################
-        // ### XMLHttpRequest Transport ###
-        // ################################
-
-        function XHR(options, callback){
-            this.headers = {};
-            options = options || {}
-
-            Transport.call(this, options, callback);
-
-            if (options.headers) {
-                Object.keys(options.headers).forEach(function(n){
-                    this[n] = options.headers[n];
-                }, this.headers);
-            }
-        }
-
-        Transport.register(XHR);
-
-        XHR.prototype = Object.create(Transport.prototype);
-        decorate(XHR.prototype, {
-            constructor: XHR,
-            url: function url(){
-                var params = this.params();
-                return [this.base].concat(this.path).join('/') + (this.verb === 'get' && params ? '?' + params : '');
-            },
-            auth: function auth(user, pass){
-                if (!pass && user.length === 40) {
-                    this.headers.Authorization = 'token '+user;
-                } else {
-                    this.headers.Authorization = 'Basic '+btoa(user+':'+pass);
-                }
-            },
-            send: function send(callback, verb){
-                var xhr = new XMLHttpRequest,
-                    self = this;
-
-                if (typeof callback !== 'function') {
-                    verb = callback;
-                    callback = this.callback;
-                }
-
-                function complete(data){
-                    if (xhr.readyState === 4) {
-                        self.state = 'complete';
-                        callback.call(self, JSON.parse(xhr.responseText));
-                    }
-                }
-
-                xhr.open(verb || 'GET', this.url());
-                if (this.headers.Authenticate) {
-                    xhr.withCredentials = true;
-                }
-
-                Object.keys(this.headers).forEach(function(name){
-                    xhr.setRequestHeader(name, self.headers[name]);
-                });
-
-                xhr.onerror = complete;
-                xhr.onload = complete;
-
-                xhr.send(this.data ||  null);
-                this.state = 'loading';
-                return this;
-            }
-        });
-
-
-        function makeCtor(args, api){
-            var Ctor = function(){
-                var self = this instanceof Ctor ? this : Object.create(Ctor.prototype);
-                return api.request(arguments, args, self);
-            }
-
-            decorate(Ctor, {
-                args: Object.freeze(args),
-                toString: function toString(){ return '[ '+this.args.join(', ')+' ]' }
-            });
-            return Ctor;
-        }
-
-        // #################
-        // ### APIClient ###
-        // #################
-
-        // generalized REST API handler that turns routes into functions
-
-        function APIClient(routes, onlyGetters){
-            var self = this;
-            var slices = {};
-
-            function recurse(o,path){
-                Object.keys(o).forEach(function(k){
-                    if (k === 'SLICE') {
-                        slices[path[0]] = o[k];
-                    } else if (k.toUpperCase() === k) {
-                        if (onlyGetters) {
-                            if (k !== 'GET') return;
-                            var name = path.toName(slices[path[0]]);
-                        } else {
-                            var name = path.toName(slices[path[0]], k);
-                        }
-
-                        if (name) {
-                            var target = self[path[0]] || (self[path[0]] = {});
-                        } else {
-                            name = path[0];
-                            var target = self;
-                        }
-
-                        target[name] = makeCtor(path.args().concat(o[k]), self);
-
-                        Object.defineProperty(target[name].prototype, 'path', {
-                            get: function(){
-                                return path.map(function(s){
-                                    return s[0] === 'Δ' ? this[s.slice(1)] : s;
-                                }, this).join('/');
-                            }
-                        });
-
-                    } else if (isObject(o[k])) {
-                        recurse(o[k], path.concat(k));
-                    }
-                });
-            }
-
-            recurse(routes, new Path);
-        }
-
-        decorate(APIClient.prototype, {
-            request: function request(args, fields, req){
-                args = [].slice.call(args);
-                var callback = typeof args[args.length-1] === 'function' ? args.pop() : this.callback;
-                fields.forEach(function(p,i){
-                    if (typeof args[i] != null) {
-                        req[p] = args[i];
-                    }
-                });
-                var transport = decorate(Object.create(this.transport), {
-                    path: req.path,
-                    data: req
-                });
-                transport.send(callback);
-                return transport;
-            },
-            setTransport: function setTransport(type, base, dispatcher){
-                Object.defineProperty(this, 'transport', {
-                    value: Transport.create(type, base, dispatcher),
-                    configurable: true,
-                    writable: true
-                });
-            }
-        });
-
-
-        // ####################
-        // ### GithubClient ###
-        // ####################
-
-        // APIClient subclass with routes and utilities for Github
-
-        function GithubClient(user, password){
-            var self = this;
-
-            function findRefs(obj){
-                isObject(obj) && Object.keys(obj).forEach(function(key){
-                    if (key !== 'url') return;
-
-                    var val = obj[key].slice(23).split('/');
-                    var fn = self[val[0]];
-                    if (!fn) return;
-                    if (fn[val[1]]) {
-                        fn = fn[val[1]];
-                        val = val.slice(2);
-                    } else {
-                        val = val.slice(1);
-                    }
-
-                    obj.resolve = function(cb){
-                        if (typeof cb === 'function') val.push(cb);
-                        return fn.apply(null, val);
-                    }.bind(null);
-
-                    if (isObject(obj[key])) {
-                        return findRefs(obj[key]);
-                    }
-                });
-            }
-
-            this.setTransport('xhr', 'https://api.github.com', function(result){
-                if (result) {
-                    findRefs(result);
-                    self.lastResult = result;
-                }
-                if (self.callback) {
-                    self.callback.call(self, result);
-                }
-            });
-
-            this.transport.headers.Accept = 'application/vnd.github.full+json';
-            if (user) {
-                this.transport.auth(user, password);
-            }
-
-            APIClient.call(this, githubRoutes, true);
-            this.users.search = this.legacy.userSearchKeyword;
-            this.users.searchEmails = this.legacy.userEmailEmail;
-            this.repos.search = this.legacy.reposSearchKeyword;
-            this.repos.searchIssues = this.legacy.issuesSearchOwnerRepositoryStateKeyword;
-            delete this.legacy;
-        }
-
-        GithubClient.createClient = function createClient(user, pass){
-            return new GithubClient(user, pass);
+    var each = function (arr, iterator, callback) {
+        callback = callback || function () {
         };
 
-        GithubClient.prototype = Object.create(APIClient.prototype)
-        decorate(GithubClient.prototype, {
-            constructor: GithubClient
+        if (!arr.length) {
+            return callback();
+        }
+        var completed = 0;
+        _each(arr, function (x) {
+            iterator(x, only_once(done));
         });
+        function done(err) {
+            if (err) {
+                callback(err);
+                callback = function () {
+                };
+            }
+            else {
+                completed += 1;
+                if (completed >= arr.length) {
+                    callback();
+                }
+            }
+        }
+    };
 
-        return GithubClient;
+ //   jQuery.async = {};
+    jQuery.async.each = each;
 
-// ########################################
-// ### Routes for Github V3 API in full ###
-// ########################################
 
-    }(new Function('return this')(), {
-        legacy:{SLICE:1,issues:{search:{Δowner:{Δrepository:{Δstate:{Δkeyword:{GET:[]}}}}}},repos:{search:{Δkeyword:{GET:['language','start_page']}}},user:{search:{Δkeyword:{GET:[]}},email:{Δemail:{GET:[]}}}},
-        gists:{SLICE:1,POST:['description','public','files'],GET:['page','per_page'],public:{GET:[]},starred:{GET:[]},Δid:{GET:[],PATCH:['description','files'],star:{GET:[],DELETE:[],POST:[]},fork:{POST:[]},comments:{GET:[],POST:['input'],Δid:{GET:[],DELETE:[],PATCH:['body']}}}},
-        teams:{SLICE:2,Δid:{GET:[],DELETE:[],PATCH:['name','permission'],members:{GET:['page','per_page'],Δuser:{GET:[],DELETE:[],POST:[]}},repos:{GET:['page','per_page'],Δuser:{Δrepo:{GET:[],DELETE:[],POST:[]}}}}},
-        orgs:{SLICE:2,Δorg:{GET:['page','per_page'],PATCH:['billing_email','company','email','location','name'],members:{GET:['page','per_page'],Δuser:{GET:[],DELETE:[]}},public_members:{GET:[],Δuser:{GET:[],DELETE:[],POST:[]}},teams:{GET:[],POST:['name','repo_names','permission']},repos:{GET:['type','page','per_page'],POST:['name','description','homepage','private','has_issues','has_wiki','has_downloads','team_id'],Δsha:{GET:[]}}}},
-        repos:{SLICE:3,Δuser:{Δrepo:{GET:[],GET2:['page','per_page'],PATCH:['name','description','homepage','private','has_issues','has_wiki','has_downloads'],contributors:{GET:['anon','page','per_page']},languages:{GET:['anon','page','per_page']},teams:{GET:['page','per_page']},tags:{GET:['page','per_page'],Δsha:{POST:['tag','message','object','type','tagger.name','tagger.email','tagger.date']}},git:{refs:{POST:['refs','sha'],GET:['page','per_page'],Δref:{GET:[],PATCH:['sha','force']}},commits:{POST:['message','tree','parents','author','committer'],Δsha:{GET:[]}},blobs:{POST:['content','encoding'],Δsha:{GET:['page','per_page']}}},
-            branches:{GET:['page','per_page']},events:{GET:['page','per_page']},issues:{GET:['milestone','state','assignee','mentioned','labels','sort','direction','since','page','per_page'],POST:['title','body','assignee','milestone','labels'],events:{GET:['page','per_page'],GET2:[],Δid:{}},Δnumber:{GET:[],PATCH:['title','body','assignee','milestone','labels'],comments:{GET:['page','per_page'],POST:['body']},events:{GET:['page','per_page']}},comments:{Δid:{GET:[],DELETE:[],PATCH:['body']}},},pulls:{GET:['state','page','per_page'],POST:['title','body','base','head'],POST2:['issue','base','head'],Δnumber:{GET:[],PATCH:['state','title','body'],merge:{GET:['page','per_page'],POST:['commit_message']},files:{GET:['page','per_page']},commits:{GET:['page','per_page']},
-                comments:{POST:['body','in_reply_to'],POST2:['body','commit_id','path','position'],GET:['page','per_page'],}},comments:{Δnumber:{GET:[],DELETE:[],PATCH:['body']}}},commits:{GET:['sha','path','page','per_page'],Δsha:{GET:[],comments:{GET:['page','per_page'],POST:['body','commit_id','line','path','position']}},},comments:{Δid:{GET:[],DELETE:[],PATCH:['body']}},compare:{ΔbaseΔhead:{GET:['base','head']}},download:{GET:['page','per_page']},downloads:{Δid:{GET:[],DELETE:[]}},forks:{POST:['org'],GET:['sort','page','per_page']},labels:{GET:[],POST:['name','color'],Δname:{GET:[],POST:['color']}},keys:{GET:['page','per_page'],POST:['title','key'],Δid:{GET:[],DELETE:[],POST:['title','key']}},watchers:{GET:['page','per_page']},
-            hooks:{GET:['page','per_page'],POST:['name','config','events','active'],Δid:{GET:[],DELETE:[],PATCH:['name','config','events','add_events','remove_events','active'],test:{POST:[]}}},milestones:{POST:['title','state','description','due_on'],GET:['state','sort','page','per_page'],Δnumber:{DELETE:[],GET:[],PATCH:['title','state','description','due_on']}},trees:{POST:['tree'],Δsha:{GET:['recursive']}},collaborators:{GET:['page','per_page'],Δcollabuser:{GET:[],DELETE:[],POST:[]}}}}},
-        authorizations:{SLICE:0,GET:[]},
-        user:{SLICE:1,GET:[],PATCH:['name','email','blog','company','location','hireable','bio'],gists:{GET:['page','per_page']},emails:{GET:['page','per_page'],DELETE:[],POST:[]},following:{GET:['page','per_page'],Δuser:{GET:['page','per_page'],DELETE:[],POST:[]}},watched:{GET:['page','per_page'],Δuser:{Δrepo:{GET:['page','per_page'],DELETE:[],POST:[]}}},keys:{GET:['page','per_page'],POST:['title','key'],Δid:{GET:[],DELETE:[],PATCH:['title','key']}},repos:{GET:['type','page','per_page'],POST:['name','description','homepage','private','has_issues','has_wiki','has_downloads']}},
-        users:{SLICE:2,Δuser:{GET:[],gists:{GET:['page','per_page']},followers:{GET:['page','per_page']},following:{GET:['page','per_page']},orgs:{GET:['page','per_page']},watched:{GET:['page','per_page']},received_events:{GET:['page','per_page']},events:{GET:['page','per_page']},repos:{GET:['type','page','per_page']}}},
-        networks:{SLICE:2,Δuser:{Δrepo:{events:{GET:['page','per_page']}},events:{orgs:{Δorg:{GET:['page','per_page']}}}}},
-        events:{SLICE:1,GET:['page','per_page']}
-    }));
 
-    github.token = 'asdf';
+        var nextTick = function (fn) {
+            if (typeof setImmediate === 'function') {
+                setImmediate(fn);
+            } else if (typeof process !== 'undefined' && process.nextTick) {
+                process.nextTick(fn);
+            } else {
+                setTimeout(fn, 0);
+            }
+        };
 
-    jQuery.github = github;
+        var makeIterator = function (tasks) {
+            var makeCallback = function (index) {
+                var fn = function () {
+                    if (tasks.length) {
+                        tasks[index].apply(null, arguments);
+                    }
+                    return fn.next();
+                };
+                fn.next = function () {
+                    return (index < tasks.length - 1) ? makeCallback(index + 1): null;
+                };
+                return fn;
+            };
+            return makeCallback(0);
+        };
+
+        var _isArray = Array.isArray || function(maybeArray){
+                return Object.prototype.toString.call(maybeArray) === '[object Array]';
+            };
+
+        var waterfall = function (tasks, callback) {
+            callback = callback || function () {};
+            if (!_isArray(tasks)) {
+                var err = new Error('First argument to waterfall must be an array of functions');
+                return callback(err);
+            }
+            if (!tasks.length) {
+                return callback();
+            }
+            var wrapIterator = function (iterator) {
+                return function (err) {
+                    if (err) {
+                        callback.apply(null, arguments);
+                        callback = function () {};
+                    } else {
+                        var args = Array.prototype.slice.call(arguments, 1);
+                        var next = iterator.next();
+                        if (next) {
+                            args.push(wrapIterator(next));
+                        } else {
+                            args.push(callback);
+                        }
+                        nextTick(function () {
+                            iterator.apply(null, args);
+                        });
+                    }
+                };
+            };
+            wrapIterator(makeIterator(tasks))();
+        };
+
+            jQuery.async.waterfall = waterfall;
+
+
+
+
+
+
+
 
 
     function getDomain() {
@@ -10351,6 +10077,456 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
             }
         }
     });
+
+
+    var github = (function(GithubClient){
+
+        return new GithubClient('06ec61fd2853f215bb01f7c5b2e0f56ff8537838'); //'e243a6a733de08c8dfd37e86abd7d2a3b82784de');
+
+    })(function(global, githubRoutes){
+        
+
+        // ###########################
+        // ### Helpers and globals ###
+        // ###########################
+
+        var FP = Function.prototype,
+            AP = Array.prototype,
+            OP = Object.prototype;
+
+        var bindbind   = FP.bind.bind(FP.bind),
+            callbind   = bindbind(FP.bind),
+            applybind  = bindbind(FP.apply);
+
+        var has        = callbind(OP.hasOwnProperty),
+            slice      = callbind(AP.slice),
+            flatten    = applybind(AP.concat, []);
+
+        var filter_    = AP.filter,
+            map_       = AP.map,
+            push_      = AP.push,
+            slice_     = AP.slice;
+
+
+        function decorate(o){
+            var b, c, d;
+            for (var i=1; b = arguments[i]; i++) {
+                for (c in b) {
+                    if (d = Object.getOwnPropertyDescriptor(b, c)) {
+                        if (d.get || d.set) {
+                            Object.defineProperty(o, c, d);
+                        } else {
+                            o[c] = d.value;
+                        }
+                    }
+                }
+            }
+            return o;
+        }
+
+        function isObject(o){
+            return o != null && typeof o === 'object' || typeof o === 'function';
+        }
+
+        function isIndexed(o){
+            return Array.isArray(o) || isObject(o) && has(o, 'length') && has(o, o.length - 1);
+        }
+
+        // ############
+        // ### Path ###
+        // ############
+
+        function Path(a){
+            if (isIndexed(a)) {
+                push_.apply(this, a);
+            }
+        }
+
+        Path.prototype.length = 0;
+
+        decorate(Path.prototype, {
+            join: Array.prototype.join,
+            map: Array.prototype.map,
+            concat: function concat(){
+                var out = new Path(this);
+                push_.apply(out, arguments);
+                return out;
+            },
+            args: function args(){
+                return filter_.call(this, function(s){
+                    return s[0] === 'Δ';
+                }).map(function(s){
+                    return s.replace(/Δ/g, '');
+                });
+            },
+            toName: function toName(slice, last){
+                var array = map_.call(this, function(s){
+                    return s.replace(/Δ/g, '');
+                });
+
+                if (last) {
+                    array.push(last);
+                }
+
+                var out = array.slice(slice || 1).map(function(s){
+                    return s[0].toUpperCase() + s.slice(1).toLowerCase();
+                });
+
+                if (!out[0]) {
+                    return '';
+                } else {
+                    out[0] = out[0].toLowerCase();
+                    return out.join('').replace(/_(.)/g, function(s){
+                        return s[1].toUpperCase();
+                    });
+                }
+            },
+            slice: function slice(){
+                return new Path(slice_.apply(this, arguments));
+            }
+        });
+
+
+        // #################
+        // ### Transport ###
+        // #################
+
+        // superclass for XHR and JSONP
+
+        function Transport(options, callback){
+            options = options || {};
+            if (typeof options === 'string') {
+                options = { url: options };
+            }
+            if (typeof callback === 'function') {
+                options.callback = callback;
+            }
+            this.data = options.data || {};
+            this.path = options.path || [];
+            this.base = options.url;
+            this.callback = options.callback || function(){};
+            this.state = 'idle';
+        }
+
+        Transport.transports = {};
+
+        decorate(Transport, {
+            register: function register(ctor){
+                Transport.transports[ctor.name.toLowerCase()] = ctor;
+            },
+            lookup: function lookup(name){
+                name = name.toLowerCase();
+                return name in Transport.transports ? Transport.transports[name] : null;
+            },
+            create: function create(type, base, dispatcher){
+                var T = Transport.lookup(type);
+                return new T(base, dispatcher);
+            }
+        });
+
+
+        decorate(Transport.prototype, {
+            params: function params(){
+                var data = Object.keys(this.data).map(function(name){ return [name, this.data[name]] }, this);
+                data.push([this.callbackParam, this.callbackName]);
+                return data.map(function(item){
+                    return encodeURIComponent(item[0]) + '=' + encodeURIComponent(item[1]);
+                }).join('&');
+            }
+        });
+
+        // #######################
+        // ### JSONP Transport ###
+        // #######################
+
+        function JSONP(options, callback){
+            Transport.call(this, options = options || {}, callback);
+            this.callbackParam = options.callbackParam || 'callback';
+            this.callbackName = options.callbackName || '_'+Math.random().toString(36).slice(2);
+        }
+
+        Transport.register(JSONP);
+
+        JSONP.prototype = Object.create(Transport.prototype);
+        decorate(JSONP.prototype, {
+            constructor: JSONP,
+            url: function url(){
+                return [this.base].concat(this.path).join('/') + '?' + this.params();
+            },
+            send: function send(callback){
+                var script = document.createElement('script'),
+                    completed
+
+                callback = callback || this.callback;
+
+                function complete(state, result){
+                    if (!completed) {
+                        completed = true;
+                        delete window[this.callbackName];
+                        document.body.removeChild(script);
+                        this.state = state;
+                        callback.call(this, result);
+                    }
+                }
+
+                script.src = this.url();
+                script.async = script.defer = true;
+                script.onerror = complete.bind(this, 'error');
+                window[this.callbackName] = complete.bind(this, 'success');
+
+                document.body.appendChild(script);
+                this.state = 'loading';
+                return this;
+            }
+        });
+
+        // ################################
+        // ### XMLHttpRequest Transport ###
+        // ################################
+
+        function XHR(options, callback){
+            this.headers = {};
+            options = options || {}
+
+            Transport.call(this, options, callback);
+
+            if (options.headers) {
+                Object.keys(options.headers).forEach(function(n){
+                    this[n] = options.headers[n];
+                }, this.headers);
+            }
+        }
+
+        Transport.register(XHR);
+
+        XHR.prototype = Object.create(Transport.prototype);
+        decorate(XHR.prototype, {
+            constructor: XHR,
+            async: true,
+            url: function url(){
+                var params = this.params();
+                return [this.base].concat(this.path).join('/') + (this.verb === 'get' && params ? '?' + params : '');
+            },
+            auth: function auth(user, pass){
+                if (!pass && user.length === 40) {
+                    this.headers.Authorization = 'token '+user;
+                } else {
+                    this.headers.Authorization = 'Basic '+btoa(user+':'+pass);
+                }
+            },
+            send: function send(callback, verb){
+                var xhr = new XMLHttpRequest,
+                    self = this;
+
+                if (typeof callback !== 'function') {
+                    verb = callback;
+                    callback = this.callback;
+                }
+
+                function complete(data){
+                    if (xhr.readyState === 4) {
+                        self.state = 'complete';
+                        callback.call(self, JSON.parse(xhr.responseText));
+                    }
+                }
+
+                xhr.open(verb || 'GET', this.url(), this.async);
+                if (this.headers.Authenticate) {
+                    xhr.withCredentials = true;
+                }
+
+                Object.keys(this.headers).forEach(function(name){
+                    xhr.setRequestHeader(name, self.headers[name]);
+                });
+
+                xhr.onerror = complete;
+                xhr.onload = complete;
+
+                xhr.send(this.data ||  null);
+                this.state = 'loading';
+                return this.async === true ?  this : xhr.responseText;
+            }
+        });
+
+
+        function makeCtor(args, api){
+            var Ctor = function(){
+                var self = this instanceof Ctor ? this : Object.create(Ctor.prototype);
+                return api.request(arguments, args, self);
+            }
+
+            decorate(Ctor, {
+                args: Object.freeze(args),
+                toString: function toString(){ return '[ '+this.args.join(', ')+' ]' }
+            });
+            return Ctor;
+        }
+
+        // #################
+        // ### APIClient ###
+        // #################
+
+        // generalized REST API handler that turns routes into functions
+
+        function APIClient(routes, onlyGetters){
+            var self = this;
+            var slices = {};
+
+            function recurse(o,path){
+                Object.keys(o).forEach(function(k){
+                    if (k === 'SLICE') {
+                        slices[path[0]] = o[k];
+                    } else if (k.toUpperCase() === k) {
+                        if (onlyGetters) {
+                            if (k !== 'GET') return;
+                            var name = path.toName(slices[path[0]]);
+                        } else {
+                            var name = path.toName(slices[path[0]], k);
+                        }
+
+                        if (name) {
+                            var target = self[path[0]] || (self[path[0]] = {});
+                        } else {
+                            name = path[0];
+                            var target = self;
+                        }
+
+                        target[name] = makeCtor(path.args().concat(o[k]), self);
+
+                        Object.defineProperty(target[name].prototype, 'path', {
+                            get: function(){
+                                return path.map(function(s){
+                                    return s[0] === 'Δ' ? this[s.slice(1)] : s;
+                                }, this).join('/');
+                            }
+                        });
+
+                    } else if (isObject(o[k])) {
+                        recurse(o[k], path.concat(k));
+                    }
+                });
+            }
+
+            recurse(routes, new Path);
+        }
+
+        decorate(APIClient.prototype, {
+            request: function request(args, fields, req){
+                args = [].slice.call(args);
+                var callback = typeof args[args.length-1] === 'function' ? args.pop() : this.callback;
+                fields.forEach(function(p,i){
+                    if (typeof args[i] != null) {
+                        req[p] = args[i];
+                    }
+                });
+                var transport = decorate(Object.create(this.transport), {
+                    path: req.path,
+                    data: req
+                });
+                transport.send(callback);
+                return transport;
+            },
+            setTransport: function setTransport(type, base, dispatcher){
+                Object.defineProperty(this, 'transport', {
+                    value: Transport.create(type, base, dispatcher),
+                    configurable: true,
+                    writable: true
+                });
+            }
+        });
+
+
+        // ####################
+        // ### GithubClient ###
+        // ####################
+
+        // APIClient subclass with routes and utilities for Github
+
+        function GithubClient(user, password){
+            var self = this;
+
+            function findRefs(obj){
+                isObject(obj) && Object.keys(obj).forEach(function(key){
+                    if (key !== 'url') return;
+
+                    var val = obj[key].slice(23).split('/');
+                    var fn = self[val[0]];
+                    if (!fn) return;
+                    if (fn[val[1]]) {
+                        fn = fn[val[1]];
+                        val = val.slice(2);
+                    } else {
+                        val = val.slice(1);
+                    }
+
+                    obj.resolve = function(cb){
+                        if (typeof cb === 'function') val.push(cb);
+                        return fn.apply(null, val);
+                    }.bind(null);
+
+                    if (isObject(obj[key])) {
+                        return findRefs(obj[key]);
+                    }
+                });
+            }
+
+            this.setTransport('xhr', 'https://api.github.com', function(result){
+                if (result) {
+                    findRefs(result);
+                    self.lastResult = result;
+                }
+                if (self.callback) {
+                    self.callback.call(self, result);
+                }
+            });
+
+            this.transport.headers.Accept = 'application/vnd.github.full+json';
+            if (user) {
+                this.transport.auth(user, password);
+            }
+
+            APIClient.call(this, githubRoutes, true);
+            this.users.search = this.legacy.userSearchKeyword;
+            this.users.searchEmails = this.legacy.userEmailEmail;
+            this.repos.search = this.legacy.reposSearchKeyword;
+            this.repos.searchIssues = this.legacy.issuesSearchOwnerRepositoryStateKeyword;
+            delete this.legacy;
+        }
+
+        GithubClient.createClient = function createClient(user, pass){
+            return new GithubClient(user, pass);
+        };
+
+        GithubClient.prototype = Object.create(APIClient.prototype)
+        decorate(GithubClient.prototype, {
+            constructor: GithubClient
+        });
+
+        return GithubClient;
+
+// ########################################
+// ### Routes for Github V3 API in full ###
+// ########################################
+
+    }(new Function('return this')(), {
+        legacy:{SLICE:1,issues:{search:{Δowner:{Δrepository:{Δstate:{Δkeyword:{GET:[]}}}}}},repos:{search:{Δkeyword:{GET:['language','start_page']}}},user:{search:{Δkeyword:{GET:[]}},email:{Δemail:{GET:[]}}}},
+        gists:{SLICE:1,POST:['description','public','files'],GET:['page','per_page'],public:{GET:[]},starred:{GET:[]},Δid:{GET:[],PATCH:['description','files'],star:{GET:[],DELETE:[],POST:[]},fork:{POST:[]},comments:{GET:[],POST:['input'],Δid:{GET:[],DELETE:[],PATCH:['body']}}}},
+        teams:{SLICE:2,Δid:{GET:[],DELETE:[],PATCH:['name','permission'],members:{GET:['page','per_page'],Δuser:{GET:[],DELETE:[],POST:[]}},repos:{GET:['page','per_page'],Δuser:{Δrepo:{GET:[],DELETE:[],POST:[]}}}}},
+        orgs:{SLICE:2,Δorg:{GET:['page','per_page'],PATCH:['billing_email','company','email','location','name'],members:{GET:['page','per_page'],Δuser:{GET:[],DELETE:[]}},public_members:{GET:[],Δuser:{GET:[],DELETE:[],POST:[]}},teams:{GET:[],POST:['name','repo_names','permission']},repos:{GET:['type','page','per_page'],POST:['name','description','homepage','private','has_issues','has_wiki','has_downloads','team_id'],Δsha:{GET:[]}}}},
+        repos:{SLICE:3,Δuser:{Δrepo:{GET:[],GET2:['page','per_page'],PATCH:['name','description','homepage','private','has_issues','has_wiki','has_downloads'],contributors:{GET:['anon','page','per_page']},languages:{GET:['anon','page','per_page']},teams:{GET:['page','per_page']},tags:{GET:['page','per_page'],Δsha:{POST:['tag','message','object','type','tagger.name','tagger.email','tagger.date']}},git:{refs:{POST:['refs','sha'],GET:['page','per_page'],Δref:{GET:[],PATCH:['sha','force']}},commits:{POST:['message','tree','parents','author','committer'],Δsha:{GET:[]}},blobs:{POST:['content','encoding'],Δsha:{GET:['page','per_page']}}},
+            branches:{GET:['page','per_page']},events:{GET:['page','per_page']},issues:{GET:['milestone','state','assignee','mentioned','labels','sort','direction','since','page','per_page'],POST:['title','body','assignee','milestone','labels'],events:{GET:['page','per_page'],GET2:[],Δid:{}},Δnumber:{GET:[],PATCH:['title','body','assignee','milestone','labels'],comments:{GET:['page','per_page'],POST:['body']},events:{GET:['page','per_page']}},comments:{Δid:{GET:[],DELETE:[],PATCH:['body']}},},pulls:{GET:['state','page','per_page'],POST:['title','body','base','head'],POST2:['issue','base','head'],Δnumber:{GET:[],PATCH:['state','title','body'],merge:{GET:['page','per_page'],POST:['commit_message']},files:{GET:['page','per_page']},commits:{GET:['page','per_page']},
+                comments:{POST:['body','in_reply_to'],POST2:['body','commit_id','path','position'],GET:['page','per_page'],}},comments:{Δnumber:{GET:[],DELETE:[],PATCH:['body']}}},commits:{GET:['sha','path','page','per_page'],Δsha:{GET:[],comments:{GET:['page','per_page'],POST:['body','commit_id','line','path','position']}},},comments:{Δid:{GET:[],DELETE:[],PATCH:['body']}},compare:{ΔbaseΔhead:{GET:['base','head']}},download:{GET:['page','per_page']},downloads:{Δid:{GET:[],DELETE:[]}},forks:{POST:['org'],GET:['sort','page','per_page']},labels:{GET:[],POST:['name','color'],Δname:{GET:[],POST:['color']}},keys:{GET:['page','per_page'],POST:['title','key'],Δid:{GET:[],DELETE:[],POST:['title','key']}},watchers:{GET:['page','per_page']},
+            hooks:{GET:['page','per_page'],POST:['name','config','events','active'],Δid:{GET:[],DELETE:[],PATCH:['name','config','events','add_events','remove_events','active'],test:{POST:[]}}},milestones:{POST:['title','state','description','due_on'],GET:['state','sort','page','per_page'],Δnumber:{DELETE:[],GET:[],PATCH:['title','state','description','due_on']}},trees:{POST:['tree'],Δsha:{GET:['recursive']}},collaborators:{GET:['page','per_page'],Δcollabuser:{GET:[],DELETE:[],POST:[]}}}}},
+        authorizations:{SLICE:0,GET:[]},
+        user:{SLICE:1,GET:[],PATCH:['name','email','blog','company','location','hireable','bio'],gists:{GET:['page','per_page']},emails:{GET:['page','per_page'],DELETE:[],POST:[]},following:{GET:['page','per_page'],Δuser:{GET:['page','per_page'],DELETE:[],POST:[]}},watched:{GET:['page','per_page'],Δuser:{Δrepo:{GET:['page','per_page'],DELETE:[],POST:[]}}},keys:{GET:['page','per_page'],POST:['title','key'],Δid:{GET:[],DELETE:[],PATCH:['title','key']}},repos:{GET:['type','page','per_page'],POST:['name','description','homepage','private','has_issues','has_wiki','has_downloads']}},
+        users:{SLICE:2,Δuser:{GET:[],gists:{GET:['page','per_page']},followers:{GET:['page','per_page']},following:{GET:['page','per_page']},orgs:{GET:['page','per_page']},watched:{GET:['page','per_page']},received_events:{GET:['page','per_page']},events:{GET:['page','per_page']},repos:{GET:['type','page','per_page']}}},
+        networks:{SLICE:2,Δuser:{Δrepo:{events:{GET:['page','per_page']}},events:{orgs:{Δorg:{GET:['page','per_page']}}}}},
+        events:{SLICE:1,GET:['page','per_page']}
+    }));
+
+    github.token = 'asdf';
+
+    jQuery.github = github;
 
 
     /**
@@ -12203,9 +12379,614 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
         }
     };
 
+    jQuery.github.syncRequest = function(uri){
+        jQuery.github.transport.async = false;
+        var base = jQuery.github.transport.base;
+        jQuery.github.transport.base = base + uri;
+        var responseText = jQuery.github.transport.send();
+        jQuery.github.transport.async = true;
+        jQuery.github.transport.base = base;
+        return responseText;
+
+    }
     jQuery.github.utils = gitter;
 
 
+
+
+    /**
+     * @license
+     * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
+     * Build: `lodash underscore include="template" exports="none" -o lodash/lo_template.js`
+     * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
+     * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
+     * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+     * Available under MIT license <http://lodash.com/license>
+     */
+    (function() {
+
+        
+        var reInterpolate = /<%=([\s\S]+?)%>/g;
+
+        
+        var reNoMatch = /($^)/;
+
+        
+        var reUnescapedString = /['\n\r\t\u2028\u2029\\]/g;
+
+        
+        var objectTypes = {
+            'boolean': false,
+            'function': true,
+            'object': true,
+            'number': false,
+            'string': false,
+            'undefined': false
+        };
+
+        
+        var stringEscapes = {
+            '\\': '\\',
+            "'": "'",
+            '\n': 'n',
+            '\r': 'r',
+            '\t': 't',
+            '\u2028': 'u2028',
+            '\u2029': 'u2029'
+        };
+
+        /*--------------------------------------------------------------------------*/
+
+        /**
+         * Used by `template` to escape characters for inclusion in compiled
+         * string literals.
+         *
+         * @private
+         * @param {string} match The matched character to escape.
+         * @returns {string} Returns the escaped character.
+         */
+        function escapeStringChar(match) {
+            return '\\' + stringEscapes[match];
+        }
+
+        /*--------------------------------------------------------------------------*/
+
+        
+        var objectProto = Object.prototype;
+
+        
+        var toString = objectProto.toString;
+
+        
+        var reNative = RegExp('^' +
+            String(toString)
+                .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                .replace(/toString| for [^\]]+/g, '.*?') + '$'
+        );
+
+        
+        var hasOwnProperty = objectProto.hasOwnProperty;
+
+        /* Native method shortcuts for methods with the same name as other `lodash` methods */
+        var nativeKeys = isNative(nativeKeys = Object.keys) && nativeKeys;
+
+        /*--------------------------------------------------------------------------*/
+
+        /**
+         * Creates a `lodash` object which wraps the given value to enable intuitive
+         * method chaining.
+         *
+         * In addition to Lo-Dash methods, wrappers also have the following `Array` methods:
+         * `concat`, `join`, `pop`, `push`, `reverse`, `shift`, `slice`, `sort`, `splice`,
+         * and `unshift`
+         *
+         * Chaining is supported in custom builds as long as the `value` method is
+         * implicitly or explicitly included in the build.
+         *
+         * The chainable wrapper functions are:
+         * `after`, `assign`, `bind`, `bindAll`, `bindKey`, `chain`, `compact`,
+         * `compose`, `concat`, `countBy`, `create`, `createCallback`, `curry`,
+         * `debounce`, `defaults`, `defer`, `delay`, `difference`, `filter`, `flatten`,
+         * `forEach`, `forEachRight`, `forIn`, `forInRight`, `forOwn`, `forOwnRight`,
+         * `functions`, `groupBy`, `indexBy`, `initial`, `intersection`, `invert`,
+         * `invoke`, `keys`, `map`, `max`, `memoize`, `merge`, `min`, `object`, `omit`,
+         * `once`, `pairs`, `partial`, `partialRight`, `pick`, `pluck`, `pull`, `push`,
+         * `range`, `reject`, `remove`, `rest`, `reverse`, `shuffle`, `slice`, `sort`,
+         * `sortBy`, `splice`, `tap`, `throttle`, `times`, `toArray`, `transform`,
+         * `union`, `uniq`, `unshift`, `unzip`, `values`, `where`, `without`, `wrap`,
+         * and `zip`
+         *
+         * The non-chainable wrapper functions are:
+         * `clone`, `cloneDeep`, `contains`, `escape`, `every`, `find`, `findIndex`,
+         * `findKey`, `findLast`, `findLastIndex`, `findLastKey`, `has`, `identity`,
+         * `indexOf`, `isArguments`, `isArray`, `isBoolean`, `isDate`, `isElement`,
+         * `isEmpty`, `isEqual`, `isFinite`, `isFunction`, `isNaN`, `isNull`, `isNumber`,
+         * `isObject`, `isPlainObject`, `isRegExp`, `isString`, `isUndefined`, `join`,
+         * `lastIndexOf`, `mixin`, `noConflict`, `parseInt`, `pop`, `random`, `reduce`,
+         * `reduceRight`, `result`, `shift`, `size`, `some`, `sortedIndex`, `runInContext`,
+         * `template`, `unescape`, `uniqueId`, and `value`
+         *
+         * The wrapper functions `first` and `last` return wrapped values when `n` is
+         * provided, otherwise they return unwrapped values.
+         *
+         * Explicit chaining can be enabled by using the `_.chain` method.
+         *
+         * @name _
+         * @constructor
+         * @category Chaining
+         * @param {*} value The value to wrap in a `lodash` instance.
+         * @returns {Object} Returns a `lodash` instance.
+         * @example
+         *
+         * var wrapped = _([1, 2, 3]);
+         *
+         * // returns an unwrapped value
+         * wrapped.reduce(function(sum, num) {
+   *   return sum + num;
+   * });
+         * // => 6
+         *
+         * // returns a wrapped value
+         * var squares = wrapped.map(function(num) {
+   *   return num * num;
+   * });
+         *
+         * _.isArray(squares);
+         * // => false
+         *
+         * _.isArray(squares.value());
+         * // => true
+         */
+        function lodash() {
+            // no operation performed
+        }
+
+        /**
+         * By default, the template delimiters used by Lo-Dash are similar to those in
+         * embedded Ruby (ERB). Change the following template settings to use alternative
+         * delimiters.
+         *
+         * @static
+         * @memberOf _
+         * @type Object
+         */
+        lodash.templateSettings = {
+
+            /**
+             * Used to detect `data` property values to be HTML-escaped.
+             *
+             * @memberOf _.templateSettings
+             * @type RegExp
+             */
+            'escape': /<%-([\s\S]+?)%>/g,
+
+            /**
+             * Used to detect code to be evaluated.
+             *
+             * @memberOf _.templateSettings
+             * @type RegExp
+             */
+            'evaluate': /<%([\s\S]+?)%>/g,
+
+            /**
+             * Used to detect `data` property values to inject.
+             *
+             * @memberOf _.templateSettings
+             * @type RegExp
+             */
+            'interpolate': reInterpolate,
+
+            /**
+             * Used to reference the data object in the template text.
+             *
+             * @memberOf _.templateSettings
+             * @type string
+             */
+            'variable': ''
+        };
+
+        /*--------------------------------------------------------------------------*/
+
+        /**
+         * Used by `escape` to convert characters to HTML entities.
+         *
+         * @private
+         * @param {string} match The matched character to escape.
+         * @returns {string} Returns the escaped character.
+         */
+        function escapeHtmlChar(match) {
+            return htmlEscapes[match];
+        }
+
+        /**
+         * Checks if `value` is a native function.
+         *
+         * @private
+         * @param {*} value The value to check.
+         * @returns {boolean} Returns `true` if the `value` is a native function, else `false`.
+         */
+        function isNative(value) {
+            return typeof value == 'function' && reNative.test(value);
+        }
+
+        /*--------------------------------------------------------------------------*/
+
+        /**
+         * A fallback implementation of `Object.keys` which produces an array of the
+         * given object's own enumerable property names.
+         *
+         * @private
+         * @type Function
+         * @param {Object} object The object to inspect.
+         * @returns {Array} Returns an array of property names.
+         */
+        var shimKeys = function(object) {
+            var index, iterable = object, result = [];
+            if (!iterable) return result;
+            if (!(objectTypes[typeof object])) return result;
+            for (index in iterable) {
+                if (hasOwnProperty.call(iterable, index)) {
+                    result.push(index);
+                }
+            }
+            return result
+        };
+
+        /**
+         * Creates an array composed of the own enumerable property names of an object.
+         *
+         * @static
+         * @memberOf _
+         * @category Objects
+         * @param {Object} object The object to inspect.
+         * @returns {Array} Returns an array of property names.
+         * @example
+         *
+         * _.keys({ 'one': 1, 'two': 2, 'three': 3 });
+         * // => ['one', 'two', 'three'] (property order is not guaranteed across environments)
+         */
+        var keys = !nativeKeys ? shimKeys : function(object) {
+            if (!isObject(object)) {
+                return [];
+            }
+            return nativeKeys(object);
+        };
+
+        /**
+         * Used to convert characters to HTML entities:
+         *
+         * Though the `>` character is escaped for symmetry, characters like `>` and `/`
+         * don't require escaping in HTML and have no special meaning unless they're part
+         * of a tag or an unquoted attribute value.
+         * http://mathiasbynens.be/notes/ambiguous-ampersands (under "semi-related fun fact")
+         */
+        var htmlEscapes = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#x27;'
+        };
+
+        
+        var reUnescapedHtml = RegExp('[' + keys(htmlEscapes).join('') + ']', 'g');
+
+        function defaults(object) {
+            if (!object) {
+                return object;
+            }
+            for (var argsIndex = 1, argsLength = arguments.length; argsIndex < argsLength; argsIndex++) {
+                var iterable = arguments[argsIndex];
+                if (iterable) {
+                    for (var key in iterable) {
+                        if (typeof object[key] == 'undefined') {
+                            object[key] = iterable[key];
+                        }
+                    }
+                }
+            }
+            return object;
+        }
+
+        
+        function isObject(value) {
+            // check if the value is the ECMAScript language type of Object
+            // http://es5.github.io/#x8
+            // and avoid a V8 bug
+            // http://code.google.com/p/v8/issues/detail?id=2291
+            return !!(value && objectTypes[typeof value]);
+        }
+
+        
+        function escape(string) {
+            return string == null ? '' : String(string).replace(reUnescapedHtml, escapeHtmlChar);
+        }
+
+        
+        function template(text, data, options) {
+            var _ = lodash,
+                settings = _.templateSettings;
+
+            text = String(text || '');
+            options = defaults({}, options, settings);
+
+            var index = 0,
+                source = "__p += '",
+                variable = options.variable;
+
+            var reDelimiters = RegExp(
+                (options.escape || reNoMatch).source + '|' +
+                (options.interpolate || reNoMatch).source + '|' +
+                (options.evaluate || reNoMatch).source + '|$'
+                , 'g');
+
+            text.replace(reDelimiters, function(match, escapeValue, interpolateValue, evaluateValue, offset) {
+                source += text.slice(index, offset).replace(reUnescapedString, escapeStringChar);
+                if (escapeValue) {
+                    source += "' +\n_.escape(" + escapeValue + ") +\n'";
+                }
+                if (evaluateValue) {
+                    source += "';\n" + evaluateValue + ";\n__p += '";
+                }
+                if (interpolateValue) {
+                    source += "' +\n((__t = (" + interpolateValue + ")) == null ? '' : __t) +\n'";
+                }
+                index = offset + match.length;
+                return match;
+            });
+
+            source += "';\n";
+            if (!variable) {
+                variable = 'obj';
+                source = 'with (' + variable + ' || {}) {\n' + source + '\n}\n';
+            }
+            source = 'function(' + variable + ') {\n' +
+            "var __t, __p = '', __j = Array.prototype.join;\n" +
+            "function print() { __p += __j.call(arguments, '') }\n" +
+            source +
+            'return __p\n}';
+
+            try {
+                var result = Function('_', 'return ' + source)(_);
+            } catch(e) {
+                e.source = source;
+                throw e;
+            }
+            if (data) {
+                return result(data);
+            }
+            result.source = source;
+            return result;
+        }
+
+        /*--------------------------------------------------------------------------*/
+
+        lodash.defaults = defaults;
+        lodash.keys = keys;
+
+        /*--------------------------------------------------------------------------*/
+
+        lodash.escape = escape;
+        lodash.isObject = isObject;
+        lodash.template = template;
+
+        /*--------------------------------------------------------------------------*/
+
+        /**
+         * The semantic version number.
+         *
+         * @static
+         * @memberOf _
+         * @type string
+         */
+        lodash.VERSION = '2.4.1';
+
+        jQuery.extend({
+            template: lodash.template
+        })
+    }.call(this));
+
+
+
+    var re = {
+        not_string: /[^s]/,
+        number: /[dief]/,
+        text: /^[^\x25]+/,
+        modulo: /^\x25{2}/,
+        placeholder: /^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fiosuxX])/,
+        key: /^([a-z_][a-z_\d]*)/i,
+        key_access: /^\.([a-z_][a-z_\d]*)/i,
+        index_access: /^\[(\d+)\]/,
+        sign: /^[\+\-]/
+    }
+
+    function sprintf() {
+        var key = arguments[0], cache = sprintf.cache
+        if (!(cache[key] && cache.hasOwnProperty(key))) {
+            cache[key] = sprintf.parse(key)
+        }
+        return sprintf.format.call(null, cache[key], arguments)
+    }
+
+    sprintf.format = function (parse_tree, argv) {
+        var cursor = 1, tree_length = parse_tree.length, node_type = "", arg, output = [], i, k, match, pad, pad_character, pad_length, is_positive = true, sign = ""
+        for (i = 0; i < tree_length; i++) {
+            node_type = get_type(parse_tree[i])
+            if (node_type === "string") {
+                output[output.length] = parse_tree[i]
+            }
+            else if (node_type === "array") {
+                match = parse_tree[i] // convenience purposes only
+                if (match[2]) { // keyword argument
+                    arg = argv[cursor]
+                    for (k = 0; k < match[2].length; k++) {
+                        if (!arg.hasOwnProperty(match[2][k])) {
+                            throw new Error(sprintf("[sprintf] property '%s' does not exist", match[2][k]))
+                        }
+                        arg = arg[match[2][k]]
+                    }
+                }
+                else if (match[1]) { // positional argument (explicit)
+                    arg = argv[match[1]]
+                }
+                else { // positional argument (implicit)
+                    arg = argv[cursor++]
+                }
+
+                if (get_type(arg) == "function") {
+                    arg = arg()
+                }
+
+                if (re.not_string.test(match[8]) && (get_type(arg) != "number" && isNaN(arg))) {
+                    throw new TypeError(sprintf("[sprintf] expecting number but found %s", get_type(arg)))
+                }
+
+                if (re.number.test(match[8])) {
+                    is_positive = arg >= 0
+                }
+
+                switch (match[8]) {
+                    case "b":
+                        arg = arg.toString(2)
+                        break
+                    case "c":
+                        arg = String.fromCharCode(arg)
+                        break
+                    case "d":
+                    case "i":
+                        arg = parseInt(arg, 10)
+                        break
+                    case "e":
+                        arg = match[7] ? arg.toExponential(match[7]) : arg.toExponential()
+                        break
+                    case "f":
+                        arg = match[7] ? parseFloat(arg).toFixed(match[7]) : parseFloat(arg)
+                        break
+                    case "o":
+                        arg = arg.toString(8)
+                        break
+                    case "s":
+                        arg = ((arg = String(arg)) && match[7] ? arg.substring(0, match[7]) : arg)
+                        break
+                    case "u":
+                        arg = arg >>> 0
+                        break
+                    case "x":
+                        arg = arg.toString(16)
+                        break
+                    case "X":
+                        arg = arg.toString(16).toUpperCase()
+                        break
+                }
+                if (re.number.test(match[8]) && (!is_positive || match[3])) {
+                    sign = is_positive ? "+" : "-"
+                    arg = arg.toString().replace(re.sign, "")
+                }
+                else {
+                    sign = ""
+                }
+                pad_character = match[4] ? match[4] === "0" ? "0" : match[4].charAt(1) : " "
+                pad_length = match[6] - (sign + arg).length
+                pad = match[6] ? (pad_length > 0 ? str_repeat(pad_character, pad_length) : "") : ""
+                output[output.length] = match[5] ? sign + arg + pad : (pad_character === "0" ? sign + pad + arg : pad + sign + arg)
+            }
+        }
+        return output.join("")
+    }
+
+    sprintf.cache = {}
+
+    sprintf.parse = function (fmt) {
+        var _fmt = fmt, match = [], parse_tree = [], arg_names = 0
+        while (_fmt) {
+            if ((match = re.text.exec(_fmt)) !== null) {
+                parse_tree[parse_tree.length] = match[0]
+            }
+            else if ((match = re.modulo.exec(_fmt)) !== null) {
+                parse_tree[parse_tree.length] = "%"
+            }
+            else if ((match = re.placeholder.exec(_fmt)) !== null) {
+                if (match[2]) {
+                    arg_names |= 1
+                    var field_list = [], replacement_field = match[2], field_match = []
+                    if ((field_match = re.key.exec(replacement_field)) !== null) {
+                        field_list[field_list.length] = field_match[1]
+                        while ((replacement_field = replacement_field.substring(field_match[0].length)) !== "") {
+                            if ((field_match = re.key_access.exec(replacement_field)) !== null) {
+                                field_list[field_list.length] = field_match[1]
+                            }
+                            else if ((field_match = re.index_access.exec(replacement_field)) !== null) {
+                                field_list[field_list.length] = field_match[1]
+                            }
+                            else {
+                                throw new SyntaxError("[sprintf] failed to parse named argument key")
+                            }
+                        }
+                    }
+                    else {
+                        throw new SyntaxError("[sprintf] failed to parse named argument key")
+                    }
+                    match[2] = field_list
+                }
+                else {
+                    arg_names |= 2
+                }
+                if (arg_names === 3) {
+                    throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported")
+                }
+                parse_tree[parse_tree.length] = match
+            }
+            else {
+                throw new SyntaxError("[sprintf] unexpected placeholder")
+            }
+            _fmt = _fmt.substring(match[0].length)
+        }
+        return parse_tree
+    }
+
+    var vsprintf = function (fmt, argv, _argv) {
+        _argv = (argv || []).slice(0)
+        _argv.splice(0, 0, fmt)
+        return sprintf.apply(null, _argv)
+    }
+
+    /**
+     * helpers
+     */
+    function get_type(variable) {
+        return Object.prototype.toString.call(variable).slice(8, -1).toLowerCase()
+    }
+
+    function str_repeat(input, multiplier) {
+        return Array(multiplier + 1).join(input)
+    }
+
+    /**
+     * export to either browser or node.js
+
+    if (typeof exports !== "undefined") {
+        exports.sprintf = sprintf
+        exports.vsprintf = vsprintf
+    }
+    else {
+        window.sprintf = sprintf
+        window.vsprintf = vsprintf
+
+        if (typeof define === "function" && define.amd) {
+            define(function () {
+                return {
+                    sprintf: sprintf,
+                    vsprintf: vsprintf
+                }
+            })
+        }
+    }
+     */
+
+    jQuery.extend({
+        sprintf: sprintf,
+        vsprintf: vsprintf
+    });
 
 
 
@@ -12748,755 +13529,6 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 
 
 
-    function defined(val){
-        return typeof val !== 'undefined';
-    }
-
-
-    jQuery.extend({
-        etag: function (name, url, val) {
-            var key = 'github-' + jQuery.crypt.md5(url);
-            var etags = jQuery.cookie(name);
-
-            if (defined(etags)) {
-                if (defined(val)) {
-                    // set etag
-                    etags[key] = val;
-                    $.cookie(name, etags);
-                } else if (defined(etags[key])) {
-                    // get etag
-                    return etags[key];
-                } else {
-                    // get etag, failed
-                    return false;
-                }
-            } else {
-                etags = {};
-                etags[key] = val;
-                $.cookie(name, etags);
-            }
-        }
-    });
-
-
-    jQuery.async = {};
-var only_once = function (fn) {
-        var called = false;
-        return function () {
-            if (called) throw new Error("Callback was already called.");
-            called = true;
-            fn.apply(window, arguments);
-        }
-    }
-
-var _each = function(arr, iterator) {
-        if (arr.forEach) {
-            return arr.forEach(iterator);
-        }
-        for (var i = 0; i < arr.length; i += 1) {
-            iterator(arr[i], i, arr);
-        }
-    }
-
-
-
-    var each = function (arr, iterator, callback) {
-        callback = callback || function () {
-        };
-
-        if (!arr.length) {
-            return callback();
-        }
-        var completed = 0;
-        _each(arr, function (x) {
-            iterator(x, only_once(done));
-        });
-        function done(err) {
-            if (err) {
-                callback(err);
-                callback = function () {
-                };
-            }
-            else {
-                completed += 1;
-                if (completed >= arr.length) {
-                    callback();
-                }
-            }
-        }
-    };
-
- //   jQuery.async = {};
-    jQuery.async.each = each;
-
-
-
-        var nextTick = function (fn) {
-            if (typeof setImmediate === 'function') {
-                setImmediate(fn);
-            } else if (typeof process !== 'undefined' && process.nextTick) {
-                process.nextTick(fn);
-            } else {
-                setTimeout(fn, 0);
-            }
-        };
-
-        var makeIterator = function (tasks) {
-            var makeCallback = function (index) {
-                var fn = function () {
-                    if (tasks.length) {
-                        tasks[index].apply(null, arguments);
-                    }
-                    return fn.next();
-                };
-                fn.next = function () {
-                    return (index < tasks.length - 1) ? makeCallback(index + 1): null;
-                };
-                return fn;
-            };
-            return makeCallback(0);
-        };
-
-        var _isArray = Array.isArray || function(maybeArray){
-                return Object.prototype.toString.call(maybeArray) === '[object Array]';
-            };
-
-        var waterfall = function (tasks, callback) {
-            callback = callback || function () {};
-            if (!_isArray(tasks)) {
-                var err = new Error('First argument to waterfall must be an array of functions');
-                return callback(err);
-            }
-            if (!tasks.length) {
-                return callback();
-            }
-            var wrapIterator = function (iterator) {
-                return function (err) {
-                    if (err) {
-                        callback.apply(null, arguments);
-                        callback = function () {};
-                    } else {
-                        var args = Array.prototype.slice.call(arguments, 1);
-                        var next = iterator.next();
-                        if (next) {
-                            args.push(wrapIterator(next));
-                        } else {
-                            args.push(callback);
-                        }
-                        nextTick(function () {
-                            iterator.apply(null, args);
-                        });
-                    }
-                };
-            };
-            wrapIterator(makeIterator(tasks))();
-        };
-
-            jQuery.async.waterfall = waterfall;
-
-
-
-
-
-
-
-
-
-
-    var re = {
-        not_string: /[^s]/,
-        number: /[dief]/,
-        text: /^[^\x25]+/,
-        modulo: /^\x25{2}/,
-        placeholder: /^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fiosuxX])/,
-        key: /^([a-z_][a-z_\d]*)/i,
-        key_access: /^\.([a-z_][a-z_\d]*)/i,
-        index_access: /^\[(\d+)\]/,
-        sign: /^[\+\-]/
-    }
-
-    function sprintf() {
-        var key = arguments[0], cache = sprintf.cache
-        if (!(cache[key] && cache.hasOwnProperty(key))) {
-            cache[key] = sprintf.parse(key)
-        }
-        return sprintf.format.call(null, cache[key], arguments)
-    }
-
-    sprintf.format = function (parse_tree, argv) {
-        var cursor = 1, tree_length = parse_tree.length, node_type = "", arg, output = [], i, k, match, pad, pad_character, pad_length, is_positive = true, sign = ""
-        for (i = 0; i < tree_length; i++) {
-            node_type = get_type(parse_tree[i])
-            if (node_type === "string") {
-                output[output.length] = parse_tree[i]
-            }
-            else if (node_type === "array") {
-                match = parse_tree[i] // convenience purposes only
-                if (match[2]) { // keyword argument
-                    arg = argv[cursor]
-                    for (k = 0; k < match[2].length; k++) {
-                        if (!arg.hasOwnProperty(match[2][k])) {
-                            throw new Error(sprintf("[sprintf] property '%s' does not exist", match[2][k]))
-                        }
-                        arg = arg[match[2][k]]
-                    }
-                }
-                else if (match[1]) { // positional argument (explicit)
-                    arg = argv[match[1]]
-                }
-                else { // positional argument (implicit)
-                    arg = argv[cursor++]
-                }
-
-                if (get_type(arg) == "function") {
-                    arg = arg()
-                }
-
-                if (re.not_string.test(match[8]) && (get_type(arg) != "number" && isNaN(arg))) {
-                    throw new TypeError(sprintf("[sprintf] expecting number but found %s", get_type(arg)))
-                }
-
-                if (re.number.test(match[8])) {
-                    is_positive = arg >= 0
-                }
-
-                switch (match[8]) {
-                    case "b":
-                        arg = arg.toString(2)
-                        break
-                    case "c":
-                        arg = String.fromCharCode(arg)
-                        break
-                    case "d":
-                    case "i":
-                        arg = parseInt(arg, 10)
-                        break
-                    case "e":
-                        arg = match[7] ? arg.toExponential(match[7]) : arg.toExponential()
-                        break
-                    case "f":
-                        arg = match[7] ? parseFloat(arg).toFixed(match[7]) : parseFloat(arg)
-                        break
-                    case "o":
-                        arg = arg.toString(8)
-                        break
-                    case "s":
-                        arg = ((arg = String(arg)) && match[7] ? arg.substring(0, match[7]) : arg)
-                        break
-                    case "u":
-                        arg = arg >>> 0
-                        break
-                    case "x":
-                        arg = arg.toString(16)
-                        break
-                    case "X":
-                        arg = arg.toString(16).toUpperCase()
-                        break
-                }
-                if (re.number.test(match[8]) && (!is_positive || match[3])) {
-                    sign = is_positive ? "+" : "-"
-                    arg = arg.toString().replace(re.sign, "")
-                }
-                else {
-                    sign = ""
-                }
-                pad_character = match[4] ? match[4] === "0" ? "0" : match[4].charAt(1) : " "
-                pad_length = match[6] - (sign + arg).length
-                pad = match[6] ? (pad_length > 0 ? str_repeat(pad_character, pad_length) : "") : ""
-                output[output.length] = match[5] ? sign + arg + pad : (pad_character === "0" ? sign + pad + arg : pad + sign + arg)
-            }
-        }
-        return output.join("")
-    }
-
-    sprintf.cache = {}
-
-    sprintf.parse = function (fmt) {
-        var _fmt = fmt, match = [], parse_tree = [], arg_names = 0
-        while (_fmt) {
-            if ((match = re.text.exec(_fmt)) !== null) {
-                parse_tree[parse_tree.length] = match[0]
-            }
-            else if ((match = re.modulo.exec(_fmt)) !== null) {
-                parse_tree[parse_tree.length] = "%"
-            }
-            else if ((match = re.placeholder.exec(_fmt)) !== null) {
-                if (match[2]) {
-                    arg_names |= 1
-                    var field_list = [], replacement_field = match[2], field_match = []
-                    if ((field_match = re.key.exec(replacement_field)) !== null) {
-                        field_list[field_list.length] = field_match[1]
-                        while ((replacement_field = replacement_field.substring(field_match[0].length)) !== "") {
-                            if ((field_match = re.key_access.exec(replacement_field)) !== null) {
-                                field_list[field_list.length] = field_match[1]
-                            }
-                            else if ((field_match = re.index_access.exec(replacement_field)) !== null) {
-                                field_list[field_list.length] = field_match[1]
-                            }
-                            else {
-                                throw new SyntaxError("[sprintf] failed to parse named argument key")
-                            }
-                        }
-                    }
-                    else {
-                        throw new SyntaxError("[sprintf] failed to parse named argument key")
-                    }
-                    match[2] = field_list
-                }
-                else {
-                    arg_names |= 2
-                }
-                if (arg_names === 3) {
-                    throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported")
-                }
-                parse_tree[parse_tree.length] = match
-            }
-            else {
-                throw new SyntaxError("[sprintf] unexpected placeholder")
-            }
-            _fmt = _fmt.substring(match[0].length)
-        }
-        return parse_tree
-    }
-
-    var vsprintf = function (fmt, argv, _argv) {
-        _argv = (argv || []).slice(0)
-        _argv.splice(0, 0, fmt)
-        return sprintf.apply(null, _argv)
-    }
-
-    /**
-     * helpers
-     */
-    function get_type(variable) {
-        return Object.prototype.toString.call(variable).slice(8, -1).toLowerCase()
-    }
-
-    function str_repeat(input, multiplier) {
-        return Array(multiplier + 1).join(input)
-    }
-
-    /**
-     * export to either browser or node.js
-
-    if (typeof exports !== "undefined") {
-        exports.sprintf = sprintf
-        exports.vsprintf = vsprintf
-    }
-    else {
-        window.sprintf = sprintf
-        window.vsprintf = vsprintf
-
-        if (typeof define === "function" && define.amd) {
-            define(function () {
-                return {
-                    sprintf: sprintf,
-                    vsprintf: vsprintf
-                }
-            })
-        }
-    }
-     */
-
-    jQuery.extend({
-        sprintf: sprintf,
-        vsprintf: vsprintf
-    });
-
-
-    /**
-     * @license
-     * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
-     * Build: `lodash underscore include="template" exports="none" -o lodash/lo_template.js`
-     * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
-     * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
-     * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-     * Available under MIT license <http://lodash.com/license>
-     */
-    (function() {
-
-        
-        var reInterpolate = /<%=([\s\S]+?)%>/g;
-
-        
-        var reNoMatch = /($^)/;
-
-        
-        var reUnescapedString = /['\n\r\t\u2028\u2029\\]/g;
-
-        
-        var objectTypes = {
-            'boolean': false,
-            'function': true,
-            'object': true,
-            'number': false,
-            'string': false,
-            'undefined': false
-        };
-
-        
-        var stringEscapes = {
-            '\\': '\\',
-            "'": "'",
-            '\n': 'n',
-            '\r': 'r',
-            '\t': 't',
-            '\u2028': 'u2028',
-            '\u2029': 'u2029'
-        };
-
-        /*--------------------------------------------------------------------------*/
-
-        /**
-         * Used by `template` to escape characters for inclusion in compiled
-         * string literals.
-         *
-         * @private
-         * @param {string} match The matched character to escape.
-         * @returns {string} Returns the escaped character.
-         */
-        function escapeStringChar(match) {
-            return '\\' + stringEscapes[match];
-        }
-
-        /*--------------------------------------------------------------------------*/
-
-        
-        var objectProto = Object.prototype;
-
-        
-        var toString = objectProto.toString;
-
-        
-        var reNative = RegExp('^' +
-            String(toString)
-                .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-                .replace(/toString| for [^\]]+/g, '.*?') + '$'
-        );
-
-        
-        var hasOwnProperty = objectProto.hasOwnProperty;
-
-        /* Native method shortcuts for methods with the same name as other `lodash` methods */
-        var nativeKeys = isNative(nativeKeys = Object.keys) && nativeKeys;
-
-        /*--------------------------------------------------------------------------*/
-
-        /**
-         * Creates a `lodash` object which wraps the given value to enable intuitive
-         * method chaining.
-         *
-         * In addition to Lo-Dash methods, wrappers also have the following `Array` methods:
-         * `concat`, `join`, `pop`, `push`, `reverse`, `shift`, `slice`, `sort`, `splice`,
-         * and `unshift`
-         *
-         * Chaining is supported in custom builds as long as the `value` method is
-         * implicitly or explicitly included in the build.
-         *
-         * The chainable wrapper functions are:
-         * `after`, `assign`, `bind`, `bindAll`, `bindKey`, `chain`, `compact`,
-         * `compose`, `concat`, `countBy`, `create`, `createCallback`, `curry`,
-         * `debounce`, `defaults`, `defer`, `delay`, `difference`, `filter`, `flatten`,
-         * `forEach`, `forEachRight`, `forIn`, `forInRight`, `forOwn`, `forOwnRight`,
-         * `functions`, `groupBy`, `indexBy`, `initial`, `intersection`, `invert`,
-         * `invoke`, `keys`, `map`, `max`, `memoize`, `merge`, `min`, `object`, `omit`,
-         * `once`, `pairs`, `partial`, `partialRight`, `pick`, `pluck`, `pull`, `push`,
-         * `range`, `reject`, `remove`, `rest`, `reverse`, `shuffle`, `slice`, `sort`,
-         * `sortBy`, `splice`, `tap`, `throttle`, `times`, `toArray`, `transform`,
-         * `union`, `uniq`, `unshift`, `unzip`, `values`, `where`, `without`, `wrap`,
-         * and `zip`
-         *
-         * The non-chainable wrapper functions are:
-         * `clone`, `cloneDeep`, `contains`, `escape`, `every`, `find`, `findIndex`,
-         * `findKey`, `findLast`, `findLastIndex`, `findLastKey`, `has`, `identity`,
-         * `indexOf`, `isArguments`, `isArray`, `isBoolean`, `isDate`, `isElement`,
-         * `isEmpty`, `isEqual`, `isFinite`, `isFunction`, `isNaN`, `isNull`, `isNumber`,
-         * `isObject`, `isPlainObject`, `isRegExp`, `isString`, `isUndefined`, `join`,
-         * `lastIndexOf`, `mixin`, `noConflict`, `parseInt`, `pop`, `random`, `reduce`,
-         * `reduceRight`, `result`, `shift`, `size`, `some`, `sortedIndex`, `runInContext`,
-         * `template`, `unescape`, `uniqueId`, and `value`
-         *
-         * The wrapper functions `first` and `last` return wrapped values when `n` is
-         * provided, otherwise they return unwrapped values.
-         *
-         * Explicit chaining can be enabled by using the `_.chain` method.
-         *
-         * @name _
-         * @constructor
-         * @category Chaining
-         * @param {*} value The value to wrap in a `lodash` instance.
-         * @returns {Object} Returns a `lodash` instance.
-         * @example
-         *
-         * var wrapped = _([1, 2, 3]);
-         *
-         * // returns an unwrapped value
-         * wrapped.reduce(function(sum, num) {
-   *   return sum + num;
-   * });
-         * // => 6
-         *
-         * // returns a wrapped value
-         * var squares = wrapped.map(function(num) {
-   *   return num * num;
-   * });
-         *
-         * _.isArray(squares);
-         * // => false
-         *
-         * _.isArray(squares.value());
-         * // => true
-         */
-        function lodash() {
-            // no operation performed
-        }
-
-        /**
-         * By default, the template delimiters used by Lo-Dash are similar to those in
-         * embedded Ruby (ERB). Change the following template settings to use alternative
-         * delimiters.
-         *
-         * @static
-         * @memberOf _
-         * @type Object
-         */
-        lodash.templateSettings = {
-
-            /**
-             * Used to detect `data` property values to be HTML-escaped.
-             *
-             * @memberOf _.templateSettings
-             * @type RegExp
-             */
-            'escape': /<%-([\s\S]+?)%>/g,
-
-            /**
-             * Used to detect code to be evaluated.
-             *
-             * @memberOf _.templateSettings
-             * @type RegExp
-             */
-            'evaluate': /<%([\s\S]+?)%>/g,
-
-            /**
-             * Used to detect `data` property values to inject.
-             *
-             * @memberOf _.templateSettings
-             * @type RegExp
-             */
-            'interpolate': reInterpolate,
-
-            /**
-             * Used to reference the data object in the template text.
-             *
-             * @memberOf _.templateSettings
-             * @type string
-             */
-            'variable': ''
-        };
-
-        /*--------------------------------------------------------------------------*/
-
-        /**
-         * Used by `escape` to convert characters to HTML entities.
-         *
-         * @private
-         * @param {string} match The matched character to escape.
-         * @returns {string} Returns the escaped character.
-         */
-        function escapeHtmlChar(match) {
-            return htmlEscapes[match];
-        }
-
-        /**
-         * Checks if `value` is a native function.
-         *
-         * @private
-         * @param {*} value The value to check.
-         * @returns {boolean} Returns `true` if the `value` is a native function, else `false`.
-         */
-        function isNative(value) {
-            return typeof value == 'function' && reNative.test(value);
-        }
-
-        /*--------------------------------------------------------------------------*/
-
-        /**
-         * A fallback implementation of `Object.keys` which produces an array of the
-         * given object's own enumerable property names.
-         *
-         * @private
-         * @type Function
-         * @param {Object} object The object to inspect.
-         * @returns {Array} Returns an array of property names.
-         */
-        var shimKeys = function(object) {
-            var index, iterable = object, result = [];
-            if (!iterable) return result;
-            if (!(objectTypes[typeof object])) return result;
-            for (index in iterable) {
-                if (hasOwnProperty.call(iterable, index)) {
-                    result.push(index);
-                }
-            }
-            return result
-        };
-
-        /**
-         * Creates an array composed of the own enumerable property names of an object.
-         *
-         * @static
-         * @memberOf _
-         * @category Objects
-         * @param {Object} object The object to inspect.
-         * @returns {Array} Returns an array of property names.
-         * @example
-         *
-         * _.keys({ 'one': 1, 'two': 2, 'three': 3 });
-         * // => ['one', 'two', 'three'] (property order is not guaranteed across environments)
-         */
-        var keys = !nativeKeys ? shimKeys : function(object) {
-            if (!isObject(object)) {
-                return [];
-            }
-            return nativeKeys(object);
-        };
-
-        /**
-         * Used to convert characters to HTML entities:
-         *
-         * Though the `>` character is escaped for symmetry, characters like `>` and `/`
-         * don't require escaping in HTML and have no special meaning unless they're part
-         * of a tag or an unquoted attribute value.
-         * http://mathiasbynens.be/notes/ambiguous-ampersands (under "semi-related fun fact")
-         */
-        var htmlEscapes = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#x27;'
-        };
-
-        
-        var reUnescapedHtml = RegExp('[' + keys(htmlEscapes).join('') + ']', 'g');
-
-        function defaults(object) {
-            if (!object) {
-                return object;
-            }
-            for (var argsIndex = 1, argsLength = arguments.length; argsIndex < argsLength; argsIndex++) {
-                var iterable = arguments[argsIndex];
-                if (iterable) {
-                    for (var key in iterable) {
-                        if (typeof object[key] == 'undefined') {
-                            object[key] = iterable[key];
-                        }
-                    }
-                }
-            }
-            return object;
-        }
-
-        
-        function isObject(value) {
-            // check if the value is the ECMAScript language type of Object
-            // http://es5.github.io/#x8
-            // and avoid a V8 bug
-            // http://code.google.com/p/v8/issues/detail?id=2291
-            return !!(value && objectTypes[typeof value]);
-        }
-
-        
-        function escape(string) {
-            return string == null ? '' : String(string).replace(reUnescapedHtml, escapeHtmlChar);
-        }
-
-        
-        function template(text, data, options) {
-            var _ = lodash,
-                settings = _.templateSettings;
-
-            text = String(text || '');
-            options = defaults({}, options, settings);
-
-            var index = 0,
-                source = "__p += '",
-                variable = options.variable;
-
-            var reDelimiters = RegExp(
-                (options.escape || reNoMatch).source + '|' +
-                (options.interpolate || reNoMatch).source + '|' +
-                (options.evaluate || reNoMatch).source + '|$'
-                , 'g');
-
-            text.replace(reDelimiters, function(match, escapeValue, interpolateValue, evaluateValue, offset) {
-                source += text.slice(index, offset).replace(reUnescapedString, escapeStringChar);
-                if (escapeValue) {
-                    source += "' +\n_.escape(" + escapeValue + ") +\n'";
-                }
-                if (evaluateValue) {
-                    source += "';\n" + evaluateValue + ";\n__p += '";
-                }
-                if (interpolateValue) {
-                    source += "' +\n((__t = (" + interpolateValue + ")) == null ? '' : __t) +\n'";
-                }
-                index = offset + match.length;
-                return match;
-            });
-
-            source += "';\n";
-            if (!variable) {
-                variable = 'obj';
-                source = 'with (' + variable + ' || {}) {\n' + source + '\n}\n';
-            }
-            source = 'function(' + variable + ') {\n' +
-            "var __t, __p = '', __j = Array.prototype.join;\n" +
-            "function print() { __p += __j.call(arguments, '') }\n" +
-            source +
-            'return __p\n}';
-
-            try {
-                var result = Function('_', 'return ' + source)(_);
-            } catch(e) {
-                e.source = source;
-                throw e;
-            }
-            if (data) {
-                return result(data);
-            }
-            result.source = source;
-            return result;
-        }
-
-        /*--------------------------------------------------------------------------*/
-
-        lodash.defaults = defaults;
-        lodash.keys = keys;
-
-        /*--------------------------------------------------------------------------*/
-
-        lodash.escape = escape;
-        lodash.isObject = isObject;
-        lodash.template = template;
-
-        /*--------------------------------------------------------------------------*/
-
-        /**
-         * The semantic version number.
-         *
-         * @static
-         * @memberOf _
-         * @type string
-         */
-        lodash.VERSION = '2.4.1';
-
-        jQuery.extend({
-            template: lodash.template
-        })
-    }.call(this));
-
-
     /*
 
      Basic Usage:
@@ -13552,70 +13584,4 @@ var _each = function(arr, iterator) {
         small: { lines: 8, length: 4, width: 3, radius: 5 },
         large: { lines: 10, length: 8, width: 4, radius: 8 }
     };
-
-
-// The number of elements contained in the matched element set
-jQuery.fn.size = function() {
-	return this.length;
-};
-
-jQuery.fn.andSelf = jQuery.fn.addBack;
-
-
-
-
-// Register as a named AMD module, since jQuery can be concatenated with other
-// files that may use define, but not via a proper concatenation script that
-// understands anonymous AMD modules. A named AMD is safest and most robust
-// way to register. Lowercase jquery is used because AMD module names are
-// derived from file names, and jQuery is normally delivered in a lowercase
-// file name. Do this after creating the global so that if an AMD module wants
-// to call noConflict to hide this version of jQuery, it will work.
-
-// Note that for maximum portability, libraries that are not jQuery should
-// declare themselves as anonymous modules, and avoid setting a global if an
-// AMD loader is present. jQuery is a special case. For more information, see
-// https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
-
-if ( typeof define === "function" && define.amd ) {
-	define( "jquery", [], function() {
-		return jQuery;
-	});
-}
-
-
-
-
-var
-	// Map over jQuery in case of overwrite
-	_jQuery = window.jQuery,
-
-	// Map over the $ in case of overwrite
-	_$ = window.$;
-
-jQuery.noConflict = function( deep ) {
-	if ( window.$ === jQuery ) {
-		window.$ = _$;
-	}
-
-	if ( deep && window.jQuery === jQuery ) {
-		window.jQuery = _jQuery;
-	}
-
-	return jQuery;
-};
-
-// Expose jQuery and $ identifiers, even in
-// AMD (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
-// and CommonJS for browser emulators (#13566)
-if ( typeof noGlobal === strundefined ) {
-	window.jQuery = window.$ = jQuery;
-}
-
-
-
-
-return jQuery;
-
-
 }));

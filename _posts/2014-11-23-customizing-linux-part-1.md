@@ -35,32 +35,42 @@ zypper in virtualbox # If you don't have VMware
 {% highlight bash %}
 mkdir ~/myos
 cd ~/myos
-git init
-
-# Will be using the branding package only really.. other stuff is just interesting. Do note, these repositories tend to be quite big. You'll need a few gig of space.
-git submodule add https://github.com/openSUSE/branding
-git submodule add https://github.com/openSUSE/release-notes-openSUSE
-git submodule add https://github.com/openSUSE/artwork
-git submodule add https://github.com/openSUSE/package-lists
-cd branding
-git checkout 13.2
-cd ..
 
 # Create some directories we'll use. We'll get into that later
-mkdir -p {src/root,installer,tools,build}
+mkdir -p {installer,tools,build}
 touch myos.sh       # Going to use a bash script to ease up some things
 chmod +x myos.sh
 
-# Lets just move over the entire doc's folder. It might give u some extra info
+# Lets just move over the entire doc's folder for kiwi.
 cp /usr/share/doc/packages/kiwi/ docs
 
-echo "/docs" >> .gitignore
+# Copy the example kiwi build to the source directory to use as base template
+cp docs/examples/suse-13.3/suse-live-usbstick src
 
+# Add some folders to ignore:
+# /docs
+# /release-notes-openSUSE
+# /artwork
+# /package-lists
+vim .gitignore
+
+# Initialize local repository
+git init
+
+# Will be using the branding package only really.. other stuff is either interesting or for later use. 
+# These repositories tend to be quite big. You'll need a few gig of space.
+git clone https://github.com/openSUSE/branding
+git clone https://github.com/openSUSE/release-notes-openSUSE
+git clone https://github.com/openSUSE/artwork
+git clone https://github.com/openSUSE/package-lists
+
+# Checkout the suse version 13.2 branch and remove the git repository
+cd branding
+git fetch
+git checkout 13.2
+rm -rf .git
+cd ..
 {% endhighlight %}
 
 Now, for the rest of the project i'll be using InteliJ IDEA. It's a very good IDE and supports many languages trough various plugins. We'll be working with bash, XML and various other languages and features, so my recommendation is to at least try it out.
 
-
-
-- Create a project directory
-- Register with suse's open build service
