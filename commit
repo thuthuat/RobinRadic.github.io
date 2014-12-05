@@ -1,0 +1,38 @@
+
+#!/bin/bash
+
+#!/bin/bash
+
+pdir=$PWD
+subdir=$pdir/../_includes
+
+
+# make sure symlinks is ignored by git
+git config --add core.symlinks false
+
+# commit the submodule first
+cd $subdir
+git add -A
+git commit -m "$*"
+git push -u origin master
+cd $pdir
+
+
+echo "Waiting for github to update"
+
+sleep 2
+
+# remove possible submodule
+git rm _includes -rf;
+rm .git/modules -rf
+
+echo "Waiting for github to update"
+
+sleep 2
+
+# submodule _includes to get latest, and then commit with it
+git submodule add -b master https://github.com/RobinRadic/ghpages-theme-includes.git _includes
+git add -A
+git commit -m "$*"
+git push -u origin master
+
