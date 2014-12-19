@@ -9,8 +9,10 @@ timezone: Amsterdam/Europe
 # GITHUB METADATA
 #https://github.com/jekyll/github-metadata
 repository: RobinRadic/RobinRadic.github.io
-
 gems:
+  - jekyll-github-metadata
+
+sgems:
   - jekyll-github-metadata
   - jemoji
   - jekyll-redirect-from
@@ -18,6 +20,7 @@ gems:
 
 layouts:     ./_includes/_layouts
 data_source: ./_includes/_data
+
 
 defaults:
   -
@@ -28,7 +31,6 @@ defaults:
       image: "/images/abstract-1.jpg"
       comments: true
       share: true
-      page-css: [blog,news]
   -
     scope:
       path: ""
@@ -36,23 +38,51 @@ defaults:
     values:
       hide-title: true
       share: true
-      page-css: [blog,news]
+  -
+    scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: project
+      hide-title: true
+      share: true
+      navigation:
+        - name: Home
+          link: /
+          icon: fa fa-home
+
+        - name: Project overview
+          link: /:project/
+          icon: fa fa-user
+
+        - name: Demonstration
+          link: /:project/demonstration
+          icon: fa fa-play
+
+        - name: Documentation
+          link: /:project/documentation
+          icon: fa fa-mortar-board
+
+        - name: API
+          link: /:project/api
+          icon: fa fa-code
+
 
 
 collections:
   portfolio:
     output: true;
     permalink: /portfolio/:title/
-
-
-
+  projects:
+    output: true
+    permalink: /:path/
 
 permalink:   /:categories/:title/
 paginate: 5
 
-sass:
-  sass_dir: _sass
-  style: compressed
+#sass:
+#  sass_dir: _sass
+#  style: compressed
 
 
 include: [".htaccess"]
