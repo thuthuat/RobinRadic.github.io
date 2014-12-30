@@ -8,6 +8,7 @@ So creating a custom build script while doing it seemed a good idea. Check it ou
 tags: [Development, Linux, Bash, Custom Linux]
 image: /images/lfs-logo.png
 comments: true
+published: false
 ---
 
 # Unfinished post - Not Finishedo
