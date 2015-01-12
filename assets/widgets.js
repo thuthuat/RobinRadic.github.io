@@ -50,381 +50,6 @@
 }), function(a) {
     a(jQuery);
 }(function(a) {
-    a.widget("radic.githubEvents", a.radic.base, {
-        version: "0.0.1",
-        options: {
-            username: "",
-            useSpinner: !0,
-            max: 60,
-            template: {
-                title: "Recent events"
-            },
-            selectors: {
-                template: 'script[data-template-id="github-events"]',
-                modalContainer: "#github-events-modal",
-                modalTemplate: 'script[data-template-id="github-events-modal"]',
-                user: "*[data-github-user]"
-            },
-            output: {
-                template: {
-                    title: "Recent events",
-                    height: 300
-                },
-                events: {
-                    "default": {
-                        icon: "fa fa-info",
-                        text: "A github event has been triggered",
-                        iconColor: "default",
-                        link: !1
-                    },
-                    CommitCommentEvent: {
-                        icon: "fa fa-edit",
-                        text: "New comment on a commit"
-                    },
-                    CreateEvent: {
-                        icon: "fa fa-plus",
-                        iconColor: "success",
-                        text: function(a) {
-                            var b = radic.github.theme.actor(a.actor);
-                            return "tag" === a.payload.ref_type && (b += radic.github.theme.tag(a.payload)), 
-                            b += radic.github.theme.repo(a.repo), b.replace("\n", "");
-                        }
-                    },
-                    DeleteEvent: {
-                        icon: "fa fa-trash",
-                        iconColor: "default",
-                        text: "A branch or tag has been deleted"
-                    },
-                    DeploymentEvent: {
-                        icon: "fa fa-",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    DeploymentStatusEvent: {
-                        icon: "fa fa-",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    DownloadEvent: {
-                        icon: "fa fa-cloud-download",
-                        iconColor: "default",
-                        text: "A new download has been created"
-                    },
-                    FollowEvent: {
-                        icon: "fa fa-bullhorn",
-                        iconColor: "default",
-                        text: "A user started following me"
-                    },
-                    ForkEvent: {
-                        icon: "fa fa-code-fork",
-                        iconColor: "default",
-                        text: "A repository was forked"
-                    },
-                    ForkApplyEvent: {
-                        icon: "fa fa-code-fork",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    GistEvent: {
-                        icon: "fa fa-git",
-                        iconColor: "default",
-                        text: "A gist has been created or updated"
-                    },
-                    GollumEvent: {
-                        icon: "fa fa-git",
-                        iconColor: "default",
-                        text: "A wiki page has been created or updated"
-                    },
-                    IssueCommentEvent: {
-                        icon: "fa fa-comment-o",
-                        iconColor: "info",
-                        text: "An issue received a new comment"
-                    },
-                    IssuesEvent: {
-                        icon: "fa fa-exclamation-triangle",
-                        iconColor: "warning",
-                        text: function(a) {
-                            var b = a.payload.action;
-                            return b = "started" === b ? "starred" : b, radic.github.theme.actor(a.actor) + " " + b + " " + radic.github.theme.issue(a.payload.issue);
-                        }
-                    },
-                    MemberEvent: {
-                        icon: "fa fa-sitemap",
-                        iconColor: "default",
-                        text: "A user is added as collaborator to a repository"
-                    },
-                    PageBuildEvent: {
-                        icon: "fa fa-file-o",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    PublicEvent: {
-                        icon: "fa fa-users",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    PullRequestEvent: {
-                        icon: "fa fa-sort-desc",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    PullRequestReviewCommentEvent: {
-                        icon: "fa fa-random",
-                        iconColor: "default",
-                        text: ""
-                    },
-                    PushEvent: {
-                        icon: "fa fa-save",
-                        text: function(b) {
-                            return a(document.createElement("span")).append(radic.github.theme.actor(b.actor)).append(radic.github.theme.branch(b)).append(radic.github.theme.commits(b)).append(" to ").append(radic.github.theme.repo(b.repo)).html();
-                        },
-                        iconColor: "success"
-                    },
-                    ReleaseEvent: {
-                        icon: "fa fa-chain-broken",
-                        text: "A new release has been published",
-                        iconColor: "default"
-                    },
-                    StatusEvent: {
-                        icon: "fa fa-info",
-                        text: "The status of a Git commit has changed",
-                        iconColor: "default"
-                    },
-                    TeamAddEvent: {
-                        icon: "fa fa-plus",
-                        text: "A user has been added to the team",
-                        iconColor: "default"
-                    },
-                    WatchEvent: {
-                        icon: "fa fa-star",
-                        text: function(a) {
-                            var b = a.payload.action;
-                            return b = "started" === b ? "starred" : b, radic.github.theme.actor(a.actor) + " " + b + " " + radic.github.theme.repo(a.repo);
-                        },
-                        iconColor: "warning"
-                    }
-                }
-            }
-        },
-        _create: function() {
-            var b = this;
-            b.__cache = {
-                users: {},
-                repos: {},
-                events: {}
-            }, this.$widget = null, this.options.useSpinner === !0 && this.element.spin(), b.__events = {}, 
-            a.each(this.options.output.events, function(a, c) {
-                "default" !== a && (b.__events[a] = _.merge(_.cloneDeep(b.options.output.events.default), c));
-            }), b._fetchEventData(function(c) {
-                b.options.useSpinner === !0 && b.element.spin(!1);
-                var d = a(b.options.selectors.template).html(), e = jQuery.template(d);
-                a.extend(c, b.options.output.template);
-                var f = e(c);
-                b.element.append(f), b._bindAll();
-            });
-        },
-        _bindAll: function() {
-            {
-                var b = this;
-                this.options.selectors;
-            }
-            this.element.find("*[data-github-user]").popover({
-                html: !0,
-                trigger: "manual",
-                container: "body",
-                placement: "left",
-                content: function() {
-                    return b._popoverUser(a(this).data("github-user"));
-                }
-            }).hover(function(b) {
-                b.preventDefault(), a(this).popover("toggle");
-            }), this.element.find("*[data-github-commits]").each(function() {
-                var c = a(this).data("github-commits");
-                a(this).popover({
-                    html: !0,
-                    trigger: "manual",
-                    container: "body",
-                    placement: "right",
-                    content: function() {
-                        return b._getTemplate("github-events-commits", {
-                            event: b.__cache.events[c].raw
-                        });
-                    }
-                }).hover(function(b) {
-                    b.preventDefault(), a(this).popover("toggle");
-                });
-            }), this.element.find("*[data-github-issue]").tooltip({
-                container: "body"
-            });
-        },
-        _fetchEventData: function(a) {
-            var b = this;
-            radic.github.users.events(this.options.username, 0, this.options.max, function(c) {
-                for (var d = [], e = 0; e < c.length; e++) {
-                    var f = b._getProcessedEvent(c[e]);
-                    d.push(f), b.__cache.events[c[e].id] = f;
-                }
-                a({
-                    events: d
-                });
-            });
-        },
-        _getProcessedEvent: function(a) {
-            var b = this, c = _.cloneDeep(b.__events[a.type]);
-            return _.isFunction(c.text) && (c.text = c.text.apply(this, [ a ])), c.id = a.id, 
-            c.raw = a, c.timeAgo = moment(a.created_at).fromNow(!0), c;
-        },
-        _popoverUser: function(a) {
-            var b = this;
-            _.isUndefined(b.__cache.users[a]) && (b.__cache.users[a] = JSON.parse(radic.github.syncRequest("/users/" + a)));
-            var c = b.__cache.users[a];
-            return b._getTemplate("github-events-user-popover", {
-                user: c
-            });
-        },
-        _getTemplate: function(b, c) {
-            var d = a('script[data-template-id="' + b + '"]').html(), e = jQuery.template(d), f = {
-                isset: function(a) {
-                    return _.isUndefined(a) ? !1 : _.isString(a) ? a.length > 0 : !0;
-                }
-            };
-            return e(a.extend(f, c));
-        },
-        _createModal: function() {},
-        _showModal: function(a) {
-            switch (a) {
-              case "user":
-                break;
-
-              case "repository":
-                break;
-
-              case "push":
-                radic.github.repos.commitsSha("RobinRadic", "swiftapi", "4853e862828bc697e2db839d7ad91fafb0844c1c", function() {});
-            }
-        },
-        _init: function() {},
-        _getCreateEventData: function() {},
-        _destroy: function() {
-            this.element.html("");
-        },
-        _setOptions: function(a) {
-            var b = a.value;
-            delete a.value, this._super(a), this.options.value = this._constrainedValue(b), 
-            this._refreshValue();
-        },
-        _setOption: function(a, b) {
-            "max" === a && (b = Math.max(this.min, b)), "disabled" === a && this.element.toggleClass("ui-state-disabled", !!b).attr("aria-disabled", b), 
-            this._super(a, b);
-        }
-    });
-}), function(a) {
-    a(jQuery);
-}(function(a) {
-    a.widget("radic.githubProfile", a.radic.base, {
-        version: "0.0.1",
-        options: {
-            username: null,
-            showProfile: !0,
-            showFollow: !0,
-            showLanguages: !0,
-            showRepositories: !0,
-            template: "widget.github.profile",
-            className: "gh-profile-widget",
-            spinner: !0,
-            spinnerOptions: {},
-            sortBy: "stars",
-            repositoriesHeaderText: "Most starred repositories",
-            repositoriesDateFormat: "lll",
-            repositoriesLimit: 5,
-            languagesHeaderText: "Top languages",
-            languagesLimit: 7
-        },
-        _spin: function(a) {
-            if (this.options.spinner === !0) {
-                if ("boolean" == typeof a && a === !1) return this.element.spin(!1);
-                this.element.spin(this.options.spinnerOptions);
-            }
-        },
-        refresh: function() {
-            var a = this;
-            a._spin(), a._getData(function(b) {
-                a._spin(!1);
-                var c = a._compile(a.options.template, b);
-                a.element.html(c), a._trigger("completed", null);
-            });
-        },
-        _create: function() {
-            return null !== this.options.username && _.isString(this.options.username) ? void this.refresh() : void console.error("githubProfile widget has been initialized without the required username option");
-        },
-        _sortLanguages: function(a) {
-            this._trigger("beforeSortLanguages", null, a);
-            var b = [];
-            for (var c in a) b.push([ c, a[c] ]);
-            return b.sort(function(a, b) {
-                return b[1] - a[1];
-            }), this._trigger("afterSortLanguages", null, b), b.slice(0, this.options.languagesLimit);
-        },
-        _sortRepositories: function(a) {
-            this._trigger("beforeSortRepositories", null, a);
-            var b = this;
-            return a.sort(function(a, c) {
-                return "stars" == b.options.sortBy ? c.stargazers_count - a.stargazers_count : new Date(c.updated_at).getTime() - new Date(a.updated_at).getTime();
-            }), this._trigger("afterSortRepositories", null, a), a.slice(0, b.options.repositoriesLimit);
-        },
-        _getData: function(b) {
-            var c = this, d = this.options.username;
-            radic.async.waterfall([ function(a) {
-                var b = radic.github.users(d, function(b, d) {
-                    c._trigger("onReceivedUser", null, b), console.info("even more data", b, radic.defined(d) ? d : "no second"), 
-                    a(null, b);
-                });
-                console.log("u2", b);
-            }, function(a, b) {
-                radic.github.users.repos(d, null, 1, 100, function(d) {
-                    c._trigger("onReceivedRepositories", null, d), b(null, {
-                        user: a,
-                        repos: d
-                    });
-                });
-            }, function(b, e) {
-                b.languages = {}, radic.async.each(b.repos, function(e, f) {
-                    e.updated_at_formatted = moment(e.updated_at).format(c.options.repositoriesDateFormat);
-                    var g = function(c) {
-                        a.each(c, function(a, c) {
-                            "undefined" == typeof b.languages[a] ? b.languages[a] = c : b.languages[a] += c;
-                        });
-                    }, h = radic.storage.get("github-profile-widget-languages", {
-                        json: !0
-                    });
-                    h ? (b.languages = h.languages, f()) : radic.github.repos.languages(d, e.name, function(a) {
-                        g(a), radic.storage.set("github-profile-widget-languages", {
-                            languages: b.languages
-                        }, {
-                            expires: 60,
-                            json: !0
-                        }), f();
-                    });
-                }, function() {
-                    e(null, b);
-                });
-            }, function(a, b) {
-                a.topRepos = c._sortRepositories(a.repos), b(null, a);
-            }, function(a, d) {
-                a.topLanguages = c._sortLanguages(a.languages), b(a), d(null);
-            } ]);
-        },
-        _destroy: function() {
-            this.element.html(""), self._trigger("destroyed", null);
-        },
-        _setOption: function(a, b) {
-            "disabled" === a && this.element.toggleClass("ui-state-disabled", !!b).attr("aria-disabled", b), 
-            this._super(a, b);
-        }
-    });
-}), function(a) {
-    a(jQuery);
-}(function(a) {
     a.widget("radic.highlightCollapse", {
         version: "0.0.1",
         options: {
@@ -477,8 +102,8 @@
         }
     });
 }), function(a) {
-    a(jQuery);
-}(function(a) {
+    a(jQuery, radic);
+}(function(a, b) {
     a.widget("radic.pageTopUser", {
         version: "0.0.1",
         $template: {},
@@ -487,7 +112,6 @@
             templateDataSelector: 'script[data-template-id="page-top-user"]'
         },
         _create: function() {
-            this.refresh();
         },
         refresh: function() {
             var a = this;
@@ -498,20 +122,20 @@
         _createHTML: function(b) {
             var c = this;
             c.element.html("");
-            var d = a(c.options.templateDataSelector).html(), e = jQuery.template(d);
+            var d = a(c.options.templateDataSelector).html(), e = _.template(d);
             c.$template = a(e(b)), c._bindEvents(), c.element.append(c.$template), Metronic.initAjax();
         },
-        _getData: function(b) {
+        _getData: function(a) {
             var c = this.options.username, d = {};
-            a.async.waterfall([ function(a) {
+            b.async.waterfall([ function(a) {
                 var b = radic.github.users(c, function(c) {
                     console.log("fetched data ", c, "u=", b), d.user = c, a(null, d);
                 });
                 console.log("fetched data 2 u=", b);
             }, function(a, b) {
                 a.loggedin = !1, b(null, a);
-            } ], function(a, c) {
-                b(c);
+            } ], function(b, c) {
+                a(c);
             });
         },
         _bindEvents: function() {
@@ -594,8 +218,8 @@
         }
     });
 }), function(a) {
-    a(jQuery);
-}(function(a) {
+    a(jQuery, radic);
+}(function(a, b) {
     a.widget("radic.postSearch", {
         version: "0.0.1",
         options: {
@@ -623,7 +247,7 @@
             var d = {
                 results: b,
                 converter: new Showdown.converter()
-            }, e = a(this.options.templateDataSelector).html(), f = a(a.template(e)(d));
+            }, e = a(this.options.templateDataSelector).html(), f = a(_.template(e)(d));
             f.find(".portlet-title .actions a").on("click", function() {
                 c.$container.hide("slow", function() {
                     c.$container.html("");
@@ -641,25 +265,25 @@
                 c.posts = a, console.log(a), b();
             });
         },
-        search: function(b, c) {
-            var d = this, e = {};
-            if (d.element.spin(), !(d.posts.length > 0)) return void this._getData(function() {
-                d.search(b, c);
+        search: function(c, d) {
+            var e = this, f = {};
+            if (e.element.spin(), !(e.posts.length > 0)) return void this._getData(function() {
+                e.search(c, d);
             });
-            var f = a.cloneDeep(d.posts);
-            "undefined" == typeof c && (c = !1), a.each(f, function(d, f) {
-                f !== !1 && (f.content = f.content.replace(/<(?:.|\n)*?>/gm, ""), c && "tags" == c ? _.contains(f.tags, b) !== !1 && (_.isUndefined(e[f.id]) ? (e[f.id] = f, 
-                e[f.id].rating = 1) : e[f.id].rating++) : a.each(f, function(a, c) {
-                    _.isArray(c) && (c = c.join(" ")), "string" == typeof c && c.indexOf(b) > -1 && ("undefined" == typeof e[f.id] && (e[f.id] = f), 
-                    "undefined" == typeof e[f.id].rating ? e[f.id].rating = 1 : e[f.id].rating++);
+            var g = b.cloneDeep(e.posts);
+            "undefined" == typeof d && (d = !1), a.each(g, function(b, e) {
+                e !== !1 && (e.content = e.content.replace(/<(?:.|\n)*?>/gm, ""), d && "tags" == d ? _.contains(e.tags, c) !== !1 && (_.isUndefined(f[e.id]) ? (f[e.id] = e, 
+                f[e.id].rating = 1) : f[e.id].rating++) : a.each(e, function(a, b) {
+                    _.isArray(b) && (b = b.join(" ")), "string" == typeof b && b.indexOf(c) > -1 && ("undefined" == typeof f[e.id] && (f[e.id] = e), 
+                    "undefined" == typeof f[e.id].rating ? f[e.id].rating = 1 : f[e.id].rating++);
                 }));
             });
-            var g = [];
-            a.each(e, function(a, b) {
-                g.push(b);
-            }), g.sort(function(a, b) {
+            var h = [];
+            a.each(f, function(a, b) {
+                h.push(b);
+            }), h.sort(function(a, b) {
                 return a.rating < b.rating ? 1 : a.rating > b.rating ? -1 : 0;
-            }), d._showResultTable(g.slice(0, d.options.limit)), d.element.spin(!1);
+            }), e._showResultTable(h.slice(0, e.options.limit)), e.element.spin(!1);
         },
         _init: function() {},
         _getCreateEventData: function() {},

@@ -1579,16 +1579,43 @@ return $.widget;
 //
 
 
-    var radic = {},
+    var version = "undefined";
 
-        version = "undefined";
+    /**
+     * @name radic
+     * @constructor
+     * @mixes radic/storage
+     * @mixes radic/template
+     * @mixes radic/template/comparisons
+     */
+    function radic(){
 
-    radic.extend = function(arg){
-        $.extend(radic, arg);
+    }
+
+
+    /**
+     * Extends the base radic object
+     *
+     * @param {Object} obj - The object to extend radic with
+     * @example
+     * radic.extend({
+     *      storage: {
+     *          print: function(what){
+     *              console.log(what);
+     *          }
+     *      }
+     * });
+     */
+    radic.extend = function(obj){
+        $.extend(radic, obj);
     };
 
 
     function getlodash() {
+
+        /**
+         * @ignore
+         */
 
         /**
          * @license
@@ -3396,10 +3423,6 @@ return $.widget;
         return radic.isUndefined(val) === false;
     };
 
-
-    /**
-     * @namespace radic
-     */
 var makeIterator = function (tasks) {
         var makeCallback = function (index) {
             var fn = function () {
@@ -3979,8 +4002,25 @@ var _each = function(arr, iterator) {
     });
 
 
+
+
+    /**
+     * @mixin
+     * @alias radic/storage
+     */
     var storage = {};
 
+
+    /**
+     * Extends the base radic object
+     *
+     *
+     * @param {Function} callback - The object to extend radic with
+     * @example
+     * radic.storage.on(function(){
+     *      // do something
+     * }
+     */
     storage.on = function (callback) {
         if (window.addEventListener) {
             window.addEventListener("storage", callback, false);
@@ -4917,15 +4957,34 @@ var _each = function(arr, iterator) {
     });
 
 
-    radic.template = Handlebars;
-    radic.template.get = function(name, data){
-        var template = radic.template.templates[name];
+    /**
+     * @mixin
+     * @alias radic/template
+     */
+    var template = Handlebars;
+
+    /**
+     * Get a template
+     *
+     * @param name
+     * @param data
+     * @returns {*}
+     */
+    template.get = function(name, data){
+        console.log('template get', name, Handlebars.templates);
+        var template = Handlebars.templates[name];
         if(radic.isUndefined(data)){
             return template;
         }
         var html = template(data);
+        console.log('tpl html', html)
         return $($(html).html().trim());
     };
+
+
+    radic.template = template;
+
+
 
 
     radic.template.registerHelper('default', function (value, defaultValue) {
@@ -5039,7 +5098,7 @@ var _each = function(arr, iterator) {
         return eR;
     }();
 
-    radic.template.expressionRegistry.add('same', function (left, right) { return left === right; });
+    template.expressionRegistry.add('same', function (left, right) { return left === right; });
 
 
 
