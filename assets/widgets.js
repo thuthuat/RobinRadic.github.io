@@ -1,6 +1,6 @@
 !function(a) {
-    a(jQuery);
-}(function(a) {
+    a(jQuery, radic);
+}(function(a, b) {
     a.widget("radic.faq", {
         version: "0.0.1",
         options: {
@@ -16,7 +16,7 @@
             var b = this;
             b._getData(function(c) {
                 console.log(c);
-                var d = a(b.options.templateDataSelector).html(), e = jQuery.template(d);
+                var d = a(b.options.templateDataSelector).html(), e = _.template(d);
                 console.log("pre temp data", c), a.extend(c, b.options.template);
                 var f = a(e({
                     items: c
@@ -24,11 +24,11 @@
                 b.element.html(f);
             });
         },
-        _getData: function(b) {
-            var c = this, d = a.keys(c.data).length, e = 0;
-            c.data = c.options.items, a.each(c.data, function(f, g) {
-                console.log("async each", c.data, f, g), a.get(g.file, function(a) {
-                    c.data[f].content = a, e++, e >= d && b(c.data);
+        _getData: function(c) {
+            var d = this, e = b.keys(d.data).length, f = 0;
+            d.data = d.options.items, a.each(d.data, function(b, g) {
+                console.log("async each", d.data, b, g), a.get(g.file, function(a) {
+                    d.data[b].content = a, f++, f >= e && c(d.data);
                 });
             });
         },
