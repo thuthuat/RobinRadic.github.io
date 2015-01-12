@@ -128,10 +128,10 @@
         _getData: function(a) {
             var c = this.options.username, d = {};
             b.async.waterfall([ function(a) {
-                var b = radic.github.users(c, function(c) {
-                    console.log("fetched data ", c, "u=", b), d.user = c, a(null, d);
+                var e = b.github.users(c, function(b) {
+                    console.log("fetched data ", b, "u=", e), d.user = b, a(null, d);
                 });
-                console.log("fetched data 2 u=", b);
+                console.log("fetched data 2 u=", e);
             }, function(a, b) {
                 a.loggedin = !1, b(null, a);
             } ], function(b, c) {
@@ -139,14 +139,6 @@
             });
         },
         _bindEvents: function() {
-            var b = this;
-            this.$oauth = this.$template.find(".github-oauth"), this.$oauth.on("click", function(a) {
-                a.preventDefault(), radic.github.loggedin() ? radic.github.logout() : radic.github.login(function() {
-                    b.refresh();
-                }), b.refresh();
-            }), this.element.find('[data-action="clear-local-storage"]').on("click", function(b) {
-                b.preventDefault(), a.storage.clear();
-            });
         },
         _init: function() {},
         _getCreateEventData: function() {},
@@ -192,7 +184,7 @@
             var f = c.data(d);
             console.log(d, f), e.$rows.each(function(b, c) {
                 var g = a(c), h = g.data(d).split(",");
-                a.isArray(h) === !1 && (h = [ h ]);
+                _.isArray(h) === !1 && (h = [ h ]);
                 for (var i = 0; i < h.length; i++) h[i] = h[i].toLowerCase();
                 console.log(b, h, f), -1 !== h.indexOf(f.toLowerCase()) && (console.log(b, "has", f, h, c), 
                 g.show(), e.$table.show());
