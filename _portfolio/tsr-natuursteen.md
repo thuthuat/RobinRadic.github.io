@@ -3,7 +3,7 @@ layout: portfolio
 title: TSR Natuursteen
 description: "Steen"
 image: tsr/1.jpg
-images: [tsr/1.jpg,tsr/2.jpg,tsr/3.jpg]
+images: [tsr/1.jpeg,tsr/2.jpeg,tsr/3.jpeg]
 date: 2015-1-21
 categories: [Web Development, Design]
 tags: [jQuery, Responsive, CMS]
