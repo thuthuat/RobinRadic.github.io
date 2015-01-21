@@ -2,7 +2,7 @@
 layout: portfolio
 title: TSR Natuursteen
 description: "Steen"
-image: tsr/1.jpeg
+image: tsr-natuursteen/1.jpeg
 images: [1.jpeg,2.jpeg,3.jpeg]
 date: 2015-1-21
 categories: [Web Development, Design]
