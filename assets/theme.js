@@ -29,6 +29,14 @@
         $('.noclick').on('click', function(e){
             e.preventDefault();
         });
+
+
+        $('.page-content table').each(function(){
+            var $t = $(this);
+            if(!$t.hasClass('table')){
+                $t.addClass('table table-bordered')
+            }
+        })
     }
 
     $(function(){

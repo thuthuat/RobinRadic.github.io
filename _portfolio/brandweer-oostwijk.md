@@ -7,6 +7,7 @@ images: [abstract-2.jpg,abstract-3.jpg,abstract-5.jpg,abstract-6.jpg]
 date: 2014-12-04
 categories: [Web Development, Development]
 tags: [AJAX, jQuery, Angular JS, Responsive, CMS]
+published: false
 ---
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
 cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio
