@@ -29,6 +29,9 @@ videos where people write all commands from the book into the prompt directly. P
 and call it. When errors occur, just alter the bad code and try again, leading up to properly working functions that can eventually be combined again = automated.
   
   
+The current lfsbuild found on my github can be further automated, and i'll most likely do so in due time when i reach the point im happy with the end-result.
+  
+  
 ## Creating a temporary build system
 I've written some helper scripts to set up a debian 7.8 virtualbox automaticly. It'll also install all required packages and ensures all pre-requesits are ok.
 Using the helpers scripts to set up the temporary system, with a set distro/version lowers the chance of incompatability or whatever its called.
@@ -96,6 +99,8 @@ cd /vagrant
 
 
 ## Compiling the packages for the build system
+Now we're starting with [chapter 5 of LFS](http://www.linuxfromscratch.org/lfs/view/stable/chapter05/introduction.html).  
+Before running the build script(s), alter the /vagrant/config file. If you experience problems with any of the following commands, alter the config key `runtests`. Set it to 1. 
 {% highlight sh %}
 # Ensure you are in the /vagrant folder
 # Now do:
@@ -104,11 +109,19 @@ cd /vagrant
 # ./5-build.sh build-511-to-518
 # ./5-build.sh build-519-to-534
 # OR ./5-build.sh build-all
-# For the first time around, don't use build-all. Execute the 4 commands.
+# For the first time around, don't use build-all. Execute the 4 commands individually and ensure everything goes ok.
+# There will be a lot of output generated. Just notice the colored stuff i added to see if everything goes as planned.
 
 ./5-build.sh build-54-to-57
-./5-build.sh build-58-to-510
-./5-build.sh build-511-to-518
-./5-build.sh build-519-to-534
+# After completion, you'll notice a sanity check. Make sure its correct.
 
+./5-build.sh build-58-to-510
+# Another sanity check, make sure it passes.
+
+./5-build.sh build-511-to-518
+# Yep, another sanity check. 
+
+./5-build.sh build-519-to-534
 {% endhighlight %}
+
+The build system is now ready. Almost time to actually build the LFS system itself!
