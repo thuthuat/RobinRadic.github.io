@@ -36,7 +36,8 @@ The scripts and other stuff im using can be viewed [on github](https://github.co
 - Virtualbox  
 - Vagrant  
 - 7z  
-- Curl  
+- Curl
+- Git
   
 
 
@@ -63,6 +64,8 @@ cd lfsbuild
 
 # That's it for creating the temporary host/build system. Onto the next part; compiling some packages.
 {% endhighlight %}
+
+![lfsbuilder make-host progress](/images/blog-posts/linux-from-scratch/make-host.jpg "make-host progress")
 
 
 ## Configuring and installing the build system
