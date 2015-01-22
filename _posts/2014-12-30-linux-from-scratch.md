@@ -9,9 +9,14 @@ tags: [Development, Linux, Bash, Custom Linux]
 image: /images/lfs-logo.png
 comments: true
 published: true
+date: 2014-12-30
 ---
 
 # Unfinished post - Not Finishedo
+This post is intended for both self-reference and for showing a way to approach the creation of an LFS system. 
+Following this post instructions easily take up **~2 hours**,  mainly spend on compiling.
+I've succesfully completed the procedure on both openSUSE 13.1 and Linux Mint 17.
+
 
 ## LFS?
 Linux From Scratch (LFS) is a project/book that provides step-by-step instructions for building Linux entirely from source.
@@ -30,6 +35,7 @@ and call it. When errors occur, just alter the bad code and try again, leading u
   
   
 The current lfsbuild found on my github can be further automated, and i'll most likely do so in due time when i reach the point im happy with the end-result.
+There's still quite some stuff i'd like to integrate, most importantly a package manager of some sorts and a bunch of customisation/personalisation alterations.
   
   
 ## Creating a temporary build system
@@ -39,7 +45,7 @@ The scripts and other stuff im using can be viewed [on github](https://github.co
 - Virtualbox  
 - Vagrant  
 - 7z  
-- Curl
+- Curl  
 - Git
   
 
@@ -121,7 +127,6 @@ Before running the build script(s), alter the /vagrant/config file. If you exper
 ./5-build.sh build-511-to-518
 
 ./5-build.sh build-519-to-534
-
 {% endhighlight %}
 
 The build system is now ready. Almost time to actually build the LFS system itself!
@@ -145,7 +150,8 @@ You'll now see a prompt similair to: `I have no name!:/#`, meaning you are now c
 can be found under `/vagrant`.
   
   
-This part will require a bit more attention. Until 653 all commands should be called manually and checked for proper compilation/no errors.
+This part will require a bit more attention. Until 653 all commands should be called manually and checked for proper compilation/no errors. Quite a few tests
+will be automaticly started, ignoring the config file `runtests` value. It's vital that these tests return positive results.
 {% highlight sh %}
 cd /vagrant
 ./6-build.sh 65-createdir
@@ -156,14 +162,25 @@ cd /vagrant
 ./6-build.sh 67-linux-api
 ./6-build.sh 68-man-pages
 ./6-build.sh 69-glibc
+
+# Verify the output for the following command carefully. 
 ./6-build.sh 610-adjust
+
+# The following commands may be combined
 ./6-build.sh 611-zlib
 ./6-build.sh 612-file
 ./6-build.sh 613-binutils
 ./6-build.sh 614-gmp
 ./6-build.sh 615-mpfr
 ./6-build.sh 616-mpc
+
+# This one will take especially long, > 20 minutes on my system.
+# When almost completed, it'll prompt providing a link
+# compare the results by following the instructions
+# Afterwards, continue and make sure everything is correct
 ./6-build.sh 617-gcc
+
+# The following commands may be combined
 ./6-build.sh 618-bzip2
 ./6-build.sh 619-pkg-config
 ./6-build.sh 620-ncurses
@@ -171,21 +188,33 @@ cd /vagrant
 ./6-build.sh 622-acl
 ./6-build.sh 623-libcap
 ./6-build.sh 624-sed
+
+# After shadow is completed, you'll be prompted for a password. use `tester`
 ./6-build.sh 625-shadow
+
+# The following commands may be combined
 ./6-build.sh 626-psmisc
 ./6-build.sh 627-procps-ng
 ./6-build.sh 628-e2fsprogs
+
+
+# Mind the acl stuff, follow instructions
 ./6-build.sh 629-coreutils
-# Mind the acl stuff, do it
 
 
 ./6-build.sh 630-iana-etc
 ./6-build.sh 631-m4
 ./6-build.sh 632-flex
+
+# Verify tests are all ok or skipped
 ./6-build.sh 633-bison
+
 ./6-build.sh 634-grep
 ./6-build.sh 635-readline
 ./6-build.sh 636-bash
+cd /vagrant
+
+# The following commands may be combined
 ./6-build.sh 637-bc
 ./6-build.sh 638-libtool
 ./6-build.sh 639-gdbm
@@ -210,3 +239,12 @@ cd /vagrant
 ./6-build.sh 673-clean-tmp
 ./6-build.sh 673-clean-tools
 {% endhighlight %}
+
+
+## System Configuration and Bootscripts
+Now the boring part is over. Time to glue some stuff together and switch on the lights.
+
+
+
+## Whats next?
+Beyond Linux from scratch would be obvious. The plan is to get a KDE desktop environment up and running.
