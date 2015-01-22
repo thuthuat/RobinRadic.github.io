@@ -128,7 +128,8 @@ The build system is now ready. Almost time to actually build the LFS system itse
 
 
 ## Compiling the packages for the LFS client system
-Now we're starting with [chapter 6 of LFS](http://www.linuxfromscratch.org/lfs/view/stable/chapter05/introduction.html).  
+Now we're starting with [chapter 6 of LFS](http://www.linuxfromscratch.org/lfs/view/stable/chapter05/introduction.html). 
+This will take quite abit longer compared to previous chapter and requires more manual operations.
 Lets set up the file system and chroot into the client. 
 {% highlight sh %}
 # Change permissions
@@ -140,10 +141,72 @@ Lets set up the file system and chroot into the client.
 # Chroot 
 ./64-chroot.sh
 {% endhighlight %}
-You'll now see a prompt similair to: `I have no name!:/#`
+You'll now see a prompt similair to: `I have no name!:/#`, meaning you are now chrooted into the client system. As with the build system, the scripts
+can be found under `/vagrant`.
   
   
 This part will require a bit more attention. Until 653 all commands should be called manually and checked for proper compilation/no errors.
 {% highlight sh %}
+cd /vagrant
 ./6-build.sh 65-createdir
+./6-build.sh 66-essentials-and-symlinks
+
+# You'll notice that the prompt changes to `bash-4.3#`.
+# Now; compile time!
+./6-build.sh 67-linux-api
+./6-build.sh 68-man-pages
+./6-build.sh 69-glibc
+./6-build.sh 610-adjust
+./6-build.sh 611-zlib
+./6-build.sh 612-file
+./6-build.sh 613-binutils
+./6-build.sh 614-gmp
+./6-build.sh 615-mpfr
+./6-build.sh 616-mpc
+./6-build.sh 617-gcc
+./6-build.sh 618-bzip2
+./6-build.sh 619-pkg-config
+./6-build.sh 620-ncurses
+./6-build.sh 621-attr
+./6-build.sh 622-acl
+./6-build.sh 623-libcap
+./6-build.sh 624-sed
+./6-build.sh 625-shadow
+./6-build.sh 626-psmisc
+./6-build.sh 627-procps-ng
+./6-build.sh 628-e2fsprogs
+./6-build.sh 629-coreutils
+# Mind the acl stuff, do it
+
+
+./6-build.sh 630-iana-etc
+./6-build.sh 631-m4
+./6-build.sh 632-flex
+./6-build.sh 633-bison
+./6-build.sh 634-grep
+./6-build.sh 635-readline
+./6-build.sh 636-bash
+./6-build.sh 637-bc
+./6-build.sh 638-libtool
+./6-build.sh 639-gdbm
+./6-build.sh 640-expat
+./6-build.sh 641-inetutils
+./6-build.sh 642-perl
+./6-build.sh 643-xml-parser
+./6-build.sh 644-autoconf
+./6-build.sh 645-automake
+./6-build.sh 646-diffutils
+./6-build.sh 647-gawk
+./6-build.sh 648-findutils
+./6-build.sh 649-gettext
+./6-build.sh 650-intltool
+./6-build.sh 651-gperf
+./6-build.sh 652-groff
+
+# From here on out we'll speed things up again
+./6-build.sh 653-to-670
+
+# All packages are compiled now. Lets clean stuff up and prepare for the next part
+./6-build.sh 673-clean-tmp
+./6-build.sh 673-clean-tools
 {% endhighlight %}
