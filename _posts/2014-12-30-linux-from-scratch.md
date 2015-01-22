@@ -67,5 +67,48 @@ cd lfsbuild
 
 ![lfsbuilder make-host progress](/images/blog-posts/linux-from-scratch/make-host.jpg "make-host progress")
 
+After the installation is done, it should automaticly create the vagrant box, unregister the vm and notify you of it's awesomeness.
 
 ## Configuring and installing the build system
+Start the vagrant box by executing 
+{% highlight sh %}
+./lfsbuilder start-host
+{% endhighlight %}
+
+Once completed, you will be connected with ssh in the machine. There's a shared folder there pointing to the lfsbuild directory, containing all helper scripts.
+{% highlight sh %}
+# Shows all helper scripts
+ls /vagrant
+
+# Fairly straight-forward. Execute the scripts in the following order
+./10-makedisk.sh # Will also call 10-mountdisk once the disks are created.
+
+# You'll now have the /mnt/lfs directory with some folders. Now download all packages. They'll be placed in /mnt/lfs/sources
+./20-download-packages.sh
+
+# Once completed, add the LFS user and login.
+./30-add-lfs-user.sh
+./40-login.sh
+cd /vagrant
+./41-first-login.sh
+# If at this point you close/restart the box, you'll only have to run ./10-mountdisk.sh and ./40-login.sh to continue
+{% endhighlight %}
+
+
+## Compiling the packages for the build system
+{% highlight sh %}
+# Ensure you are in the /vagrant folder
+# Now do:
+# ./5-build.sh build-54-to-57
+# ./5-build.sh build-58-to-510
+# ./5-build.sh build-511-to-518
+# ./5-build.sh build-519-to-534
+# OR ./5-build.sh build-all
+# For the first time around, don't use build-all. Execute the 4 commands.
+
+./5-build.sh build-54-to-57
+./5-build.sh build-58-to-510
+./5-build.sh build-511-to-518
+./5-build.sh build-519-to-534
+
+{% endhighlight %}

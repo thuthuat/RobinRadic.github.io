@@ -6,6 +6,7 @@ modified: 2014-11-23
 tags: [Custom Linux, Linux, Kiwi, bash, openSUSE, Development]
 image: /images/openSUSE_13_2_5.svg
 comments: true
+published: false
 ---
 **[RadicOS](/radicos) is my own custom version.**
 
