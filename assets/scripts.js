@@ -1925,7 +1925,7 @@ Showdown.converter = function(a) {
             hideMethod: "fadeOut"
         }, a(".noclick").on("click", function(a) {
             a.preventDefault();
-        }), a(".page-content table").each(function() {
+        }), a(".page-content.readme-page table").each(function() {
             var b = a(this);
             b.hasClass("table") || b.addClass("table table-bordered");
         });

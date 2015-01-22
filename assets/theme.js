@@ -31,7 +31,7 @@
         });
 
 
-        $('.page-content table').each(function(){
+        $('.page-content.readme-page table').each(function(){
             var $t = $(this);
             if(!$t.hasClass('table')){
                 $t.addClass('table table-bordered')
