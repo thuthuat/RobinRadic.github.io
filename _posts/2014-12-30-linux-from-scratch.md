@@ -119,9 +119,31 @@ Before running the build script(s), alter the /vagrant/config file. If you exper
 # Another sanity check, make sure it passes.
 
 ./5-build.sh build-511-to-518
-# Yep, another sanity check. 
 
 ./5-build.sh build-519-to-534
+
 {% endhighlight %}
 
 The build system is now ready. Almost time to actually build the LFS system itself!
+
+
+## Compiling the packages for the LFS client system
+Now we're starting with [chapter 6 of LFS](http://www.linuxfromscratch.org/lfs/view/stable/chapter05/introduction.html).  
+Lets set up the file system and chroot into the client. 
+{% highlight sh %}
+# Change permissions
+./60-own-root.sh
+
+# Prepare the virtual kernel file system
+./62-make-vfs.sh  # Will automaticly call ./62-mount-vfs.sh
+
+# Chroot 
+./64-chroot.sh
+{% endhighlight %}
+You'll now see a prompt similair to: `I have no name!:/#`
+  
+  
+This part will require a bit more attention. Until 653 all commands should be called manually and checked for proper compilation/no errors.
+{% highlight sh %}
+./6-build.sh 65-createdir
+{% endhighlight %}
